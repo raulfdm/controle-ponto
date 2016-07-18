@@ -9,6 +9,39 @@
 <body>
     <h1>Pontos</h1>
 
+    <table>
+        <thead>
+            <tr>
+                <td>Data</td>
+                <td>Hora-1</td>
+                <td>Hora-2</td>
+                <td>Hora-3</td>
+                <td>Hora-4</td>
+                <td>Hora-5</td>
+                <td>Hora-6</td>
+                <td>Total Trabalho</td>
+                <td>Banco de horas</td>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <%lista.map(function(ponto){%>
+                <tr>
+                    <td><%=ponto.data_cadastro.getDate()+"/"+(ponto.data_cadastro.getMonth()+1)+"/"+ponto.data_cadastro.getFullYear()%></td>
+                    <td><%=ponto.hora1%></td>
+                    <td><%=ponto.hora2%></td>
+                    <td><%=ponto.hora3%></td>
+                    <td><%=ponto.hora4%></td>
+                    <td><%=ponto.hora5%></td>
+                    <td><%=ponto.hora6%></td>
+                    <td><%=ponto.total%></td>
+                    <td><%=ponto.banco%></td>
+                </tr>
+                <%})%>
+                            
+        </tbody>
+    </table>
+
     <script type="text/javascript" src="../js/jquery.min.js"></script>
       <script type="text/javascript" src="views/js/materialize.min.js"></script>
 </body>

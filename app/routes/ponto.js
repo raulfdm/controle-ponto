@@ -12,7 +12,10 @@ module.exports = function (app) {
         
 
         connection.query('select * from ponto',function(erro, resultados){                        
-            res.send(resultados);            
+            
+            res.render('inicial',{
+                lista: resultados
+            });            
 
         });
 
