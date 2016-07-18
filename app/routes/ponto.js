@@ -1,21 +1,15 @@
+module.exports = function(app) {
+    app.get('/ponto', function(req, res) {
 
-module.exports = function (app) {
-    app.get('/ponto', function (req, res) {
-        
-        var mysql = require('mysql');
-        var connection = mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: '',
-            database: 'controledeponto'        
-        });
-        
 
-        connection.query('select * from ponto',function(erro, resultados){                        
-            
-            res.render('inicial',{
+        var connection = app.infra.connectionFactory();
+        var produtosDAO = new app.infra.produtosDAO(connection); //o new cria um novo contexto
+
+        produtosDAO.lista(function(erro, resultados) {
+
+            res.render('inicial', {
                 lista: resultados
-            });            
+            });
 
         });
 
