@@ -1,7 +1,16 @@
 var express = require('express')();
-express.set('view engine', 'ejs');
-express.set('views','./app/views'); //define o caminho
+var load = require('express-load');
 
-module.exports = function () {
+
+express.set('view engine', 'ejs');
+express.set('views', './app/views'); //define o caminho
+
+load('routes', {
+        cwd: 'app' //pasta que o load deve procurar
+    })
+    .then('infra')
+    .into(express);
+
+module.exports = function() {
     return express;
 };
