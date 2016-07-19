@@ -13,6 +13,10 @@
     "ejs": "^2.4.2",
     "express": "^4.14.0",
     "express-load": "^1.1.15",
+    "express-validator": "^2.20.8",
     "mysql": "^2.11.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3"
   }
 }
