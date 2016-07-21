@@ -5,12 +5,27 @@
     <title>Document</title>
     
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="/css/materialize.min.css">
 </head>
 <body>
-    <h1>Pontos</h1>    
+    <header>
+        <nav >
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#">Teste</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    <table class="highlight centered responsive-table">
+    <main class="container">
+    <h1>Pontos</h1>
+    <div class="fixed-action-btn horizontal">
+        <a class="btn-floating btn-large waves-effect waves-light red" href="/ponto/new"><i class="material-icons">add</i></a>
+    </div>
+    <table class="highlight centered responsive-table card">
         <thead>
             <tr>
                 <th>Data</th>
@@ -41,6 +56,7 @@
                             
         </tbody>
     </table>
+    </main>
 
     <script type="text/javascript" src="/js/jquery.min.js"></script>
       <script type="text/javascript" src="/js/materialize.min.js"></script>
