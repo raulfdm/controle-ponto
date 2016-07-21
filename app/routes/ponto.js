@@ -1,31 +1,42 @@
-module.exports = function (app) {
+module.exports = function(app) {
 
-    app.get('/ponto', function (req, res) {
+    app.get('/ponto', function(req, res) {
         var connection = app.infra.connectionFactory();
         var pontoDAO = new app.infra.pontoDAO(connection); //o new cria um novo contexto
 
-        pontoDAO.lista(function (erro, resultados) {
+        pontoDAO.lista(function(erro, resultados) {
             if (!erro) {
                 //O format analisa que tipo de dados o cliente está pedindo
                 res.format({
-                    html: function () {
+                    html: function() {
                         res.render('inicial', {
                             lista: resultados
                         });
+                        console.log('HTML');
                     },
-                    json: function () {
+                    json: function() {
                         res.json(resultados);
+                        console.log('JSON');
                     }
                 });
 
             } else {
-                res.send('p13: Erro ao consultar os dados');
+                res.format({
+                    html: function(){
+                        res.send('p13: Erro ao consultar os dados');
+                    },
+                    json: function(){
+                        res.send({
+                            erro: 'p13: Erro ao consultar os dados'
+                        });
+                    }
+                })
             }
         });
         connection.end();
     });
 
-    app.post('/ponto', function (req, res) {
+    app.post('/ponto', function(req, res) {
         var ponto = req.body; //pega corpo da requisição
 
         //Express validator
@@ -38,18 +49,17 @@ module.exports = function (app) {
 
 
         var erros = req.validationErrors();
-        console.log(erros);
 
         if (erros) {
             res.format({
-                html: function () {
+                html: function() {
                     res.status(400).render('cadastra-ponto', {
                         erros: erros,
                         ponto: ponto
                     });
 
                 },
-                json: function(){
+                json: function() {
                     res.status(400).json(erros);
                 }
             })
@@ -59,7 +69,7 @@ module.exports = function (app) {
         var connection = app.infra.connectionFactory();
         var pontoDAO = new app.infra.pontoDAO(connection); //o new cria um novo contexto
 
-        pontoDAO.insere(ponto, function (erro, resultado) {
+        pontoDAO.insere(ponto, function(erro, resultado) {
             if (!erro) {
                 res.redirect('/ponto'); //always redirect after post!
             } else {
@@ -70,7 +80,7 @@ module.exports = function (app) {
     });
 
 
-    app.get('/ponto/new', function (req, res) {
+    app.get('/ponto/new', function(req, res) {
         res.render('cadastra-ponto', {
             erros: '',
             ponto: ''
