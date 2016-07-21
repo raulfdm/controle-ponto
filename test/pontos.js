@@ -3,9 +3,7 @@ var request = require('supertest')(express);
 
 //descrição dos testes
 //conveção: colocar # para definir o que é nosso.
-describe('#PontoController', function() {
-    // process.env.NODE_ENV = 'test'; // Podemos definir a variável de testes, ou chama-la no terminal
-
+describe('#PontoController', function() {    
     //Após cada teste, ele executa a limpera do ponto!
     //OBS: quando for implementar testes mais complexos, usar a lib: node-database-cleaner
     afterEach(function(done) {
