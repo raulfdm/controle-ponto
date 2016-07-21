@@ -6,11 +6,24 @@ module.exports = function() {
 
 //wrapper
 function dataBase() {
-    return mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        //password: '123456',
-        password: '',
-        database: 'controledeponto'
-    });
+
+    if (!process.env.NODE_ENV) {
+        return mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: '123456',
+            //password: '',
+            database: 'controledeponto'
+        });
+    }
+
+    if (process.env.NODE_ENV == 'test') {
+        return mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: '123456',
+            //password: '',
+            database: 'controledepontoteste'
+        });
+    }
 }
