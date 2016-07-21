@@ -12,21 +12,21 @@ module.exports = function(app) {
                         res.render('inicial', {
                             lista: resultados
                         });
-                        console.log('HTML');
                     },
                     json: function() {
                         res.json(resultados);
-                        console.log('JSON');
+
                     }
                 });
 
             } else {
                 res.format({
-                    html: function(){
-                        res.send('p13: Erro ao consultar os dados');
+                    html: function() {
+                        res.send(res.status + 'p13: Erro ao consultar os dados');
                     },
-                    json: function(){
-                        res.send({
+                    json: function() {
+                        console.log('U MAD, BRO?');
+                        res.status(404).json({
                             erro: 'p13: Erro ao consultar os dados'
                         });
                     }
