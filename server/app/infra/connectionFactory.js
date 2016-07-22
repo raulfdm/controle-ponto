@@ -6,8 +6,10 @@ module.exports = function() {
 
 //wrapper
 function dataBase() {
-    
-    if (process.env.NODE_ENV == 'development') {
+    process.env.NODE_ENV = 'prod';
+
+
+    if (process.env.NODE_ENV == 'prod') {
         return mysql.createConnection({
             host: 'localhost',
             user: 'root',
@@ -17,12 +19,12 @@ function dataBase() {
         });
     }
 
-    if (process.env.NODE_ENV == 'test') {
+    if (process.env.NODE_ENV == 'development') {
         return mysql.createConnection({
             host: 'localhost',
             user: 'root',
-            password: '123456',
-            //password: '',
+            //password: '123456',
+            password: '',
             database: 'controledepontoteste'
         });
     }
