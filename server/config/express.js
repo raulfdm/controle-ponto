@@ -11,7 +11,7 @@ module.exports = function() {
     app.set('views', './app/views'); //define o caminho
 
     //Ativando o Middleware dos arquivos estáticos (CSS,JS,ETC)
-    app.use(express.static('./app/public'));
+    app.use(express.static('../client'));
     //Ativando o BodyParser(Middleware)
     app.use(bodyParser.urlencoded({
         extended: true //Permite enviar um form complexo
