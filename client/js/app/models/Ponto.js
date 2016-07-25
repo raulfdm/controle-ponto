@@ -6,7 +6,7 @@ class Ponto {
         if (!data) {
             data = new Date();
         }
-        this._data_cadastro = new Date(data.getTime());
+        this._data_cadastro = new Date(data);
 
         this._hora1 = hora1;
         this._hora2 = hora2;
