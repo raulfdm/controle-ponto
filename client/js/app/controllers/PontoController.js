@@ -11,6 +11,8 @@ class PontoController {
         this._hora5 = $('#hora5');
         this._hora6 = $('#hora6');
 
+        this._listaPontos = new ListaPonto();
+
     }
 
     //Métodos
@@ -26,6 +28,26 @@ class PontoController {
             this._hora6.value
         );
 
-        console.log(ponto);
+        this._listaPontos.adiciona(ponto);
+        this._limpaForm();
+        console.log(this._listaPontos.pontos);
+    }
+
+    _limpaForm() {
+        this._data_cadastro.value = '';
+        this._hora1.value = '';
+        this._hora1.focus();
+        this._hora2.value = '';
+        this._hora3.value = '';
+        this._hora4.value = '';
+        this._hora5.value = '';
+        this._hora6.value = '';
+
+        //reinicia os inputs (materializecss)
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 16 // Creates a dropdown of 15 years to control year            
+
+        });
     }
 }
