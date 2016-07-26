@@ -3,11 +3,8 @@
 class Ponto {
 
     constructor(data, hora1, hora2, hora3, hora4, hora5, hora6) {
-        if (!data) {
-            data = new Date();
-        }
-        this._data_cadastro = new Date(data);
-
+        data = DateHelper.textoParaData(data);
+        this._data_cadastro = DateHelper.dataParaTexto(data);
         this._hora1 = hora1;
         this._hora2 = hora2;
         this._hora3 = hora3;
@@ -54,17 +51,17 @@ class Ponto {
     }
 
     _getTotal(timeObj) {
-        let hora1 = getMilissegundos(this._hora1);
-        let hora2 = getMilissegundos(this._hora2);
+        let hora1 = HoraHelper.getMilissegundos(this._hora1);
+        let hora2 = HoraHelper.getMilissegundos(this._hora2);
 
-        let hora3 = getMilissegundos(this._hora3);
-        let hora4 = getMilissegundos(this._hora4);
+        let hora3 = HoraHelper.getMilissegundos(this._hora3);
+        let hora4 = HoraHelper.getMilissegundos(this._hora4);
 
-        let hora5 = getMilissegundos(this._hora5);
-        let hora6 = getMilissegundos(this._hora6);
+        let hora5 = HoraHelper.getMilissegundos(this._hora5);
+        let hora6 = HoraHelper.getMilissegundos(this._hora6);
 
         let total = (hora2 - hora1) + (hora4 - hora3) + (hora6 - hora5);
-        return getHoraString(total);
+        return HoraHelper.getHoraString(total);
     }
 
 }
