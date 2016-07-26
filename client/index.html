@@ -39,11 +39,11 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <label for="hora1">Hora1</label>
-                        <input id="hora1" name="hora1" type="text" placeholder="08:00">
+                        <input id="hora1" name="hora1" type="text" placeholder="08:00" value="08:00">
                     </div>
                     <div class="input-field col s6">
                         <label for="hora2">Hora2</label>
-                        <input id="hora2" name="hora2" type="text" placeholder="12:00">
+                        <input id="hora2" name="hora2" type="text" placeholder="12:00" value="12:00">
                     </div>
                 </div>
                 <div class="row">
@@ -59,11 +59,11 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <label for="hora5">Hora5</label>
-                        <input id="hora5" name="hora5" type="text" placeholder="13:00">
+                        <input id="hora5" name="hora5" type="text" placeholder="13:00" value="13:00">
                     </div>
                     <div class="input-field col s6">
                         <label for="hora6">Hora6</label>
-                        <input id="hora6" name="hora6" type="text" placeholder="18:00">
+                        <input id="hora6" name="hora6" type="text" placeholder="18:00" value="17:00">
                     </div>
                 </div>
 
@@ -106,13 +106,17 @@
     <script type="text/javascript" src="js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="js/lib/materialize.min.js"></script>
     <script src="js/app/models/Ponto.js"></script>
+    <script src="js/app/models/ListaPonto.js"></script>
     <script src="js/app/controllers/PontoController.js"></script>
-    <script src="js/app/helpers/horas.js"></script>
+    <script src="js/app/helpers/HoraHelper.js"></script>
+    <script src="js/app/helpers/DateHelper.js"></script>
+
 
     <script>
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
-            selectYears: 16 // Creates a dropdown of 15 years to control year
+            selectYears: 16 // Creates a dropdown of 15 years to control year            
+
         });
 
         let pontoController = new PontoController();
