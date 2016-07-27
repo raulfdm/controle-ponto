@@ -14,7 +14,7 @@ class PontoController {
         this._listaPontos = new ListaPonto();
         //Cria elemento passando o local onde a view irá se fixar
         this._pontosView = new PontosView($('#pontosView'));
-        console.log($('#pontosView'));
+        this._mensagem = new Mensagem();
 
         //Insere a tabela
         this._pontosView.update(this._listaPontos);
@@ -37,6 +37,7 @@ class PontoController {
 
 
         this._listaPontos.adiciona(ponto);
+        this._mensagem.toast = "Ponto cadastrado com sucesso";
         this._limpaForm();
 
         //atualiza a tabela a cada insert
