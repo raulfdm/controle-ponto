@@ -1,3 +1,7 @@
 .form-cad-ponto {
     padding: 30px !important;
 }
+
+table.centered tfoot td {
+    text-align: center;
+}
