@@ -1,11 +1,11 @@
-class PontosView {
+class PontosView extends View{
 
     constructor(elemento) {
-        //elemento do DOM que receberá o TEMPLATE
-        this._elemento = elemento;
+        //elemento do DOM que receberá o TEMPLATE e passará para a classe PAI (view)
+        super(elemento);
     }
 
-    _template(model) {
+    template(model) {
             return `
             <table class="highlight centered responsive-table card col s9 push-s1">
                 <thead>
@@ -47,10 +47,6 @@ class PontosView {
         `;
     }
 
-    update(model) {
-        
-        //innerHTML converte a string como elementos do DOM
-        this._elemento.innerHTML = this._template(model);
-    }
+
 
 }
