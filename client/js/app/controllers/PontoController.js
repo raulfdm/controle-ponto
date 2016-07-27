@@ -12,12 +12,18 @@ class PontoController {
         this._hora6 = $('#hora6');
 
         this._listaPontos = new ListaPonto();
+        //Cria elemento passando o local onde a view irá se fixar
+        this._pontosView = new PontosView($('#pontosView'));
+        console.log($('#pontosView'));
 
+        //Insere a tabela
+        this._pontosView.update(this._listaPontos);
     }
 
     //Métodos
     adiciona(event) {
         event.preventDefault();
+
         let ponto = new Ponto(
             this._data_cadastro.value,
             this._hora1.value,
@@ -28,20 +34,24 @@ class PontoController {
             this._hora6.value
         );
 
+
+
         this._listaPontos.adiciona(ponto);
         this._limpaForm();
-        console.log(this._listaPontos.pontos);
+
+        //atualiza a tabela a cada insert
+        this._pontosView.update(this._listaPontos);
     }
 
     _limpaForm() {
         this._data_cadastro.value = '';
-        this._hora1.value = '';
+        //this._hora1.value = '';
         this._hora1.focus();
-        this._hora2.value = '';
-        this._hora3.value = '';
-        this._hora4.value = '';
-        this._hora5.value = '';
-        this._hora6.value = '';
+        //this._hora2.value = '';
+        //this._hora3.value = '';
+        //this._hora4.value = '';
+        //this._hora5.value = '';
+        //this._hora6.value = '';
 
         //reinicia os inputs (materializecss)
         $('.datepicker').pickadate({

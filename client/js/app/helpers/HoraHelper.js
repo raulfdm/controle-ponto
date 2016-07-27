@@ -20,7 +20,8 @@ class HoraHelper {
 
     static getHoraString(milissegundos) {
         if (!milissegundos) {
-            throw new Error("Milissegundos não pode ser vazio");
+            return "00:00";
+            //throw new Error("Milissegundos não pode ser vazio");
         }
         let total = ((milissegundos / 1000 /*milissegundo*/ ) / 60 /*minuto*/ / 60 /*segundos*/ );
 

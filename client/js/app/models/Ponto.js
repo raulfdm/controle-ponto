@@ -3,14 +3,13 @@
 class Ponto {
 
     constructor(data, hora1, hora2, hora3, hora4, hora5, hora6) {
-        data = DateHelper.textoParaData(data);
-        this._data_cadastro = DateHelper.dataParaTexto(data);
-        this._hora1 = hora1;
-        this._hora2 = hora2;
-        this._hora3 = hora3;
-        this._hora4 = hora4;
-        this._hora5 = hora5;
-        this._hora6 = hora6;
+        this._data_cadastro = DateHelper.textoParaData(data);
+        this._hora1 = HoraHelper.getMilissegundos(hora1);
+        this._hora2 = HoraHelper.getMilissegundos(hora2);
+        this._hora3 = HoraHelper.getMilissegundos(hora3);
+        this._hora4 = HoraHelper.getMilissegundos(hora4);
+        this._hora5 = HoraHelper.getMilissegundos(hora5);
+        this._hora6 = HoraHelper.getMilissegundos(hora6);
 
         this._total = this._getTotal();
         this._banco = "00:00";
@@ -51,17 +50,17 @@ class Ponto {
     }
 
     _getTotal(timeObj) {
-        let hora1 = HoraHelper.getMilissegundos(this._hora1);
-        let hora2 = HoraHelper.getMilissegundos(this._hora2);
+        let hora1 = this._hora1;
+        let hora2 = this._hora2;
 
-        let hora3 = HoraHelper.getMilissegundos(this._hora3);
-        let hora4 = HoraHelper.getMilissegundos(this._hora4);
+        let hora3 = this._hora3;
+        let hora4 = this._hora4;
 
-        let hora5 = HoraHelper.getMilissegundos(this._hora5);
-        let hora6 = HoraHelper.getMilissegundos(this._hora6);
+        let hora5 = this._hora5;
+        let hora6 = this._hora6;
 
         let total = (hora2 - hora1) + (hora4 - hora3) + (hora6 - hora5);
-        return HoraHelper.getHoraString(total);
+        return total;
     }
 
 }
