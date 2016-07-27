@@ -8,6 +8,10 @@ class ListaPonto {
         this._pontos.push(ponto);
     }
 
+    esvazia(){
+        this._ponto = [];
+    }
+
 
     get pontos() {
         return [...this._pontos];

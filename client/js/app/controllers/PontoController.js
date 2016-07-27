@@ -44,6 +44,10 @@ class PontoController {
         this._pontosView.update(this._listaPontos);
     }
 
+    apaga(){
+        this._listaPontos.esvazia();
+    }
+
     _limpaForm() {
         this._data_cadastro.value = '';
         //this._hora1.value = '';
