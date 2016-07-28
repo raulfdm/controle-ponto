@@ -12,44 +12,9 @@ class PontoController {
         this._hora5 = $('#hora5');
         this._hora6 = $('#hora6');
 
+        this._listaPontos = new Bind(new ListaPonto(), new PontosView($('#pontosView')), 'adiciona', 'esvazia');
 
-        this._listaPontos = new Proxy(new ListaPonto(),{
-            //Faz a interceptação dos métodos adiciona e esvazia
-            //Isso é possível usando get porque antes de chamar uma função, o JS da um GET e depois um apply,
-            //Logo, conseguimos pegar o disparo do get.
-            get(target, prop, reciever){
-
-                /*
-                Target: o objeto encapsulado -> Lista de Pontos (ListaPont())
-                prop: propriedade do target (esvazia, adiciona, ou qualquer outra)
-                reciever: Referencia para o Proxy 
-                */
-
-                //Valida se são os metodos 
-                if(['adiciona','esvazia'].includes(prop) && typeof target[prop] == typeof(Function)){
-                    
-                    //retorna a função interceptada
-                    return function(){
-                        console.log(target)
-                        //reflete a função que foi chamada
-                        Reflect.apply(target[prop],target,arguments);
-                        //Disparada meu evento de atualização da view, agora já no target(Lista de Pontos); 
-                        self._pontosView.update(target);
-                    }   
-                }
-                return Reflect.get(target, prop, reciever);
-            }
-        });
-
-
-        //this._listaPontos = new ListaPonto(model => this._pontosView.update(this._listaPontos));
-
-        //Cria elemento passando o local onde a view irá se fixar
-        this._pontosView = new PontosView($('#pontosView'));
         this._mensagem = new Mensagem();
-
-        //Insere a tabela
-        this._pontosView.update(this._listaPontos);
     }
 
     //Métodos
@@ -58,12 +23,12 @@ class PontoController {
 
         let ponto = new Ponto(
             this._data_cadastro.value,
-            this._hora1.value,
-            this._hora2.value,
-            this._hora3.value,
-            this._hora4.value,
-            this._hora5.value,
-            this._hora6.value
+            HoraHelper.getMilissegundos(this._hora1.value),
+            HoraHelper.getMilissegundos(this._hora2.value),
+            HoraHelper.getMilissegundos(this._hora3.value),
+            HoraHelper.getMilissegundos(this._hora4.value),
+            HoraHelper.getMilissegundos(this._hora5.value),
+            HoraHelper.getMilissegundos(this._hora6.value)
         );
 
         this._listaPontos.adiciona(ponto);
@@ -89,6 +54,45 @@ class PontoController {
                 throw new Error(msg)
             }
         }
+    }
+
+    importaPontos() {
+
+        let xhr = new XMLHttpRequest();
+
+        //Abre a Requisicao
+        xhr.open('GET', 'ponto');
+        /*Configurações*/
+        xhr.onreadystatechange = () => {
+            /*Lista de estados possíveis:
+            0. Requisição ainda não iniciada;
+            1. Conexão com o sv estabelecida;
+            3. processando a requisição;
+            4. Requisição concluída e a resposta está ponta
+
+            */
+
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+
+                    JSON.parse(xhr.responseText).map(objeto => new Ponto(
+                        objeto.data_cadastro,
+                        objeto.hora1,
+                        objeto.hora2,
+                        objeto.hora3,
+                        objeto.hora4,
+                        objeto.hora5,
+                        objeto.hora6,
+                        objeto.id))
+                        .forEach(ponto => 
+                            this._listaPontos.adiciona(ponto));
+                    
+                } else {
+                    console.log('fodeo cara, corre')
+                }
+            }
+        }
+        xhr.send();
     }
 
     _limpaForm() {
