@@ -2,14 +2,15 @@
 
 class Ponto {
 
-    constructor(data, hora1, hora2, hora3, hora4, hora5, hora6) {
+    constructor(data, hora1, hora2, hora3, hora4, hora5, hora6,id='') {
+        this._id = id;
         this._data_cadastro = DateHelper.textoParaData(data);
-        this._hora1 = HoraHelper.getMilissegundos(hora1);
-        this._hora2 = HoraHelper.getMilissegundos(hora2);
-        this._hora3 = HoraHelper.getMilissegundos(hora3);
-        this._hora4 = HoraHelper.getMilissegundos(hora4);
-        this._hora5 = HoraHelper.getMilissegundos(hora5);
-        this._hora6 = HoraHelper.getMilissegundos(hora6);
+        this._hora1 = hora1;
+        this._hora2 = hora2;
+        this._hora3 = hora3;
+        this._hora4 = hora4;
+        this._hora5 = hora5;
+        this._hora6 = hora6;
 
         this._total = this._getTotal();
         this._banco = "00:00";
