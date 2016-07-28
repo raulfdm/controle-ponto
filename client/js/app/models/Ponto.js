@@ -17,7 +17,22 @@ class Ponto {
         Object.freeze(this);
     }
 
-    //gets
+    //Methods
+    _getTotal(timeObj) {
+        let hora1 = this._hora1;
+        let hora2 = this._hora2;
+
+        let hora3 = this._hora3;
+        let hora4 = this._hora4;
+
+        let hora5 = this._hora5;
+        let hora6 = this._hora6;
+
+        let total = (hora2 - hora1) + (hora4 - hora3) + (hora6 - hora5);
+        return total;
+    }
+
+    //Getters and Setters
     get data_cadatro() {
         return new this._data_cadastro;
     }
@@ -47,20 +62,6 @@ class Ponto {
 
     get banco() {
         return this._banco;
-    }
-
-    _getTotal(timeObj) {
-        let hora1 = this._hora1;
-        let hora2 = this._hora2;
-
-        let hora3 = this._hora3;
-        let hora4 = this._hora4;
-
-        let hora5 = this._hora5;
-        let hora6 = this._hora6;
-
-        let total = (hora2 - hora1) + (hora4 - hora3) + (hora6 - hora5);
-        return total;
     }
 
 }
