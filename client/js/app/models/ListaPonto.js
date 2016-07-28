@@ -1,22 +1,16 @@
 class ListaPonto {
 
-    constructor(trap) {
+    constructor() {
         this._pontos = [];
-        this._trap = trap;
-
     }
 
     adiciona(ponto) {
         this._pontos.push(ponto);
-        this._trap(this);
     }
 
     esvazia() {
-
         try {
             this._pontos = [];
-            this._trap(this);
-            return true;
         } catch (e) {
             throw new Error(e);
         }
