@@ -11,7 +11,8 @@ class PontoController {
         this._hora5 = $('#hora5');
         this._hora6 = $('#hora6');
 
-        this._listaPontos = new ListaPonto();
+        this._listaPontos = new ListaPonto(model => this._pontosView.update(this._listaPontos));
+
         //Cria elemento passando o local onde a view irá se fixar
         this._pontosView = new PontosView($('#pontosView'));
         this._mensagem = new Mensagem();
@@ -34,18 +35,29 @@ class PontoController {
             this._hora6.value
         );
 
-
-
         this._listaPontos.adiciona(ponto);
         this._mensagem.toast = "Ponto cadastrado com sucesso";
         this._limpaForm();
 
-        //atualiza a tabela a cada insert
-        this._pontosView.update(this._listaPontos);
     }
 
-    apaga(){
-        this._listaPontos.esvazia();
+    apaga() {
+
+        let msg;
+
+        if (this._listaPontos.pontos.length == 0) {
+            msg = 'Lista já está vazia'
+            this._mensagem.toast = msg;
+        } else {
+            if (this._listaPontos.esvazia(this._listaPontos)) {
+                msg = 'Dados removidos com sucesso!';
+                this._mensagem.toast = msg;
+            } else {
+                msg = 'Não foi possível remover os dados';
+                this._mensagem.toast = msg;
+                throw new Error(msg)
+            }
+        }
     }
 
     _limpaForm() {
