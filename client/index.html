@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <header>
+<!--    <header>
         <nav>
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo">Logo</a>
@@ -21,22 +21,21 @@
                 </ul>
             </div>
         </nav>
-    </header>
+    </header>-->
 
     <main class="container">
         <h1 class="center-align">Controle de Ponto</h1>
 
 
-<div class="row">
-    <div class="col s1 push-s12">
-                
-                <button onclick="pontoController.apaga()" class="btn  red darken-1 waves-effect waves-light" >
-                            <i class="material-icons right">delete</i>
-                        </button>
-            </div>
-</div>
         <div class="row">
-            
+            <div class="col s1 push-s12">
+                <button onclick="pontoController.apaga()" class="btn  red darken-1 waves-effect waves-light">
+                            <i class="material-icons right">delete</i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+
             <form action="#" method="" class="card col s3 form-cad-ponto" onsubmit="pontoController.adiciona(event)">
                 <div class="row">
                     <h5 class="center-align">Cadastro</h5>
@@ -58,21 +57,21 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <label for="hora3">Hora3</label>
-                        <input id="hora3" name="hora3" type="text" placeholder="08:00" disabled>
+                        <input id="hora3" name="hora3" type="text" placeholder="08:00" value="14:00">
                     </div>
                     <div class="input-field col s6">
                         <label for="hora4">Hora4</label>
-                        <input id="hora4" name="hora4" type="text" placeholder="08:00" disabled>
+                        <input id="hora4" name="hora4" type="text" placeholder="08:00" value="17:00">
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <label for="hora5">Hora5</label>
-                        <input id="hora5" name="hora5" type="text" placeholder="13:00" value="13:00">
+                        <input id="hora5" name="hora5" type="text" placeholder="13:00" disabled>
                     </div>
                     <div class="input-field col s6">
                         <label for="hora6">Hora6</label>
-                        <input id="hora6" name="hora6" type="text" placeholder="18:00" value="17:00">
+                        <input id="hora6" name="hora6" type="text" placeholder="18:00" disabled>
                     </div>
                 </div>
 
