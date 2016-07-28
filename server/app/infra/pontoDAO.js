@@ -4,7 +4,7 @@ function PontoDAO(connection) { //classe
 
 //Definindo a propriedade lista no objeto PontoDAO
 PontoDAO.prototype.lista = function(callback) {
-    this._connection.query('select * from ponto', callback);
+    this._connection.query("select p.id 'id', p.hora1 'hora1',p.hora2,p.hora3, p.hora4, p.hora5, p.hora6, p.total, p.banco, DATE_FORMAT(p.data_cadastro,'%Y-%m-%d') as 'data_cadastro' from ponto2 p", callback);
 }
 
 PontoDAO.prototype.insere = function(ponto, callback) {

@@ -9,9 +9,10 @@ module.exports = function(app) {
                 //O format analisa que tipo de dados o cliente está pedindo
                 res.format({
                     html: function() {
-                        res.render('inicial', {
+                       /* res.render('inicial', {
                             lista: resultados
-                        });
+                        });*/
+                        res.json(resultados);
                     },
                     json: function() {
                         res.json(resultados);
