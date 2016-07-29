@@ -40,7 +40,7 @@ class PontosView extends View{
                 <tfoot>
                 
                         <td colspan="7"></td>
-                        <td>${HoraHelper.getHoraString(model._pontos.reduce((total, ponto) => total += ponto._total ,0))}</td>
+                        <td>${HoraHelper.getHoraString(model.horasTrabalhadas)}</td>
                         <td>00:00</td>                    
                 </tfoot>
             </table>

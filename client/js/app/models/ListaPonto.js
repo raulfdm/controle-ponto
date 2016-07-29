@@ -22,4 +22,8 @@ class ListaPonto {
         return [...this._pontos];
     }
 
+    get horasTrabalhadas(){
+        return this._pontos.reduce((total, ponto) => total += ponto._total ,0);
+    }
+
 }
