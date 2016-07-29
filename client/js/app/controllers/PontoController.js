@@ -58,41 +58,18 @@ class PontoController {
 
     importaPontos() {
 
-        let xhr = new XMLHttpRequest();
-
-        //Abre a Requisicao
-        xhr.open('GET', 'ponto');
-        /*Configurações*/
-        xhr.onreadystatechange = () => {
-            /*Lista de estados possíveis:
-            0. Requisição ainda não iniciada;
-            1. Conexão com o sv estabelecida;
-            3. processando a requisição;
-            4. Requisição concluída e a resposta está ponta
-
-            */
-
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-
-                    JSON.parse(xhr.responseText).map(objeto => new Ponto(
-                        objeto.data_cadastro,
-                        objeto.hora1,
-                        objeto.hora2,
-                        objeto.hora3,
-                        objeto.hora4,
-                        objeto.hora5,
-                        objeto.hora6,
-                        objeto.id))
-                        .forEach(ponto => 
-                            this._listaPontos.adiciona(ponto));
-                    
-                } else {
-                    console.log('fodeo cara, corre')
-                }
+        let service = new PontoService();
+        service.obterPontos((err, result)=>{
+            if(err){
+                this._mensagem.toast = err;
+                return;
             }
-        }
-        xhr.send();
+
+            result.forEach(function(ponto) {
+                this._listaPontos.adiciona(ponto);
+            }, this);
+            this._mensagem.toast = "Dados importados com sucesso";
+        });
     }
 
     _limpaForm() {
