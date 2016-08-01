@@ -1,27 +1,15 @@
 class PontoService {
 
     constructor() {
-
+        this._http = new HttpService();
     }
 
-    obterPontos(callback) {
+    obterPontos() {
 
-        let xhr = new XMLHttpRequest();
-        //Abre a Requisicao
-        xhr.open('GET', 'ponto');
-        /*Configurações*/
-        xhr.onreadystatechange = () => {
-            /*Lista de estados possíveis:
-            0. Requisição ainda não iniciada;
-            1. Conexão com o sv estabelecida;
-            3. processando a requisição;
-            4. Requisição concluída e a resposta está ponta
-            */
-
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-
-                    callback(null, JSON.parse(xhr.responseText).map(objeto => new Ponto(
+        return new Promise((resolve, reject) => {
+            this._http.get('/ponto')
+                .then(pontos => {
+                    resolve(pontos.map(objeto => new Ponto(
                         new Date(objeto.data_cadastro),
                         objeto.hora1,
                         objeto.hora2,
@@ -29,18 +17,28 @@ class PontoService {
                         objeto.hora4,
                         objeto.hora5,
                         objeto.hora6,
-                        objeto.id)));
+                        objeto.id))
+                    );
+                }).catch(erro => {
+                    console.log(erro);
+                    if (/Cannot GET/.test(erro)) {
+                        reject("Erro ao buscar os dados no banco");
+                    } else {
+                        reject(erro);
+                    }
+                })
+        });
 
-                } else {
-                    console.log(`Status: ${xhr.status} - Corpo: ${xhr.responseText}`)
-                    callback('Não foi possível buscar os dados no banco! Verifique o console.', null)
 
-                }
-            }
-        }
-        xhr.send();
     }
 
-
+    salvarPonto(ponto){
+        return new Promise((resolve, reject) => {
+            this._http.post('/ponto', ponto)
+                .then(mensagem => console.log(mensagem)).catch(erro => {
+                    console.log(erro);                    
+                })
+        });
+    }
 
 }

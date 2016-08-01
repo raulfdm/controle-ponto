@@ -28,12 +28,12 @@
 
 
         <div class="row">
-            <div class="col s1 push-s3">
+            <div class="col s1 push-s4">
                 <button onclick="pontoController.apaga()" class="btn  red darken-1 waves-effect waves-light">
                             <i class="material-icons center">delete</i>
                 </button>
             </div>
-            <div class="col s1 push-s3">
+            <div class="col s1 push-s5">
                 <button onclick="pontoController.importaPontos()" class="btn light-blue darken-1 waves-effect waves-light">
                             <i class="material-icons center">loop</i>
                 </button>
@@ -41,7 +41,7 @@
         </div>
         <div class="row">
 
-            <form action="#" method="" class="card col s2 form-cad-ponto" onsubmit="pontoController.adiciona(event)">
+            <form action="#" method="" class="card col s3 form-cad-ponto" onsubmit="pontoController.adiciona(event)">
                 <div class="row">
                     <h5 class="center-align">Cadastro</h5>
                 </div>
@@ -106,6 +106,7 @@
     <script src="js/app/helpers/Bind.js"></script>
     <script src="js/app/services/ProxyFactory.js"></script>
     <script src="js/app/services/PontoService.js"></script>
+    <script src="js/app/services/HttpService.js"></script>
 
     <script>
         $('.datepicker').pickadate({
