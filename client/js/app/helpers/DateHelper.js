@@ -5,11 +5,12 @@ class DateHelper {
     }
 
     static textoParaData(texto) {
-
-        return new Date(texto);
+        
+        return new Date(texto);;
     }
 
     static dataParaTexto(data) {
+        console.log(typeof data, data);
         let dia = data.getDate();
         let mes = data.getMonth() + 1;
         let ano = data.getFullYear();
@@ -21,7 +22,8 @@ class DateHelper {
             mes = "0" + mes;
         }
 
-        return `${dia}/${mes}/${ano}`;
+        //return `${dia}/${mes}/${ano}`;
+        return `${ano}-${mes}-${dia}`;
 
     }
 
