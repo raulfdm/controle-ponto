@@ -2,7 +2,7 @@
 
 class Ponto {
 
-    constructor(data, hora1, hora2, hora3, hora4, hora5, hora6,id='') {
+    constructor(data, hora1, hora2, hora3, hora4, hora5, hora6, id = '') {
         this._id = id;
         this._data_cadastro = DateHelper.textoParaData(data);
         this._hora1 = hora1;
@@ -13,7 +13,7 @@ class Ponto {
         this._hora6 = hora6;
 
         this._total = this._getTotal();
-        this._banco = "00:00";
+        this._banco = 0;
 
         Object.freeze(this);
     }
@@ -63,6 +63,20 @@ class Ponto {
 
     get banco() {
         return this._banco;
+    }
+
+    toString() {
+        return {
+            data_cadastro: DateHelper.textoParaData(this._data_cadastro),
+            hora1: this._hora1,
+            hora2: this._hora2,
+            hora3: this._hora3,
+            hora4: this._hora4,
+            hora5: this._hora5,
+            hora6: this._hora6,
+            total: this._total,
+            banco: 0
+        }
     }
 
 }
