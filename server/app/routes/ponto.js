@@ -1,35 +1,44 @@
-module.exports = function(app) {
+module.exports = function (app) {
 
-    app.get('/ponto', function(req, res) {
+    app.get('/ponto', function (req, res) {
         var connection = app.infra.connectionFactory();
         var pontoDAO = new app.infra.pontoDAO(connection); //o new cria um novo contexto
 
-        pontoDAO.lista(function(erro, resultados) {
+        pontoDAO.lista(function (erro, resultados) {
+            let msg;
+            
             if (!erro) {
-                //O format analisa que tipo de dados o cliente está pedindo
-                res.format({
-                    html: function() {
-                       /* res.render('inicial', {
-                            lista: resultados
-                        });*/
-                        res.json(resultados);
-                    },
-                    json: function() {
-                        res.json(resultados);
+                if (!resultados[0]) {
+                     msg = 'Não há dados para importar';
+                    res.format({
+                        html: function () {
+                            res.status(404).send(msg);
+                        },
+                        json: function () {
+                            res.status(404).send(msg);
+                        }
+                    })
+                } else {                    
+                    //O format analisa que tipo de dados o cliente está pedindo
+                    res.format({
+                        html: function () {
+                            res.json(resultados);
+                        },
+                        json: function () {
+                            res.json(resultados);
+                        }
+                    });
+                }
 
-                    }
-                });
 
             } else {
+                msg = 'Erro ao acessar o banco de dados dados';
                 res.format({
-                    html: function() {
-                        res.send(res.status + 'p13: Erro ao consultar os dados');
+                    html: function () {
+                        res.status(404).send(msg);
                     },
-                    json: function() {
-                        console.log('U MAD, BRO?');
-                        res.status(404).json({
-                            erro: 'p13: Erro ao consultar os dados'
-                        });
+                    json: function () {
+                        res.status(404).send(msg);
                     }
                 })
             }
@@ -37,8 +46,10 @@ module.exports = function(app) {
         connection.end();
     });
 
-    app.post('/ponto', function(req, res) {
+    app.post('/ponto', function (req, res) {        
         var ponto = req.body; //pega corpo da requisição
+         console.log(ponto);
+         
 
         //Express validator
         //Assert: REGRAS
@@ -50,17 +61,15 @@ module.exports = function(app) {
 
 
         var erros = req.validationErrors();
+        console.log(erros);
 
         if (erros) {
             res.format({
-                html: function() {
-                    res.status(400).render('cadastra-ponto', {
-                        erros: erros,
-                        ponto: ponto
-                    });
+                html: function () {
+                    res.status(400).json(erros);
 
                 },
-                json: function() {
+                json: function () {
                     res.status(400).json(erros);
                 }
             })
@@ -70,10 +79,11 @@ module.exports = function(app) {
         var connection = app.infra.connectionFactory();
         var pontoDAO = new app.infra.pontoDAO(connection); //o new cria um novo contexto
 
-        pontoDAO.insere(ponto, function(erro, resultado) {
+        pontoDAO.insere(ponto, function (erro, resultado) {
             if (!erro) {
                 res.redirect('/ponto'); //always redirect after post!
             } else {
+                console.log(erro);
                 res.send(erro);
             }
         });
@@ -81,7 +91,7 @@ module.exports = function(app) {
     });
 
 
-    app.get('/ponto/new', function(req, res) {
+    app.get('/ponto/new', function (req, res) {
         res.render('cadastra-ponto', {
             erros: '',
             ponto: ''
