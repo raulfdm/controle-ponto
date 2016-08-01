@@ -20,7 +20,7 @@ class PontoController {
     //Métodos
     adiciona(event) {
         event.preventDefault();
-
+        let service = new PontoService();
         let ponto = new Ponto(
             this._data_cadastro.value,
             HoraHelper.getMilissegundos(this._hora1.value),
@@ -31,9 +31,17 @@ class PontoController {
             HoraHelper.getMilissegundos(this._hora6.value)
         );
 
-        this._listaPontos.adiciona(ponto);
+
+        //Evitando Callback Hell
+        Promise.all([
+            service.salvarPonto(ponto)
+        ]).then(mensagem => console.log(mensagem))
+            .catch(error => this._mensagem.toast = error);
+
+
+        /*this._listaPontos.adiciona(ponto);
         this._mensagem.toast = "Ponto cadastrado com sucesso";
-        this._limpaForm();
+        this._limpaForm();*/
 
     }
 
@@ -59,17 +67,16 @@ class PontoController {
     importaPontos() {
 
         let service = new PontoService();
-        service.obterPontos((err, result)=>{
-            if(err){
-                this._mensagem.toast = err;
-                return;
-            }
+        //Evitando Callback Hell
+        Promise.all([
+            service.obterPontos()
+        ]).then(pontos => {
 
-            result.forEach(function(ponto) {
-                this._listaPontos.adiciona(ponto);
-            }, this);
+            pontos.reduce((retorno, item) => retorno.concat(item), [])
+                .forEach(ponto => this._listaPontos.adiciona(ponto));
             this._mensagem.toast = "Dados importados com sucesso";
-        });
+        })
+            .catch(error => this._mensagem.toast = error);
     }
 
     _limpaForm() {
