@@ -10,7 +10,6 @@ class DateHelper {
     }
 
     static dataParaTexto(data) {
-        console.log(typeof data, data);
         let dia = data.getDate();
         let mes = data.getMonth() + 1;
         let ano = data.getFullYear();

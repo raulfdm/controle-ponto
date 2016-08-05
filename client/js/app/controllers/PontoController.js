@@ -20,9 +20,9 @@ class PontoController {
     //Métodos
     adiciona(event) {
         event.preventDefault();
-        let service = new PontoService();
+        let service = new PontoService();        
         let ponto = new Ponto(
-            this._data_cadastro.value,
+            DateHelper.dataParaTexto(new Date(this._data_cadastro.value)),
             HoraHelper.getMilissegundos(this._hora1.value),
             HoraHelper.getMilissegundos(this._hora2.value),
             HoraHelper.getMilissegundos(this._hora3.value),
@@ -30,11 +30,11 @@ class PontoController {
             HoraHelper.getMilissegundos(this._hora5.value),
             HoraHelper.getMilissegundos(this._hora6.value)
         );
-
-
+        
         //Evitando Callback Hell
-        Promise.all([
+        Promise.all([            
             service.salvarPonto(ponto)
+            
         ]).then(mensagem => console.log(mensagem))
             .catch(error => this._mensagem.toast = error);
 

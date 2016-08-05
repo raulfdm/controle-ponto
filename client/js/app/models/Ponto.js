@@ -4,7 +4,7 @@ class Ponto {
 
     constructor(data, hora1, hora2, hora3, hora4, hora5, hora6, id = '') {
         this._id = id;
-        this._data_cadastro = DateHelper.textoParaData(data);
+        this._data_cadastro = data;
         this._hora1 = hora1;
         this._hora2 = hora2;
         this._hora3 = hora3;
@@ -67,7 +67,7 @@ class Ponto {
 
     toString() {
         return {
-            data_cadastro: DateHelper.textoParaData(this._data_cadastro),
+            data_cadastro: this._data_cadastro,
             hora1: this._hora1,
             hora2: this._hora2,
             hora3: this._hora3,
