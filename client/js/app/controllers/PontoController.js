@@ -22,8 +22,7 @@ class PontoController {
 
         this._mensagem = new Mensagem();
 
-        this._adicionaEventos();
-        console.log(this._hora12);
+        this._adicionaEventos();        
     }
 
     //Métodos
@@ -107,9 +106,10 @@ class PontoController {
 
     _adicionaEventos() {        
         this._camposHora.forEach((campo) => {
-            campo.addEventListener('keyup', function () {
-                MaskHelper.mask(this);
+            campo.addEventListener('keypress', function (evento) {
+                MaskHelper.mask(evento);
             });
+            
             campo.addEventListener('invalid',function(){
                 campo.setCustomValidity('Por favor, preencha o campo');
             })

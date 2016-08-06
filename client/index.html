@@ -45,40 +45,48 @@
                 <div class="row">
                     <h5 class="center-align">Cadastro</h5>
                 </div>
+                <div class="switch center-align">
+                    <label>
+                        <span id="hora24">24h</span>
+                        <input id="horaFormat" type="checkbox" data-hora="24">
+                        <span class="lever"></span>
+                        <span id="hora12">12h</span>
+                    </label>
+                </div>
                 <div class="row">
                     <div class="col s12">
                         <label for="">Data</label>
-                        <input id="data_cadastro" name="data_cadastro" class="datepicker" type="date">
+                        <input id="data_cadastro" name="data_cadastro" class="datepicker" type="date" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <label for="hora1">Hora1</label>
-                        <input id="hora1" name="hora1" type="text" placeholder="08:00" value="08:00">
+                        <input class="input-hora" id="hora1" name="hora1" type="text" placeholder="08:00" required>
                     </div>
                     <div class="input-field col s6">
                         <label for="hora2">Hora2</label>
-                        <input id="hora2" name="hora2" type="text" placeholder="12:00" value="12:00">
+                        <input class="input-hora" id="hora2" name="hora2" type="text" placeholder="12:00" value="12:00">
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <label for="hora3">Hora3</label>
-                        <input id="hora3" name="hora3" type="text" placeholder="08:00" value="14:00">
+                        <input class="input-hora" id="hora3" name="hora3" type="text" placeholder="08:00" value="14:00">
                     </div>
                     <div class="input-field col s6">
                         <label for="hora4">Hora4</label>
-                        <input id="hora4" name="hora4" type="text" placeholder="08:00" value="17:00">
+                        <input class="input-hora" id="hora4" name="hora4" type="text" placeholder="08:00" value="17:00">
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <label for="hora5">Hora5</label>
-                        <input id="hora5" name="hora5" type="text" placeholder="13:00" disabled>
+                        <input class="input-hora" id="hora5" name="hora5" type="text" placeholder="13:00" disabled>
                     </div>
                     <div class="input-field col s6">
                         <label for="hora6">Hora6</label>
-                        <input id="hora6" name="hora6" type="text" placeholder="18:00" disabled>
+                        <input class="input-hora" id="hora6" name="hora6" type="text" placeholder="18:00" disabled>
                     </div>
                 </div>
                 <div class="row">
@@ -104,11 +112,13 @@
     <script src="js/app/helpers/HoraHelper.js"></script>
     <script src="js/app/helpers/DateHelper.js"></script>
     <script src="js/app/helpers/Bind.js"></script>
+    <script src="js/app/helpers/MaskHelper.js"></script>
     <script src="js/app/services/ProxyFactory.js"></script>
     <script src="js/app/services/PontoService.js"></script>
     <script src="js/app/services/HttpService.js"></script>
 
     <script>
+    
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 16 // Creates a dropdown of 15 years to control year            
