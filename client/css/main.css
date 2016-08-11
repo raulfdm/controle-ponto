@@ -5,3 +5,23 @@
 table.centered tfoot td {
     text-align: center;
 }
+
+table.highlight>tbody>tr:hover{
+    cursor:pointer;    
+}
+
+
+.switch{
+    margin-bottom: 30px;
+}
+.switch label .lever {
+    background-color: #84c7c1;
+}
+
+.switch label .lever:after{
+    background-color: #26a69a;   
+}
+
+.horaAtiva{
+    color:#26a69a;
+}
