@@ -15,7 +15,7 @@ class HttpService {
                 4. Requisição concluída e a resposta está ponta
                 */
                 if (xhr.readyState == 4) {
-                    if (xhr.status == 200) {
+                    if (xhr.status == 200) {                        
                         resolve(JSON.parse(xhr.responseText));
 
                     } else {
@@ -29,14 +29,20 @@ class HttpService {
     }
 
     post(url, dado) {
-
-        return new Promise((resolve, reject) => {
+        console.log(dado);
+        return new Promise((resolve, reject) => {            
             let xhr = new XMLHttpRequest();
             xhr.open('POST', url, true);
+            //Função chamada a cada mudança de estado
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                      resolve(xhr.responseText);
+                }else if(xhr.status == 400 && xhr.responseText){                    
+                    reject(xhr.responseText);
+                }
+            }
             xhr.setRequestHeader('Content-Type', 'application/json');
-            
-            xhr.send(JSON.stringify(dado.toString()));
-            //xhr.send(JSON.stringify(dado));
+            xhr.send(JSON.stringify(dado.toString()));            
         })
     }
 

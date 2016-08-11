@@ -3,23 +3,25 @@
 class Ponto {
 
     constructor(data, hora1, hora2, hora3, hora4, hora5, hora6, id = '') {
-        this._id = id;
+        this._id = id;        
         this._data_cadastro = data;
+        
         this._hora1 = hora1;
         this._hora2 = hora2;
         this._hora3 = hora3;
         this._hora4 = hora4;
         this._hora5 = hora5;
         this._hora6 = hora6;
-
-        this._total = this._getTotal();
-        this._banco = 0;
-
+        
+        this._total = this._total();
+        
+        
+        
         Object.freeze(this);
     }
 
     //Methods
-    _getTotal(timeObj) {
+    _total(timeObj) {
         let hora1 = this._hora1;
         let hora2 = this._hora2;
 
@@ -29,12 +31,16 @@ class Ponto {
         let hora5 = this._hora5;
         let hora6 = this._hora6;
 
-        let total = (hora2 - hora1) + (hora4 - hora3) + (hora6 - hora5);
-        return total;
+        let resultado = (hora2 - hora1) + (hora4 - hora3) + (hora6 - hora5);
+            
+        return resultado;
     }
 
     //Getters and Setters
-    get data_cadatro() {
+    get id(){
+        return this._id;
+    }
+    get data_cadatro() {        
         return new this._data_cadastro;
     }
 
@@ -61,12 +67,10 @@ class Ponto {
         return this._total;
     }
 
-    get banco() {
-        return this._banco;
-    }
 
     toString() {
-        return {
+        console.log(this._data_cadastro);        
+        return {            
             data_cadastro: this._data_cadastro,
             hora1: this._hora1,
             hora2: this._hora2,
@@ -74,8 +78,7 @@ class Ponto {
             hora4: this._hora4,
             hora5: this._hora5,
             hora6: this._hora6,
-            total: this._total,
-            banco: 0
+            total: this._total            
         }
     }
 

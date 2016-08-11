@@ -7,7 +7,7 @@ class PontosView extends View{
 
     template(model) {
             return `
-            <table class="highlight centered responsive-table card col s9 push-s1">
+            <table class="highlight centered responsive-table card col s8 push-s1">
                 <thead>
                     <tr>
                         <th>Data</th>
@@ -32,7 +32,7 @@ class PontosView extends View{
                             <td>${HoraHelper.getHoraString(n._hora5)}</td>
                             <td>${HoraHelper.getHoraString(n._hora6)}</td>
                             <td>${HoraHelper.getHoraString(n._total)}</td>
-                            <td>${n._banco}</td>
+                            <td>${'console.log(n)'}</td>
                         <tr>
                         `
                     ).join('')/** O join concatena os elementos de um array em uma mega string */}
@@ -41,7 +41,7 @@ class PontosView extends View{
                 
                         <td colspan="7"></td>
                         <td>${HoraHelper.getHoraString(model.horasTrabalhadas)}</td>
-                        <td>00:00</td>                    
+                        <td>${''}</td>
                 </tfoot>
             </table>
         `;

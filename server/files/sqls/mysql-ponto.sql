@@ -7,5 +7,4 @@ hora4 int,
 hora5 int,
 hora6 int,
 total int,
-banco int,
 data_cadastro date not null);

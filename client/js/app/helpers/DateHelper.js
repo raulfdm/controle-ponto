@@ -6,7 +6,7 @@ class DateHelper {
 
     static textoParaData(texto) {
         
-        return new Date(texto);;
+        return new Date(texto);
     }
 
     static dataParaTexto(data) {
