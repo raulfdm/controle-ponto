@@ -6,7 +6,7 @@ module.exports = function (app) {
 
         pontoDAO.lista(function (erro, resultados) {
             let msg;
-            
+            console.log(resultados);
             if (!erro) {
                 if (!resultados[0]) {
                      msg = 'Não há dados para importar';
@@ -47,10 +47,8 @@ module.exports = function (app) {
     });
 
     app.post('/ponto', function (req, res) {        
-        var ponto = req.body; //pega corpo da requisição
-         console.log(ponto);
+        var ponto = req.body; //pega corpo da requisição         
          
-
         //Express validator
         //Assert: REGRAS
         req.assert('data_cadastro', 'Data é obrigatória').notEmpty();
@@ -61,7 +59,6 @@ module.exports = function (app) {
 
 
         var erros = req.validationErrors();
-        console.log(erros);
 
         if (erros) {
             res.format({
@@ -81,22 +78,13 @@ module.exports = function (app) {
 
         pontoDAO.insere(ponto, function (erro, resultado) {
             if (!erro) {
-                res.redirect('/ponto'); //always redirect after post!
+                res.status(200).send('Ponto cadastrado com sucesso!');
             } else {
-                console.log(erro);
-                res.send(erro);
+                //console.log(erro);
+                res.status(400).send(erro);
             }
         });
         connection.end();
     });
-
-
-    app.get('/ponto/new', function (req, res) {
-        res.render('cadastra-ponto', {
-            erros: '',
-            ponto: ''
-        });
-    });
-
 
 }
