@@ -23,18 +23,21 @@ class HoraHelper {
             return "00:00";
             //throw new Error("Milissegundos não pode ser vazio");
         }
-        let total = ((milissegundos / 1000 /*milissegundo*/ ) / 60 /*minuto*/ / 60 /*segundos*/ );
-
-        var hour = Math.trunc(total);
+        let total = ((milissegundos / 1000 /*milissegundo*/ ) / 60 /*minuto*/ / 60 /*segundos*/ );        
+        var hour = Math.trunc(total);        
         var minute = Math.trunc(((total - hour) * 60));
-
+        
         if (hour.toString().length == 1) {
             hour = "0" + hour;
+        }else if(hour < 0 && hour.toString().length == 2){
+            hour = "-0"+(hour*-1)
         }
+        
 
         if (minute.toString().length == 1) {
             minute = "0" + minute;
         }
+        
         return hour + ":" + minute;
     }
 
