@@ -10,7 +10,7 @@ class PontoController {
         this._hora24 = $('#hora24');
         //Formulário
         this._data_cadastro = $('#data_cadastro');
-        this._horasDiarias = $('#horasDiarias');
+        this._horasDiarias = $('#horaTrabalhada');               
         this._hora1 = $('#hora1');
         this._hora2 = $('#hora2');
         this._hora3 = $('#hora3');
@@ -20,7 +20,7 @@ class PontoController {
 
         this._camposHora = document.querySelectorAll('.input-hora');
 
-        this._listaPontos = new Bind(new ListaPonto(), new PontosView($('#pontosView')), 'adiciona', 'esvazia');
+        this._listaPontos = new Bind(new ListaPonto(), new PontosView($('#pontosView'),this._horasDiarias.value), 'adiciona', 'esvazia');
 
         this._mensagem = new Mensagem();
 
@@ -30,7 +30,7 @@ class PontoController {
     //Métodos
     adiciona(event) {
         event.preventDefault();
-        let service = new PontoService();                
+        let service = new PontoService();
         let ponto = new Ponto(
             DateHelper.dataParaTexto(new Date(this._data_cadastro.value)),
             HoraHelper.getMilissegundos(this._hora1.value),
@@ -38,15 +38,17 @@ class PontoController {
             HoraHelper.getMilissegundos(this._hora3.value),
             HoraHelper.getMilissegundos(this._hora4.value),
             HoraHelper.getMilissegundos(this._hora5.value),
-            HoraHelper.getMilissegundos(this._hora6.value)            
-        );                
+            HoraHelper.getMilissegundos(this._hora6.value)
+        );
         //Evitando Callback Hell
         Promise.all([
             service.salvarPonto(ponto)
         ]).then(mensagem => {
+            this._listaPontos.adiciona(ponto);
+            this._limpaForm();
             this._mensagem.toast = mensagem;
         })
-            .catch(error => this._mensagem.toast = error);        
+            .catch(error => this._mensagem.toast = error);
 
     }
 
@@ -64,7 +66,7 @@ class PontoController {
             } else {
                 msg = 'Não foi possível remover os dados';
                 this._mensagem.toast = msg;
-                throw new Error(msg)
+                throw new Error(msg);
             }
         }
     }
@@ -75,7 +77,7 @@ class PontoController {
         //Evitando Callback Hell
         Promise.all([
             service.obterPontos()
-        ]).then(pontos => {                     
+        ]).then(pontos => {
             pontos.reduce((retorno, item) => retorno.concat(item), [])
                 .forEach(ponto => this._listaPontos.adiciona(ponto));
             this._mensagem.toast = "Dados importados com sucesso";
@@ -84,14 +86,14 @@ class PontoController {
     }
 
     _limpaForm() {
-        this._data_cadastro.value = '';
-        //this._hora1.value = '';
+        //this._data_cadastro.value = '';
+        this._hora1.value = '';
         this._hora1.focus();
-        //this._hora2.value = '';
-        //this._hora3.value = '';
-        //this._hora4.value = '';
-        //this._hora5.value = '';
-        //this._hora6.value = '';
+        this._hora2.value = '';
+        this._hora3.value = '';
+        this._hora4.value = '';
+        this._hora5.value = '';
+        this._hora6.value = '';
 
         //reinicia os inputs (materializecss)
         $('.datepicker').pickadate({
