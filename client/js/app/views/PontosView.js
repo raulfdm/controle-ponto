@@ -1,12 +1,14 @@
-class PontosView extends View{
+class PontosView extends View {
 
-    constructor(elemento) {
+    constructor(elemento, horasDiarias) {
         //elemento do DOM que receberá o TEMPLATE e passará para a classe PAI (view)
         super(elemento);
+        this._horasDiarias = horasDiarias;
     }
 
     template(model) {
-            return `
+        
+        return `
             <table class="highlight centered responsive-table card col s8 push-s1">
                 <thead>
                     <tr>
@@ -27,15 +29,15 @@ class PontosView extends View{
                             <td>${DateHelper.dataParaTexto(n._data_cadastro)}</td>
                             <td>${HoraHelper.getHoraString(n._hora1)}</td>
                             <td>${HoraHelper.getHoraString(n._hora2)}</td>
-                            <td>${(HoraHelper.getHoraString(n._hora3)? HoraHelper.getHoraString(n._hora3):'-')}</td>
-                            <td>${(HoraHelper.getHoraString(n._hora4)? HoraHelper.getHoraString(n._hora4):'-')}</td>
+                            <td>${(HoraHelper.getHoraString(n._hora3) ? HoraHelper.getHoraString(n._hora3) : '-')}</td>
+                            <td>${(HoraHelper.getHoraString(n._hora4) ? HoraHelper.getHoraString(n._hora4) : '-')}</td>
                             <td>${HoraHelper.getHoraString(n._hora5)}</td>
                             <td>${HoraHelper.getHoraString(n._hora6)}</td>
                             <td>${HoraHelper.getHoraString(n._total)}</td>
-                            <td>${'console.log(n)'}</td>
+                            <td>${HoraHelper.getHoraString(n._total - HoraHelper.getMilissegundos(this._horasDiarias))}</td>
                         <tr>
                         `
-                    ).join('')/** O join concatena os elementos de um array em uma mega string */}
+            ).join('')/** O join concatena os elementos de um array em uma mega string */}
                 </tbody>
                 <tfoot>
                 
