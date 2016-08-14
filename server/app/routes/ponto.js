@@ -87,4 +87,24 @@ module.exports = function (app) {
         connection.end();
     });
 
+
+    //Rota provisória para truncar a tabela
+    app.get('/deleteall', function (req, res) {
+
+        var connection = app.infra.connectionFactory();
+        var pontoDAO = new app.infra.pontoDAO(connection);
+
+        pontoDAO.deleteAll(function(erro, resultado){
+            console.log(erro, resultado);
+            if(erro){
+                console.log(erro);
+                res.send('Erro');
+            }else{
+                res.send('Pontos dropados');
+            }
+            
+        })
+
+    });
+
 }

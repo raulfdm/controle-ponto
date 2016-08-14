@@ -15,6 +15,11 @@ PontoDAO.prototype.insere = function(ponto, callback) {
     this._connection.query('insert into ponto set ? ', ponto, callback);
 }
 
+//Método provisório para truncar a tabela
+PontoDAO.prototype.deleteAll = function(callback){
+    this._connection.query('truncate table ponto',callback);
+}
+
 module.exports = function() {
 
     return PontoDAO;
