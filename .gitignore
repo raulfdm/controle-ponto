@@ -1,2 +1,3 @@
-server/node_modules
 testes/
+server/
+node_modules/

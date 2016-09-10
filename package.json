@@ -1,0 +1,24 @@
+{
+  "name": "controle-ponto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "teste.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raulfdm/controle-ponto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raulfdm/controle-ponto/issues"
+  },
+  "homepage": "https://github.com/raulfdm/controle-ponto#readme",
+  "devDependencies": {
+    "browser-sync": "^2.15.0",
+    "gulp": "^3.9.1"
+  }
+}

@@ -10,7 +10,7 @@ class PontoController {
         this._hora24 = $('#hora24');
         //Formulário
         this._data_cadastro = $('#data_cadastro');
-        this._horasDiarias = $('#horaTrabalhada');               
+        this._horasDiarias = $('#horaTrabalhada');
         this._hora1 = $('#hora1');
         this._hora2 = $('#hora2');
         this._hora3 = $('#hora3');
@@ -20,7 +20,7 @@ class PontoController {
 
         this._camposHora = document.querySelectorAll('.input-hora');
 
-        this._listaPontos = new Bind(new ListaPonto(), new PontosView($('#pontosView'),this._horasDiarias.value), 'adiciona', 'esvazia');
+        this._listaPontos = new Bind(new ListaPonto(), new PontosView($('#pontosView'), this._horasDiarias.value), 'adiciona', 'esvazia');
 
         this._mensagem = new Mensagem();
 
@@ -52,32 +52,33 @@ class PontoController {
 
     }
 
-    apaga() {
+    apaga(chamada = null) {
 
         let msg;
 
-        if (this._listaPontos.pontos.length == 0) {
-            msg = 'Lista já está vazia'
-            this._mensagem.toast = msg;
-        } else {
-            if (!this._listaPontos.esvazia(this._listaPontos)) {
-                msg = 'Dados removidos com sucesso!';
+            if (this._listaPontos.pontos.length == 0) {
+                msg = 'Lista já está vazia'
                 this._mensagem.toast = msg;
             } else {
-                msg = 'Não foi possível remover os dados';
-                this._mensagem.toast = msg;
-                throw new Error(msg);
+                if (!this._listaPontos.esvazia(this._listaPontos)) {
+                    msg = 'Dados removidos com sucesso!';
+                    this._mensagem.toast = msg;
+                } else {
+                    msg = 'Não foi possível remover os dados';
+                    this._mensagem.toast = msg;
+                    throw new Error(msg);
             }
         }
     }
 
     importaPontos() {
-
+        this.apaga();
         let service = new PontoService();
         //Evitando Callback Hell
         Promise.all([
             service.obterPontos()
         ]).then(pontos => {
+            debugger;
             pontos.reduce((retorno, item) => retorno.concat(item), [])
                 .forEach(ponto => this._listaPontos.adiciona(ponto));
             this._mensagem.toast = "Dados importados com sucesso";
