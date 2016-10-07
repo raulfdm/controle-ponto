@@ -5,9 +5,9 @@ browser = require('browser-sync');
 gulp.task('server',function(){
     browser.init({
         server:{
-            baseDir: 'client/'
+            baseDir: 'src/'
         }
     })
 
-    gulp.watch('client/**/*').on('change',browser.reload)
+    gulp.watch('src/**/*').on('change',browser.reload)
 })
