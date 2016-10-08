@@ -46,7 +46,7 @@ class PontoController {
         ]).then(mensagem => {
             this._listaPontos.adiciona(ponto);
             this._limpaForm();
-            this._mensagem.toast = mensagem;
+            this._mensagem.toast = "Ponto adicionado com sucesso";
         })
             .catch(error => this._mensagem.toast = error);
 
