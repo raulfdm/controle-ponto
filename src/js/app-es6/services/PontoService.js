@@ -24,8 +24,7 @@ class PontoService {
                             ))                                                
                     }                    
                     resolve(listaPontos);
-                }).catch(erro => {
-                    debugger;
+                }).catch(erro => {                    
                     if (/Cannot GET/.test(erro)) {
                         reject("Erro ao buscar os dados no banco");
                     } else {

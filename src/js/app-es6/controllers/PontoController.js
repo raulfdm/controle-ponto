@@ -1,4 +1,4 @@
-class PontoController {
+class PontoController { 
 
     constructor() {
         //o Bind associa o contexto do Document ao comportamento querySelector ($);
@@ -77,8 +77,7 @@ class PontoController {
         //Evitando Callback Hell
         Promise.all([
             service.obterPontos()
-        ]).then(pontos => {
-            debugger;
+        ]).then(pontos => {            
             pontos.reduce((retorno, item) => retorno.concat(item), [])
                 .forEach(ponto => this._listaPontos.adiciona(ponto));
             this._mensagem.toast = "Dados importados com sucesso";

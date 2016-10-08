@@ -9,8 +9,9 @@ class HttpService {
     }
 
     get(url) {
+        
         //Uso do fetch API
-        return fetch(url)
+        return feth(url)
             //Valida se deu erro na requisição
             .then(response => this._handleErrors(response))
             //Se não deu erro, pega a resposta e retorna um json
