@@ -9,6 +9,7 @@ class HttpService {
     }
 
     get(url) {
+        
         //Uso do fetch API
         return fetch(url)
             //Valida se deu erro na requisição
