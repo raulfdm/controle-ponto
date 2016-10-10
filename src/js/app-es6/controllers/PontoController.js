@@ -33,7 +33,7 @@ class PontoController {
 
         this._mensagem = new Mensagem();
 
-        _init(self);
+        this._init(self);
     }
 
     _init(){
