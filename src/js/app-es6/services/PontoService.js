@@ -1,4 +1,7 @@
-class PontoService {
+import {Ponto} from '../models/Ponto';
+import {HttpService} from './HttpService';
+
+export class PontoService {
 
     constructor() {
         this._http = new HttpService();

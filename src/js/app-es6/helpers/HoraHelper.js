@@ -1,4 +1,4 @@
-class HoraHelper {
+export class HoraHelper {
 
     constructor() {
         throw new Error('Essa classe não pode ser instanciada');

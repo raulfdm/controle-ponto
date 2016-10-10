@@ -1,4 +1,8 @@
-class PontosView extends View {
+import {View} from './View';
+import {DateHelper} from '../helpers/DateHelper';
+import {HoraHelper} from '../helpers/HoraHelper';
+
+export class PontosView extends View {
 
     constructor(elemento, horasDiarias) {
         //elemento do DOM que receberá o TEMPLATE e passará para a classe PAI (view)
@@ -25,7 +29,7 @@ class PontosView extends View {
                 </thead>
                 <tbody>                    
                     ${model._pontos.map(n => `
-                        <tr>
+                        <tr id-banco="1">
                             <td>${DateHelper.dataParaTexto(n._data_cadastro)}</td>
                             <td>${HoraHelper.getHoraString(n._hora1)}</td>
                             <td>${HoraHelper.getHoraString(n._hora2)}</td>

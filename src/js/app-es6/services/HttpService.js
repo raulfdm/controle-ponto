@@ -1,4 +1,4 @@
-class HttpService {
+export class HttpService {
 
     //Método para validar a resposta
     _handleErrors(response) {
