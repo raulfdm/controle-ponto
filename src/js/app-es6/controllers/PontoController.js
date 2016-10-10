@@ -24,6 +24,10 @@ class PontoController {
 
         this._mensagem = new Mensagem();
 
+        _init(self);
+    }
+
+    _init(){
         this._adicionaEventos(self);
     }
 
