@@ -1,4 +1,4 @@
-class PontoController { 
+class PontoController {
 
     constructor() {
         //o Bind associa o contexto do Document ao comportamento querySelector ($);
@@ -42,12 +42,12 @@ class PontoController {
         );
         //Evitando Callback Hell
         Promise.all([
-            service.salvarPonto(ponto)
-        ]).then(mensagem => {
-            this._listaPontos.adiciona(ponto);
-            this._limpaForm();
-            this._mensagem.toast = "Ponto adicionado com sucesso";
-        })
+                service.salvarPonto(ponto)
+            ]).then(mensagem => {
+                this._listaPontos.adiciona(ponto);
+                this._limpaForm();
+                this._mensagem.toast = "Ponto adicionado com sucesso";
+            })
             .catch(error => this._mensagem.toast = error);
 
     }
@@ -56,32 +56,52 @@ class PontoController {
 
         let msg;
 
-            if (this._listaPontos.pontos.length == 0) {
-                msg = 'Lista já está vazia'
+        if (this._listaPontos.pontos.length == 0) {
+            msg = 'Lista já está vazia'
+            this._mensagem.toast = msg;
+        } else {
+            if (!this._listaPontos.esvazia(this._listaPontos)) {
+                msg = 'Dados removidos com sucesso!';
                 this._mensagem.toast = msg;
             } else {
-                if (!this._listaPontos.esvazia(this._listaPontos)) {
-                    msg = 'Dados removidos com sucesso!';
-                    this._mensagem.toast = msg;
-                } else {
-                    msg = 'Não foi possível remover os dados';
-                    this._mensagem.toast = msg;
-                    throw new Error(msg);
+                msg = 'Não foi possível remover os dados';
+                this._mensagem.toast = msg;
+                throw new Error(msg);
             }
         }
     }
 
     importaPontos() {
-        this.apaga();
+
         let service = new PontoService();
         //Evitando Callback Hell
         Promise.all([
-            service.obterPontos()
-        ]).then(pontos => {            
-            pontos.reduce((retorno, item) => retorno.concat(item), [])
-                .forEach(ponto => this._listaPontos.adiciona(ponto));
-            this._mensagem.toast = "Dados importados com sucesso";
-        })
+                service.obterPontos()
+                //Pega o retorno dos pontos para tratar antes
+                .then(pontos =>
+                    //O filter vai avaliar os elementos que retornarão para a 
+                    //inserção dos pontos na lista
+                    pontos.filter(ponto =>
+                        //Itera item a item da lista de pontos
+                        //Se o ponto da lista de pontos for igual ao ponto
+                        //que foi obtido pelo service, ele não retorna, ou seja,
+                        //Ele não será inserido novamente
+                        !this._listaPontos.pontos.some(pontoEx =>
+                            //Maneira de validar objetos
+                            JSON.stringify(pontoEx) == JSON.stringify(ponto)
+                        )))
+
+            ]).then(pontos => {
+                //Se a lista de pontos for diferente de 0, importa e da sucesso    
+                if (pontos[0].length != 0) {
+                    pontos.reduce((retorno, item) => retorno.concat(item), [])
+                        .forEach(ponto => this._listaPontos.adiciona(ponto));
+                    this._mensagem.toast = "Dados importados com sucesso";
+                } else {
+                    this._mensagem.toast = "Não há novos dados para importar";
+                }
+
+            })
             .catch(error => this._mensagem.toast = error);
     }
 
