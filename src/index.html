@@ -19,19 +19,19 @@
 
         <div class="row">
             <div class="col s1 push-s4">
-                <button onclick="pontoController.apaga()" class="btn  red darken-1 waves-effect waves-light">
+                <button class="btn  red darken-1 waves-effect waves-light btn-exclui">
                             <i class="material-icons center">delete</i>
                 </button>
             </div>
             <div class="col s1 push-s5">
-                <button onclick="pontoController.importaPontos()" class="btn light-blue darken-1 waves-effect waves-light">
+                <button class="btn light-blue darken-1 waves-effect waves-light btn-carregar">
                             <i class="material-icons center">loop</i>
                 </button>
             </div>
         </div>
         <div class="row">
 
-            <form action="#" method="" class="card col s4 form-cad-ponto" onsubmit="pontoController.adiciona(event)">
+            <form action="#" class="card col s4 form-cad-ponto">
                 <div class="row">
                     <h5 class="center-align">Cadastro</h5>
                 </div>
@@ -48,7 +48,7 @@
                         <label for="">Data</label>
                         <input id="data_cadastro" name="data_cadastro" class="datepicker" type="date" required value="2016-05-05">
                     </div>
-                     <div class=" col s6">
+                    <div class=" col s6">
                         <label for="horaTrabalhada">Qtde. Horas Diárias</label>
                         <input class="hora-trabalhada" id="horaTrabalhada" name="horaTrabalhada" type="text" placeholder="08:00" required value="08:00">
                     </div>
@@ -95,41 +95,18 @@
         </div>
     </main>
 
-    <script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
-    <script src="js/lib/fire-base.js"></script>
-    <script src="js/app/polyfill/fetch-api.js"></script>
-    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="js/lib/materialize.min.js"></script>
-    <script src="js/app/models/Ponto.js"></script>
-    <script src="js/app/models/ListaPonto.js"></script>
-    <script src="js/app/models/Mensagem.js"></script>
-    <script src="js/app/controllers/PontoController.js"></script>
-    <script src="js/app/views/View.js"></script>
-    <script src="js/app/views/PontosView.js"></script>
-    <script src="js/app/helpers/HoraHelper.js"></script>
-    <script src="js/app/helpers/DateHelper.js"></script>
-    <script src="js/app/helpers/Bind.js"></script>
-    <script src="js/app/helpers/MaskHelper.js"></script>
-    <script src="js/app/services/ProxyFactory.js"></script>
-    <script src="js/app/services/PontoService.js"></script>
-    <script src="js/app/services/HttpService.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>    
+    <script src="js/lib/system.js"></script>            
     <script>
-    
-        $('.datepicker').pickadate({
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 16 // Creates a dropdown of 15 years to control year            
-
+        System.defaultJSExtensions = true; //permite a omissão de extensão            
+        System.import('js/app/boot').catch(function(err){
+          console.log(err);  
         });
-
-        let pontoController = new PontoController();
     </script>
-<!--    <script>
-        let formato = document.querySelector('#horaFormat');
-        formato.addEventListener('change',function(){
-            console.log('mudou');
-        })
-    </script>-->
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/materialize.min.js"></script>
+    
+
 </body>
 
 </html>

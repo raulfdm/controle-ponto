@@ -1,4 +1,4 @@
-class ListaPonto {
+export class ListaPonto {
 
     constructor() {
         this._pontos = [];

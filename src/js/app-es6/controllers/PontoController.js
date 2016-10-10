@@ -1,3 +1,12 @@
+import {ListaPonto} from '../models/ListaPonto';
+import {Bind} from '../helpers/Bind';
+import {PontosView} from '../views/PontosView';
+import {Mensagem} from '../models/Mensagem';
+import {PontoService} from '../services/PontoService';
+import {Ponto} from '../models/Ponto';
+import {DateHelper} from '../helpers/DateHelper';
+import {HoraHelper} from '../helpers/HoraHelper';
+
 class PontoController {
 
     constructor() {
@@ -154,3 +163,10 @@ class PontoController {
         })
     }
 };
+
+let pontoController = new PontoController();
+
+//Usando "singleton"
+export function currentInstance(){
+    return pontoController;
+}

@@ -1,4 +1,4 @@
-class MaskHelper {
+export class MaskHelper {
 
     constructor() {
         this._eventoDoElemento;

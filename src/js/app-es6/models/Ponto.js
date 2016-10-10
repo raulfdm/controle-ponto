@@ -1,6 +1,4 @@
-//Define o que é um Ponto
-
-class Ponto {
+export class Ponto {
 
     constructor(data, hora1, hora2, hora3, hora4, hora5, hora6, id = '') {
         this._id = id;        
@@ -68,8 +66,7 @@ class Ponto {
     }
 
 
-    toString() {
-        console.log(this._data_cadastro);        
+    toString() {                
         return {            
             data_cadastro: this._data_cadastro,
             hora1: this._hora1,
