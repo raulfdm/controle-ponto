@@ -8,7 +8,8 @@ gulp.task('babel', function () {
     gulp.src('src/js/app-es6/**/*')
         .pipe(sourcemaps.init())
         .pipe(babel({
-            presets: ['es2015']
+            presets: ['es2015'],
+            plugins: ['transform-es2015-modules-systemjs']
         }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('src/js/app/'))
