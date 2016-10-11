@@ -8,7 +8,7 @@ export class PontoService {
         this._urlPonto = 'https://controle-ponto-cc043.firebaseio.com/pontos.json';
     }
 
-    obterPontos() {
+    obterPontos() {        
         return new Promise((resolve, reject) => {
             this._http.get(this._urlPonto)
                 .then(pontos => {
@@ -39,12 +39,22 @@ export class PontoService {
 
     }
 
-    salvarPonto(ponto) {
+    salvarPonto(ponto) {       
         return new Promise((resolve, reject) => {
             this._http.post(this._urlPonto, ponto)
                 .then(mensagem => resolve(mensagem)).catch(erro => {
                     console.log(erro);
                     reject('Não foi possível salvar os dados no banco!');
+                })
+        });
+    }
+
+    apagarPonto(ponto){
+        return new Promise((resolve, reject) => {
+            this._http.delete(this._urlPonto, ponto)
+                .then(mensagem => resolve(mensagem)).catch(erro => {
+                    console.log(erro);
+                    reject('Não foi possível excluir o ponto');
                 })
         });
     }

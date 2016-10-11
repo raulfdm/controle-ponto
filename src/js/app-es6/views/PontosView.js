@@ -1,19 +1,35 @@
-import {View} from './View';
-import {DateHelper} from '../helpers/DateHelper';
-import {HoraHelper} from '../helpers/HoraHelper';
+import {
+    View
+} from './View';
+import {
+    DateHelper
+} from '../helpers/DateHelper';
+import {
+    HoraHelper
+} from '../helpers/HoraHelper';
+
 
 export class PontosView extends View {
 
-    constructor(elemento, horasDiarias) {
+    constructor(elemento, horasDiarias,contexto) {
         //elemento do DOM que receberá o TEMPLATE e passará para a classe PAI (view)
         super(elemento);
-        this._horasDiarias = horasDiarias;
+        this._horasDiarias = horasDiarias;          
+
+        elemento.addEventListener('dblclick', function (e) {
+
+            var idElemento = (e.target.parentNode.attributes.hasOwnProperty("id-banco") ? e.target.parentNode.attributes[0].textContent : null);            
+            
+            if (e.target.nodeName == 'TD' && idElemento) {                
+                contexto.excluiPonto(idElemento);
+            }
+        })
     }
 
     template(model) {
-        
-        return `
-            <table class="highlight centered responsive-table card col s8 push-s1">
+
+            return `
+            <table class="highlight centered responsive-table card col s8 push-s1 table-ponto">
                 <thead>
                     <tr>
                         <th>Data</th>
@@ -29,7 +45,7 @@ export class PontosView extends View {
                 </thead>
                 <tbody>                    
                     ${model._pontos.map(n => `
-                        <tr id-banco="1">
+                        <tr id-banco="${n._id}">
                             <td>${DateHelper.dataParaTexto(n._data_cadastro)}</td>
                             <td>${HoraHelper.getHoraString(n._hora1)}</td>
                             <td>${HoraHelper.getHoraString(n._hora2)}</td>
