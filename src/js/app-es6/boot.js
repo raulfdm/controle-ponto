@@ -1,11 +1,7 @@
 import {} from 'js/lib/fire-base.js';
-import {
-    currentInstance
-} from './controllers/PontoController';
 import {} from './polyfill/fetch-api';
-import {
-    MaskHelper
-} from './helpers/MaskHelper'
+import { currentInstance } from './controllers/PontoController';
+import { MaskHelper } from './helpers/MaskHelper'
 
 
 let pontoController = new currentInstance();
