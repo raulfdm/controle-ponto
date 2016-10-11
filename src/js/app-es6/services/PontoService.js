@@ -1,5 +1,5 @@
-import {Ponto} from '../models/Ponto';
-import {HttpService} from './HttpService';
+import { Ponto } from '../models/Ponto';
+import { HttpService } from './HttpService';
 
 export class PontoService {
 
@@ -23,11 +23,11 @@ export class PontoService {
                                 pontos[ponto].hora4,
                                 pontos[ponto].hora5,
                                 pontos[ponto].hora6,
-                                ponto                                
-                            ))                                                
-                    }                    
+                                ponto
+                            ))
+                    }
                     resolve(listaPontos);
-                }).catch(erro => {                    
+                }).catch(erro => {
                     if (/Cannot GET/.test(erro)) {
                         reject("Erro ao buscar os dados no banco");
                     } else {
@@ -45,6 +45,16 @@ export class PontoService {
                 .then(mensagem => resolve(mensagem)).catch(erro => {
                     console.log(erro);
                     reject('Não foi possível salvar os dados no banco!');
+                })
+        });
+    }
+
+    apagarPonto(ponto) {
+        return new Promise((resolve, reject) => {
+            this._http.delete(this._urlPonto, ponto)
+                .then(mensagem => resolve(mensagem)).catch(erro => {
+                    console.log(erro);
+                    reject('Não foi possível excluir o ponto');
                 })
         });
     }

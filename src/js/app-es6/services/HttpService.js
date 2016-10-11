@@ -8,8 +8,7 @@ export class HttpService {
         return response;
     }
 
-    get(url) {
-        
+    get(url) {        
         //Uso do fetch API
         return fetch(url)
             //Valida se deu erro na requisição
@@ -18,13 +17,36 @@ export class HttpService {
             .then(response => response.json());
     }
 
-    post(url, dado) {        
+    post(url, dado) {
+        debugger;
         return fetch(url,{
             headers: {'Content-Type': 'application/json'},
             method: 'post',
             body: JSON.stringify(dado.toString())
         })
         .then(response => this._handleErrors(response));        
+    }
+
+    delete(url,dado){
+        let envio;
+
+        dado.forEach(function(element) {
+            let hash = element._id;
+            envio = {
+                hash: {
+                    _data_cadastro: element._data_cadastro,
+
+                }
+            }
+            console.log(element);
+        }, this); 
+        let newUrl = url.substring(0,url.length-5)+"/"+dado[0]._id+".json"; 
+
+        return fetch(newUrl,{
+            headers: {'Content-Type': 'application/json'},
+            method: 'delete'            
+        })
+        .then(response => this._handleErrors(response));     
     }
 
 
