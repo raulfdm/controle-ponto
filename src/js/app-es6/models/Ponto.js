@@ -1,20 +1,20 @@
-export class Ponto {
+class Ponto {
 
     constructor(data, hora1, hora2, hora3, hora4, hora5, hora6, id = '') {
-        this._id = id;        
+        this._id = id;
         this._data_cadastro = data;
-        
+
         this._hora1 = hora1;
         this._hora2 = hora2;
         this._hora3 = hora3;
         this._hora4 = hora4;
         this._hora5 = hora5;
         this._hora6 = hora6;
-        
+
         this._total = this._total();
-        
-        
-        
+
+
+
         Object.freeze(this);
     }
 
@@ -30,15 +30,15 @@ export class Ponto {
         let hora6 = this._hora6;
 
         let resultado = (hora2 - hora1) + (hora4 - hora3) + (hora6 - hora5);
-            
+
         return resultado;
     }
 
     //Getters and Setters
-    get id(){
+    get id() {
         return this._id;
     }
-    get data_cadatro() {        
+    get data_cadatro() {
         return new this._data_cadastro;
     }
 
@@ -66,8 +66,8 @@ export class Ponto {
     }
 
 
-    toString() {                
-        return {            
+    toString() {
+        return {
             data_cadastro: this._data_cadastro,
             hora1: this._hora1,
             hora2: this._hora2,
@@ -75,8 +75,10 @@ export class Ponto {
             hora4: this._hora4,
             hora5: this._hora5,
             hora6: this._hora6,
-            total: this._total            
+            total: this._total
         }
     }
 
 }
+
+export default Ponto;

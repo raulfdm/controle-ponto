@@ -1,4 +1,4 @@
-export class HttpService {
+class HttpService {
 
     //Método para validar a resposta
     _handleErrors(response) {
@@ -8,7 +8,7 @@ export class HttpService {
         return response;
     }
 
-    get(url) {        
+    get(url) {
         //Uso do fetch API
         return fetch(url)
             //Valida se deu erro na requisição
@@ -18,19 +18,18 @@ export class HttpService {
     }
 
     post(url, dado) {
-        debugger;
-        return fetch(url,{
-            headers: {'Content-Type': 'application/json'},
+        return fetch(url, {
+            headers: { 'Content-Type': 'application/json' },
             method: 'post',
             body: JSON.stringify(dado.toString())
         })
-        .then(response => this._handleErrors(response));        
+            .then(response => this._handleErrors(response));
     }
 
-    delete(url,dado){
+    delete(url, dado) {
         let envio;
 
-        dado.forEach(function(element) {
+        dado.forEach(function (element) {
             let hash = element._id;
             envio = {
                 hash: {
@@ -39,15 +38,15 @@ export class HttpService {
                 }
             }
             console.log(element);
-        }, this); 
-        let newUrl = url.substring(0,url.length-5)+"/"+dado[0]._id+".json"; 
+        }, this);
+        let newUrl = url.substring(0, url.length - 5) + "/" + dado[0]._id + ".json";
 
-        return fetch(newUrl,{
-            headers: {'Content-Type': 'application/json'},
-            method: 'delete'            
+        return fetch(newUrl, {
+            headers: { 'Content-Type': 'application/json' },
+            method: 'delete'
         })
-        .then(response => this._handleErrors(response));     
+            .then(response => this._handleErrors(response));
     }
-
-
 }
+
+export default HttpService;

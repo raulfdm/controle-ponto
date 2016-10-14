@@ -1,4 +1,4 @@
-export class HoraHelper {
+class HoraHelper {
 
     constructor() {
         throw new Error('Essa classe não pode ser instanciada');
@@ -37,11 +37,11 @@ export class HoraHelper {
             minute = "0" + minute;
         }
         if (minute.toString().length == 3) {
-            minute = minute.toString().substring(0,2);            
+            minute = minute.toString().substring(0, 2);
         }
 
         return (total < 0 ? `-${hour}:${minute}` : `${hour}:${minute}`);
     }
-
-
 }
+
+export default HoraHelper;

@@ -1,12 +1,12 @@
-import { ListaPonto } from '../models/ListaPonto';
-import { Bind } from '../helpers/Bind';
-import { PontosView } from '../views/PontosView';
-import { Mensagem } from '../models/Mensagem';
-import { PontoService } from '../services/PontoService';
-import { Ponto } from '../models/Ponto';
-import { DateHelper } from '../helpers/DateHelper';
-import { HoraHelper } from '../helpers/HoraHelper';
-import { MaskHelper } from '../helpers/MaskHelper'
+import ListaPonto from '../models/ListaPonto';
+import Bind from '../helpers/Bind';
+import PontosView from '../views/PontosView';
+import Mensagem from '../models/Mensagem';
+import PontoService from '../services/PontoService';
+import Ponto from '../models/Ponto';
+import DateHelper from '../helpers/DateHelper';
+import HoraHelper from '../helpers/HoraHelper';
+import MaskHelper from '../helpers/MaskHelper'
 
 class PontoController {
 
@@ -99,13 +99,13 @@ class PontoController {
         );
         //Evitando Callback Hell
         Promise.all([
-                this._pontoService.salvarPonto(ponto)
-            ]).then(mensagem => {
-                this._listaPontos.adiciona(ponto);
-                this._limpaForm();
-                this._atualizaGrid();
-                this._mensagem.toast = "Ponto adicionado com sucesso";
-            })
+            this._pontoService.salvarPonto(ponto)
+        ]).then(mensagem => {
+            this._listaPontos.adiciona(ponto);
+            this._limpaForm();
+            this._atualizaGrid();
+            this._mensagem.toast = "Ponto adicionado com sucesso";
+        })
             .catch(error => this._mensagem.toast = error);
 
     }
@@ -135,7 +135,7 @@ class PontoController {
 
         //Evitando Callback Hell
         Promise.all([
-                this._pontoService.obterPontos()
+            this._pontoService.obterPontos()
                 //Pega o retorno dos pontos para tratar antes
                 .then(pontos =>
                     //O filter vai avaliar os elementos que retornarão para a 
@@ -150,24 +150,24 @@ class PontoController {
                             JSON.stringify(pontoEx) == JSON.stringify(ponto)
                         )))
 
-            ]).then(pontos => {
-                //Se a lista de pontos for diferente de 0, importa e da sucesso    
-                if (pontos[0].length != 0) {
-                    pontos.reduce((retorno, item) => retorno.concat(item), [])
-                        .forEach(ponto => this._listaPontos.adiciona(ponto));
-                    if (!funcionalidade) this._mensagem.toast = "Dados importados com sucesso";
+        ]).then(pontos => {
+            //Se a lista de pontos for diferente de 0, importa e da sucesso    
+            if (pontos[0].length != 0) {
+                pontos.reduce((retorno, item) => retorno.concat(item), [])
+                    .forEach(ponto => this._listaPontos.adiciona(ponto));
+                if (!funcionalidade) this._mensagem.toast = "Dados importados com sucesso";
 
-                } else {
-                    if (!funcionalidade) this._mensagem.toast = "Não há novos dados para importar";
-                }
+            } else {
+                if (!funcionalidade) this._mensagem.toast = "Não há novos dados para importar";
+            }
 
-            })
+        })
             .catch(error => this._mensagem.toast = error);
     }
 
     excluiPonto(idPonto) {
 
-        let objecto = this._listaPontos._pontos.filter(function(ponto) {
+        let objecto = this._listaPontos._pontos.filter(function (ponto) {
             return ponto._id === idPonto;
         })
 

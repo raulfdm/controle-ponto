@@ -1,4 +1,4 @@
-export class DateHelper {
+class DateHelper {
 
     constructor() {
         throw new Error('Essa classe não pode ser instanciada');
@@ -27,13 +27,14 @@ export class DateHelper {
             //return `${dia}/${mes}/${ano}`;
             return `${ano}-${mes}-${dia}`;
         } catch (e) {
-            
+
             console.log(e);
-        
+
             throw new Error("Erro ao adicionar o ponto na lista!");
-            
-            
+
+
         }
     }
-
 }
+
+export default DateHelper;

@@ -1,4 +1,4 @@
-export class MaskHelper {
+class MaskHelper {
 
     constructor() {
         this._eventoDoElemento;
@@ -7,7 +7,7 @@ export class MaskHelper {
 
     static mask(evento) {
         this._eventoDoElemento = evento;
-        this._elemento = evento.target;        
+        this._elemento = evento.target;
         this._elemento.value = this._hora24(this._elemento.value);
 
     };
@@ -39,8 +39,7 @@ export class MaskHelper {
         //2- O primeiro elemento é o algarismo 2?
         //3- O que está sendo digitado, é um número de 0 a 3?
         //Obs.: essa regra foi criada para evitar horas inválidas (24,25,29, por exemplo);
-        if (valor.length == 1 && /([2])/.test(valor.substring(0, 1)) && !/([0-3])/.test(chave)
-        ) {
+        if (valor.length == 1 && /([2])/.test(valor.substring(0, 1)) && !/([0-3])/.test(chave)) {
             this._eventoDoElemento.preventDefault();
         }
 
@@ -68,3 +67,5 @@ export class MaskHelper {
         return valor;
     }
 }
+
+export default MaskHelper;

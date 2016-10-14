@@ -1,4 +1,4 @@
-export class ListaPonto {
+class ListaPonto {
 
     constructor() {
         this._pontos = [];
@@ -22,8 +22,10 @@ export class ListaPonto {
         return [...this._pontos];
     }
 
-    get horasTrabalhadas(){
-        return this._pontos.reduce((total, ponto) => total += ponto._total ,0);
+    get horasTrabalhadas() {
+        return this._pontos.reduce((total, ponto) => total += ponto._total, 0);
     }
 
 }
+
+export default ListaPonto;

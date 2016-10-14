@@ -1,26 +1,19 @@
-import {
-    View
-} from './View';
-import {
-    DateHelper
-} from '../helpers/DateHelper';
-import {
-    HoraHelper
-} from '../helpers/HoraHelper';
+import View from './View';
+import DateHelper from '../helpers/DateHelper';
+import HoraHelper from '../helpers/HoraHelper';
 
+class PontosView extends View {
 
-export class PontosView extends View {
-
-    constructor(elemento, horasDiarias,contexto) {
+    constructor(elemento, horasDiarias, contexto) {
         //elemento do DOM que receberá o TEMPLATE e passará para a classe PAI (view)
         super(elemento);
-        this._horasDiarias = horasDiarias;          
+        this._horasDiarias = horasDiarias;
 
         elemento.addEventListener('dblclick', function (e) {
 
-            var idElemento = (e.target.parentNode.attributes.hasOwnProperty("id-banco") ? e.target.parentNode.attributes[0].textContent : null);            
-            
-            if (e.target.nodeName == 'TD' && idElemento) {                
+            var idElemento = (e.target.parentNode.attributes.hasOwnProperty("id-banco") ? e.target.parentNode.attributes[0].textContent : null);
+
+            if (e.target.nodeName == 'TD' && idElemento) {
                 contexto.excluiPonto(idElemento);
             }
         })
@@ -28,7 +21,7 @@ export class PontosView extends View {
 
     template(model) {
 
-            return `
+        return `
             <table class="highlight centered responsive-table card col s8 push-s1 table-ponto">
                 <thead>
                     <tr>
@@ -68,7 +61,6 @@ export class PontosView extends View {
             </table>
         `;
     }
-
-
-
 }
+
+export default PontosView;

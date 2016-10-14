@@ -1,7 +1,7 @@
-import { Ponto } from '../models/Ponto';
-import { HttpService } from './HttpService';
+import Ponto from '../models/Ponto';
+import HttpService from './HttpService';
 
-export class PontoService {
+class PontoService {
 
     constructor() {
         this._http = new HttpService();
@@ -58,5 +58,6 @@ export class PontoService {
                 })
         });
     }
-
 }
+
+export default PontoService;

@@ -1,6 +1,6 @@
-import {ProxyFactory} from '../services/ProxyFactory'
+import ProxyFactory from '../services/ProxyFactory'
 
-export class Bind {
+class Bind {
 
     constructor(model, view, ...params) {
         let proxy = ProxyFactory.create(model, params, model => view.update(model));
@@ -10,4 +10,4 @@ export class Bind {
     }
 }
 
-
+export default Bind;

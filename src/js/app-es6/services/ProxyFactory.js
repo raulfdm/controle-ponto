@@ -1,4 +1,4 @@
-export class ProxyFactory {
+class ProxyFactory {
 
     constructor() {
         throw new Error('Classe não pode ser instanciada');
@@ -33,14 +33,14 @@ export class ProxyFactory {
                 return Reflect.get(target, prop, receiver);
             },
             set(target, prop, value, receiver) {
-                
-                let retorno =  Reflect.set(target, prop, value, receiver);
+
+                let retorno = Reflect.set(target, prop, value, receiver);
                 if (params.includes(prop)) {
                     act(target);
                 }
 
                 return retorno;
-                
+
             }
         });
 
@@ -50,3 +50,5 @@ export class ProxyFactory {
         return typeof funcao == typeof (Function);
     }
 }
+
+export default ProxyFactory;
