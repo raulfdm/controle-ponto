@@ -95,16 +95,17 @@
         </div>
     </main>
 
-    <script src="js/lib/system.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>    
+    <script src="js/lib/system.js"></script>            
     <script>
         System.defaultJSExtensions = true; //permite a omissão de extensão            
-        System.import('js/app/boot').catch(function(err) {
-            console.log(err);
+        System.import('js/app/boot').catch(function(err){
+          console.log(err);  
         });
     </script>
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/materialize.min.js"></script>
-
+    
 
 </body>
 
