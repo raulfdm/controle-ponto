@@ -1,4 +1,5 @@
 import View from './View';
+import Modal from '../models/Modal';
 import DateHelper from '../helpers/DateHelper';
 import HoraHelper from '../helpers/HoraHelper';
 
@@ -9,12 +10,12 @@ class PontosView extends View {
         super(elemento);
         this._horasDiarias = horasDiarias;
 
-        elemento.addEventListener('dblclick', function (e) {
+        elemento.addEventListener('click', function (e) {
 
             var idElemento = (e.target.parentNode.attributes.hasOwnProperty("id-banco") ? e.target.parentNode.attributes[0].textContent : null);
 
-            if (e.target.nodeName == 'TD' && idElemento) {
-                contexto.excluiPonto(idElemento);
+            if (e.target.nodeName == 'TD' && idElemento) {                
+                let modal = new Modal(idElemento, contexto);                
             }
         })
     }

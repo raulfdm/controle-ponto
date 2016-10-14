@@ -1,12 +1,13 @@
-import ListaPonto from '../models/ListaPonto';
-import Bind from '../helpers/Bind';
 import PontosView from '../views/PontosView';
+import ModalDeleteView from '../views/ModalDeleteView';
+import ListaPonto from '../models/ListaPonto';
 import Mensagem from '../models/Mensagem';
-import PontoService from '../services/PontoService';
 import Ponto from '../models/Ponto';
+import PontoService from '../services/PontoService';
 import DateHelper from '../helpers/DateHelper';
 import HoraHelper from '../helpers/HoraHelper';
-import MaskHelper from '../helpers/MaskHelper'
+import MaskHelper from '../helpers/MaskHelper';
+import Bind from '../helpers/Bind';
 
 class PontoController {
 
@@ -29,8 +30,8 @@ class PontoController {
         this._hora6 = $('#hora6');
 
         this._camposHora = document.querySelectorAll('.input-hora');
-
         this._listaPontos = new Bind(new ListaPonto(), new PontosView($('#pontosView'), this._horasDiarias.value, self), 'adiciona', 'esvazia');
+        this._modalDelete = new Bind($('#modalDeleteView'), new ModalDeleteView($('#modalDeleteView')));
 
         this._mensagem = new Mensagem();
 
@@ -40,7 +41,7 @@ class PontoController {
     }
 
     /************************Métodos Privados************************/
-    _init() {
+    _init(self) {
         this._adicionaEventos(self);
     }
 
