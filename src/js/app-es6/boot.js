@@ -1,5 +1,5 @@
-import { } from 'js/lib/fire-base.js';
-import { } from './polyfill/fetch-api';
+import 'js/lib/fire-base.js';
+import './polyfill/fetch-api';
 import { currentInstance } from './controllers/PontoController';
 import MaskHelper from './helpers/MaskHelper'
 
@@ -13,7 +13,6 @@ document.querySelectorAll('.input-hora').forEach((campo) => {
     campo.onkeypress = MaskHelper.mask.bind(pontoController);
     //campo.oninvalid = campo.setCustomValidity('Por favor, preencha o campo');    
 });
-
 
 $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
