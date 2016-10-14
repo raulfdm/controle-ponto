@@ -14,7 +14,6 @@ document.querySelectorAll('.input-hora').forEach((campo) => {
     //campo.oninvalid = campo.setCustomValidity('Por favor, preencha o campo');    
 });
 
-
 $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 16 // Creates a dropdown of 15 years to control year            
