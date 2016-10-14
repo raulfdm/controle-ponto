@@ -1,5 +1,5 @@
-import { } from 'js/lib/fire-base.js';
-import { } from './polyfill/fetch-api';
+import 'js/lib/fire-base.js';
+import './polyfill/fetch-api';
 import { currentInstance } from './controllers/PontoController';
 import MaskHelper from './helpers/MaskHelper'
 
