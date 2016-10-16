@@ -26,6 +26,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         $('.dropdown-button').dropdown();
         
     } else {
-        window.location.href = "/autenticar.html";        
+        window.location.replace("/autenticar.html");        
     }
 });

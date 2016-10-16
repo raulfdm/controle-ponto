@@ -11,12 +11,11 @@ btnCadastroUser.addEventListener('click', function () {
     firebase
         .auth()
         .createUserWithEmailAndPassword(emailInput.value, passwordInput.value)
-        .then(function (resultado) {
-            //console.log(resultado);
+        .then(function (resultado) {            
             alert('sucesso!');
+            window.location.replace("/");
         })
-        .catch(function (error) {
-            //console.log(error.code, error.message);
+        .catch(function (error) {            
             alert('fail!');
         })
 });
@@ -25,12 +24,10 @@ btnLoginUser.addEventListener('click', function () {
     firebase
         .auth()
         .signInWithEmailAndPassword(emailInput.value, passwordInput.value)
-        .then(function (resultado) {
-            //console.log(resultado);
-            window.location.href = "/"
+        .then(function (resultado) {            
+            window.location.replace("/");
         })
-        .catch(function (error) {
-            //console.log(error.code, error.message);
+        .catch(function (error) {            
             alert('fail!');
         })
 });
