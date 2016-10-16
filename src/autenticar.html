@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body>
+	<main>
+		<section class="auth">
+			<article class="auth-infos">
+				<h3>Autenticação</h3>
+				<p>Você não está autenticado</p>
+			</article>
+			<article class="auth-login card">
+				<div class="input-field">
+					<input id="emailInput" type="email" class="validate">
+					<label for="emailInput">E-mail</label>
+				</div>
+				<div class="input-field">
+					<input id="passwordInput" type="password" class="validate">
+					<label for="passwordInput">Senha</label>
+				</div>
+				<div class="btn-acoes">
+					<a id="btnCadastroUser" class="waves-effect waves-light btn deep-purple darken-3">Cadastrar</a>
+					<a id="btnLoginUser" class="waves-effect waves-light btn blue darken-3">Entrar</a>
+				</div>
+			</article>
+		</section>
+	</main>
+
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/materialize.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
+	<script src="js/lib/fire-base.js"></script>		
+	<script src="js/config/auth.js"></script>
+</body>
+
+
+</html>
