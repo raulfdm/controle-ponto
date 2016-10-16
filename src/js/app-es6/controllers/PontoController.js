@@ -1,5 +1,6 @@
 import PontosView from '../views/PontosView';
 import ModalDeleteView from '../views/ModalDeleteView';
+import NavView from '../views/NavView';
 import ListaPonto from '../models/ListaPonto';
 import Mensagem from '../models/Mensagem';
 import Ponto from '../models/Ponto';
@@ -31,7 +32,10 @@ class PontoController {
 
         this._camposHora = document.querySelectorAll('.input-hora');
         this._listaPontos = new Bind(new ListaPonto(), new PontosView($('#pontosView'), this._horasDiarias.value, self), 'adiciona', 'esvazia');
+        
+        //Views
         this._modalDelete = new Bind($('#modalDeleteView'), new ModalDeleteView($('#modalDeleteView')));
+        this._navView = new Bind($('#navView'), new NavView($('#navView')));
 
         this._mensagem = new Mensagem();
 
