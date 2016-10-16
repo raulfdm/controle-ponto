@@ -2,107 +2,110 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Home</title>
+    <meta charset="UTF-8">
+    <title>Home</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="css/materialize.min.css">
-	<link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
+	<!--NAV-->
+    <div id="navView"></div>
+	<!--FIM-NAV-->
 
-	<main class="container">
-		<h1 class="center-align">Controle de Ponto</h1>
-
-
-		<div class="row">
-			<div class="col s1 push-s4">
-				<button class="btn  red darken-1 waves-effect waves-light btn-exclui">
+	<!--PRINCIPAL-->
+    <main class="container">
+        <h1 class="center-align">Controle de Ponto</h1>
+        <div class="row">
+            <div class="col s1 push-s4">
+                <button class="btn  red darken-1 waves-effect waves-light btn-exclui">
                             <i class="material-icons center">delete</i>
                 </button>
-			</div>
-			<div class="col s1 push-s5">
-				<button class="btn light-blue darken-1 waves-effect waves-light btn-carregar">
+            </div>
+            <div class="col s1 push-s5">
+                <button class="btn light-blue darken-1 waves-effect waves-light btn-carregar">
                             <i class="material-icons center">loop</i>
                 </button>
-			</div>
-		</div>
-		<div class="row">
+            </div>
+        </div>
+        <div class="row">
 
-			<form action="#" class="card col s4 form-cad-ponto">
-				<div class="row">
-					<h5 class="center-align">Cadastro</h5>
-				</div>
-				<div class="switch center-align">
-					<label>
-                        <span id="hora24" class="horaAtiva">24h</span>
-                        <input id="horaFormat" type="checkbox" data-hora="24">
-                        <span class="lever"></span>
-                        <span id="hora12">12h</span>
-                    </label>
-				</div>
-				<div class="row">
-					<div class="col s6">
-						<label for="">Data</label>
-						<input id="data_cadastro" name="data_cadastro" class="datepicker" type="date" required value="2016-05-05">
-					</div>
-					<div class=" col s6">
-						<label for="horaTrabalhada">Qtde. Horas Diárias</label>
-						<input class="hora-trabalhada" id="horaTrabalhada" name="horaTrabalhada" type="text" placeholder="08:00" required value="08:00">
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s6">
-						<label for="hora1">Hora1</label>
-						<input class="input-hora" id="hora1" name="hora1" type="text" placeholder="08:00" required value="08:00">
-					</div>
-					<div class="input-field col s6">
-						<label for="hora2">Hora2</label>
-						<input class="input-hora" id="hora2" name="hora2" type="text" placeholder="12:00" value="12:00">
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s6">
-						<label for="hora3">Hora3</label>
-						<input class="input-hora" id="hora3" name="hora3" type="text" placeholder="08:00" value="14:00">
-					</div>
-					<div class="input-field col s6">
-						<label for="hora4">Hora4</label>
-						<input class="input-hora" id="hora4" name="hora4" type="text" placeholder="08:00" value="15:56">
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s6">
-						<label for="hora5">Hora5</label>
-						<input class="input-hora" id="hora5" name="hora5" type="text" placeholder="13:00" disabled>
-					</div>
-					<div class="input-field col s6">
-						<label for="hora6">Hora6</label>
-						<input class="input-hora" id="hora6" name="hora6" type="text" placeholder="18:00" disabled>
-					</div>
-				</div>
-				<div class="row">
-					<button class="col s12 btn waves-effect waves-light center" type="submit" name="action">
+            <form action="#" class="card col s4 form-cad-ponto">
+                <div class="row">
+                    <h5 class="center-align">Cadastro</h5>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <label for="">Data</label>
+                        <input id="data_cadastro" name="data_cadastro" class="datepicker" type="date" required value="2016-05-05">
+                    </div>
+                    <div class=" col s6">
+                        <label for="horaTrabalhada">Qtde. Horas Diárias</label>
+                        <input class="hora-trabalhada" id="horaTrabalhada" name="horaTrabalhada" type="text" placeholder="08:00" required value="08:00">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="hora1">Hora1</label>
+                        <input class="input-hora" id="hora1" name="hora1" type="text" placeholder="08:00" required value="08:00">
+                    </div>
+                    <div class="input-field col s6">
+                        <label for="hora2">Hora2</label>
+                        <input class="input-hora" id="hora2" name="hora2" type="text" placeholder="12:00" value="12:00">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="hora3">Hora3</label>
+                        <input class="input-hora" id="hora3" name="hora3" type="text" placeholder="08:00" value="14:00">
+                    </div>
+                    <div class="input-field col s6">
+                        <label for="hora4">Hora4</label>
+                        <input class="input-hora" id="hora4" name="hora4" type="text" placeholder="08:00" value="15:56">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="hora5">Hora5</label>
+                        <input class="input-hora" id="hora5" name="hora5" type="text" placeholder="13:00" disabled>
+                    </div>
+                    <div class="input-field col s6">
+                        <label for="hora6">Hora6</label>
+                        <input class="input-hora" id="hora6" name="hora6" type="text" placeholder="18:00" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="light-blue darken-4 col s12 btn waves-effect waves-light center" type="submit" name="action">
                             Gravar <i class="material-icons center">done</i></button>
-				</div>
-			</form>
-			<div id="pontosView"></div>
-		</div>
-		<div id="modalDeleteView"></div>
-	</main>
+                </div>
+            </form>
+			<!--FIM-PRINCIPAL-->
 
-	<script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
-	<script src="js/lib/system.js"></script>
-	<script>
+			<!--LISTA-PONTOS-->
+            <div id="pontosView"></div>
+			<!--FIM-LISTA-PONTOS-->
+
+        </div>
+		
+		<!--MODAL-DELETE-->
+        <div id="modalDeleteView"></div>
+		<!--FIM-MODAL-DELETE-->
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/materialize.min.js"></script>
+    <script src="js/lib/system.js"></script>
+    <script>
         System.defaultJSExtensions = true; //permite a omissão de extensão            
         System.import('js/app/boot').catch(function(err) {
             console.log(err);
         });
     </script>
-	<script src="js/lib/jquery.min.js"></script>
-	<script src="js/lib/materialize.min.js"></script>
+
 
 
 </body>
