@@ -15,7 +15,7 @@
 		<section class="auth">
 			<article class="auth-infos">
 				<h3>Autenticação</h3>
-				<p>Você Não está autenticado</p>
+				<p>Você não está autenticado</p>
 			</article>
 			<article class="auth-login card">
 				<div class="input-field">
@@ -27,8 +27,8 @@
 					<label for="passwordInput">Senha</label>
 				</div>
 				<div class="btn-acoes">
-					<a class="waves-effect waves-light btn deep-purple darken-3">Cadastra</a>
-					<a class="waves-effect waves-light btn blue darken-3">Entrar</a>
+					<a id="btnCadastroUser" class="waves-effect waves-light btn deep-purple darken-3">Cadastrar</a>
+					<a id="btnLoginUser" class="waves-effect waves-light btn blue darken-3">Entrar</a>
 				</div>
 			</article>
 		</section>
@@ -36,6 +36,9 @@
 
 	<script src="js/lib/jquery.min.js"></script>
 	<script src="js/lib/materialize.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
+	<script src="js/lib/fire-base.js"></script>		
+	<script src="js/config/auth.js"></script>
 </body>
 
 
