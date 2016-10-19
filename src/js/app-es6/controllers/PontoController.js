@@ -3,11 +3,13 @@ import ModalDeleteView from '../views/ModalDeleteView';
 import NavView from '../views/NavView';
 import ListaPonto from '../models/ListaPonto';
 import Mensagem from '../models/Mensagem';
+import RegistroPonto from '../models/RegistroPonto'
 import Ponto from '../models/Ponto';
 import PontoService from '../services/PontoService';
 import DateHelper from '../helpers/DateHelper';
 import HoraHelper from '../helpers/HoraHelper';
 import MaskHelper from '../helpers/MaskHelper';
+import PontoHelper from '../helpers/PontoHelper';
 import Bind from '../helpers/Bind';
 
 class PontoController {
@@ -16,38 +18,29 @@ class PontoController {
         //o Bind associa o contexto do Document ao comportamento querySelector ($);
         let $ = document.querySelector.bind(document);
         let self = this;
-        //Elementos do Switch
-        this._horaFormat = $('#horaFormat');
-        this._hora12 = $('#hora12');
-        this._hora24 = $('#hora24');
         //Formulário
-        this._data_cadastro = $('#data_cadastro');
-        this._horasDiarias = $('#horaTrabalhada');
-        this._hora1 = $('#hora1');
-        this._hora2 = $('#hora2');
-        this._hora3 = $('#hora3');
-        this._hora4 = $('#hora4');
-        this._hora5 = $('#hora5');
-        this._hora6 = $('#hora6');
+        this._data_registro = $('#data_registro');
+        this._hora_registro = $('#hora_registro');
 
-        this._camposHora = document.querySelectorAll('.input-hora');
-        this._listaPontos = new Bind(new ListaPonto(), new PontosView($('#pontosView'), this._horasDiarias.value, self), 'adiciona', 'esvazia');
-        
         //Views
+        this._listaPontos = new Bind(new ListaPonto(), new PontosView($('#pontosView'), self), 'adiciona', 'esvazia');
         this._modalDelete = new Bind($('#modalDeleteView'), new ModalDeleteView($('#modalDeleteView')));
         this._navView = new Bind($('#navView'), new NavView($('#navView')));
 
+        //Models
         this._mensagem = new Mensagem();
 
+        //Services
         this._pontoService = new PontoService();
 
-        this._init(self);
+        //Ponto
+        /*        var a = new Ponto();
+                console.log(a);
+                console.log(a._banco());*/
+
     }
 
     /************************Métodos Privados************************/
-    _init(self) {
-        this._adicionaEventos(self);
-    }
 
     _atualizaGrid() {
         this._listaPontos.esvazia(this._listaPontos);
@@ -55,14 +48,8 @@ class PontoController {
     }
 
     _limpaForm() {
-        //this._data_cadastro.value = '';
-        this._hora1.value = '';
-        this._hora1.focus();
-        this._hora2.value = '';
-        this._hora3.value = '';
-        this._hora4.value = '';
-        this._hora5.value = '';
-        this._hora6.value = '';
+        this._hora_registro.value = '';
+        this._hora_registro.focus();
 
         //reinicia os inputs (materializecss)
         $('.datepicker').pickadate({
@@ -72,46 +59,31 @@ class PontoController {
         });
     }
 
-    _adicionaEventos(self) {
-        //Revisar
-        /*this._horaFormat.addEventListener('change', function () {
-
-            if (this.dataset.hora == 24) {
-                this.dataset.hora = 12;
-                self._hora24.classList.remove('horaAtiva');
-                self._hora12.classList.add('horaAtiva');
-
-            } else {
-                this.dataset.hora = 24;
-                self._hora12.classList.remove('horaAtiva');
-                self._hora24.classList.add('horaAtiva');
-            }
-        })*/
-    }
-
     /************************Métodos Públicos************************/
     adicionaPonto(event) {
         event.preventDefault();
 
-        let ponto = new Ponto(
-            DateHelper.dataParaTexto(new Date(this._data_cadastro.value)),
-            HoraHelper.getMilissegundos(this._hora1.value),
-            HoraHelper.getMilissegundos(this._hora2.value),
-            HoraHelper.getMilissegundos(this._hora3.value),
-            HoraHelper.getMilissegundos(this._hora4.value),
-            HoraHelper.getMilissegundos(this._hora5.value),
-            HoraHelper.getMilissegundos(this._hora6.value)
+        let data = new Date(moment(this._data_registro.value + this._hora_registro.value, 'DD-MM-YYYYHH:mm'));
+        let idUsuario = firebase.auth().currentUser.uid;
+
+        let registro = new RegistroPonto(
+            new Date(moment(this._data_registro.value + this._hora_registro.value, 'DD-MM-YYYYHH:mm')),
+            idUsuario
         );
+
         //Evitando Callback Hell
         Promise.all([
-            this._pontoService.salvarPonto(ponto)
-        ]).then(mensagem => {
-            this._listaPontos.adiciona(ponto);
-            this._limpaForm();
-            this._atualizaGrid();
-            this._mensagem.toast = "Ponto adicionado com sucesso";
-        })
-            .catch(error => this._mensagem.toast = error);
+                this._pontoService.salvarRegistro(registro)
+            ]).then(mensagem => {
+                this._listaPontos.adiciona(registro);
+                this._limpaForm();
+                this._atualizaGrid();
+                this._mensagem.toast = "Ponto adicionado com sucesso";
+            })
+            .catch(error => {
+                console.log(error);    
+                return this._mensagem.toast = error
+            });
 
     }
 
@@ -140,39 +112,52 @@ class PontoController {
 
         //Evitando Callback Hell
         Promise.all([
-            this._pontoService.obterPontos()
+                this._pontoService.obterPontos()
                 //Pega o retorno dos pontos para tratar antes
-                .then(pontos =>
+                .then(pontos => {
                     //O filter vai avaliar os elementos que retornarão para a 
-                    //inserção dos pontos na lista
-                    pontos.filter(ponto =>
+                    //inserção dos pontos na lista                    
+
+                    return PontoHelper.groupBy(pontos, (y) => moment(y._dataRegistro).format('YYYY-MM-DD'));
+
+                    /*return pontos.filter(ponto =>
                         //Itera item a item da lista de pontos
                         //Se o ponto da lista de pontos for igual ao ponto
                         //que foi obtido pelo service, ele não retorna, ou seja,
                         //Ele não será inserido novamente
+                        console.log()
                         !this._listaPontos.pontos.some(pontoEx =>
                             //Maneira de validar objetos
                             JSON.stringify(pontoEx) == JSON.stringify(ponto)
-                        )))
+                        ))*/
+                })
 
-        ]).then(pontos => {
-            //Se a lista de pontos for diferente de 0, importa e da sucesso    
-            if (pontos[0].length != 0) {
-                pontos.reduce((retorno, item) => retorno.concat(item), [])
-                    .forEach(ponto => this._listaPontos.adiciona(ponto));
-                if (!funcionalidade) this._mensagem.toast = "Dados importados com sucesso";
+            ]).then(pontos => {                
+                this._listaPontos.adiciona(new Array(pontos[0]));
+                
+                //console.log(a);
+                //return
 
-            } else {
-                if (!funcionalidade) this._mensagem.toast = "Não há novos dados para importar";
-            }
+                //Se a lista de pontos for diferente de 0, importa e da sucesso    
+                /*if (pontos[0].length != 0) {
+                    pontos.reduce((retorno, item) => retorno.concat(item), [])
+                        .forEach(ponto => this._listaPontos.adiciona(ponto));
+                    if (!funcionalidade) this._mensagem.toast = "Dados importados com sucesso";
 
-        })
-            .catch(error => this._mensagem.toast = error);
+                } else {
+                    if (!funcionalidade) this._mensagem.toast = "Não há novos dados para importar";
+                }*/
+
+            })
+            .catch(error => {
+                console.log(error);
+            return this._mensagem.toast = error
+            });
     }
 
     excluiPonto(idPonto) {
 
-        let objecto = this._listaPontos._pontos.filter(function (ponto) {
+        let objecto = this._listaPontos._pontos.filter(function(ponto) {
             return ponto._id === idPonto;
         })
 

@@ -1,4 +1,5 @@
 import Ponto from '../models/Ponto';
+import RegistroPonto from '../models/RegistroPonto';
 import HttpService from './HttpService';
 
 class PontoService {
@@ -12,18 +13,18 @@ class PontoService {
         return new Promise((resolve, reject) => {
             this._http.get(this._urlPonto)
                 .then(pontos => {
+                                       
                     let listaPontos = [];
-                    for (let ponto in pontos) {
+                    let ponto;
+
+                    for (let idPonto in pontos) {
+                        ponto = pontos[idPonto];
+                        //console.log(ponto);
                         listaPontos.push(
-                            new Ponto(
-                                new Date(pontos[ponto].data_cadastro),
-                                pontos[ponto].hora1,
-                                pontos[ponto].hora2,
-                                pontos[ponto].hora3,
-                                pontos[ponto].hora4,
-                                pontos[ponto].hora5,
-                                pontos[ponto].hora6,
-                                ponto
+                            new RegistroPonto(
+                                new Date(ponto.data_registro),
+                                ponto.id_usuario,
+                                idPonto
                             ))
                     }
                     resolve(listaPontos);
@@ -39,9 +40,9 @@ class PontoService {
 
     }
 
-    salvarPonto(ponto) {
+    salvarRegistro(registro) {
         return new Promise((resolve, reject) => {
-            this._http.post(this._urlPonto, ponto)
+            this._http.post(this._urlPonto, registro)
                 .then(mensagem => resolve(mensagem)).catch(erro => {
                     console.log(erro);
                     reject('Não foi possível salvar os dados no banco!');
@@ -49,9 +50,9 @@ class PontoService {
         });
     }
 
-    apagarPonto(ponto) {
+    apagarPonto(registro) {
         return new Promise((resolve, reject) => {
-            this._http.delete(this._urlPonto, ponto)
+            this._http.delete(this._urlPonto, registro)
                 .then(mensagem => resolve(mensagem)).catch(erro => {
                     console.log(erro);
                     reject('Não foi possível excluir o ponto');
