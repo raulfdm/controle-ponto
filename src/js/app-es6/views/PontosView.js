@@ -5,62 +5,78 @@ import HoraHelper from '../helpers/HoraHelper';
 
 class PontosView extends View {
 
-    constructor(elemento, horasDiarias, contexto) {
+    constructor(elemento, contexto) {
         //elemento do DOM que receberá o TEMPLATE e passará para a classe PAI (view)
         super(elemento);
-        this._horasDiarias = horasDiarias;
 
-        elemento.addEventListener('click', function (e) {
+        /*elemento.addEventListener('click', function(e) {
 
             var idElemento = (e.target.parentNode.attributes.hasOwnProperty("id-banco") ? e.target.parentNode.attributes[0].textContent : null);
 
-            if (e.target.nodeName == 'TD' && idElemento) {                
-                let modal = new Modal(idElemento, contexto);                
+            if (e.target.nodeName == 'TD' && idElemento) {
+                let modal = new Modal(idElemento, contexto);
             }
-        })
+        })*/
     }
 
     template(model) {
 
+        let listaPontos = [];
+        let somaHorasTrabalahdas = 0;
+        let somaBancoDeHoras = 0;
+
+        model._pontos.map(array => {
+            //Mapeia os objetos pra dentro da lista fora do escopo
+            listaPontos = array.map(pontoObj => pontoObj);
+            //Soma as horas trabalhadas e o banco 
+
+            listaPontos.forEach(function(element) {
+                somaHorasTrabalahdas += element.total;
+                somaBancoDeHoras += element.bancoHoras;
+            });
+
+        })
+
+        listaPontos.map(n=>{
+            console.log(n);
+        })
+
+        console.log(HoraHelper.getHoraString(moment.duration(somaHorasTrabalahdas, 'milliseconds')));
         return `
-            <table class="highlight centered responsive-table card col s8 push-s1 table-ponto">
+         <table class="highlight centered responsive-table card table-ponto">
                 <thead>
                     <tr>
                         <th>Data</th>
-                        <th>Hora-1</th>
-                        <th>Hora-2</th>
-                        <th>Hora-3</th>
-                        <th>Hora-4</th>
-                        <th>Hora-5</th>
-                        <th>Hora-6</th>
+                        <th>Entrada</th>
+                        <th>Saída</th>
+                        <th>Entrada</th>
+                        <th>Saída</th>
+                        <th>Entrada</th>
+                        <th>Saída</th>
                         <th>Total Trabalho</th>
                         <th>Banco de horas</th>
                     </tr>
                 </thead>
                 <tbody>                    
-                    ${model._pontos.map(n => `
-                        <tr id-banco="${n._id}">
-                            <td>${DateHelper.dataParaTexto(n._data_cadastro)}</td>
-                            <td>${HoraHelper.getHoraString(n._hora1)}</td>
-                            <td>${HoraHelper.getHoraString(n._hora2)}</td>
-                            <td>${(HoraHelper.getHoraString(n._hora3) ? HoraHelper.getHoraString(n._hora3) : '-')}</td>
-                            <td>${(HoraHelper.getHoraString(n._hora4) ? HoraHelper.getHoraString(n._hora4) : '-')}</td>
-                            <td>${HoraHelper.getHoraString(n._hora5)}</td>
-                            <td>${HoraHelper.getHoraString(n._hora6)}</td>
-                            <td>${HoraHelper.getHoraString(n._total)}</td>
-                            <td>${HoraHelper.getHoraString(n._total - HoraHelper.getMilissegundos(this._horasDiarias))}</td>
+                    ${listaPontos.map(n => `
+                        <tr>                            
+                            <td>${n.data}</td>
+                            <td> ${n.entrada1}</td>
+                            <td> ${n.saida1}</td>
+                            <td> ${n.saida2}</td>
+                            <td> ${n.entrada2}</td>
+                            <td> ${n.entrada3}</td>                                                        
+                            <td> ${n.saida3}</td>
+                            <td>${n.totalFormatado}</td>
+                            <td>${n.bancoHorasFormatado}</td>
                         <tr>
                         `
             ).join('')/** O join concatena os elementos de um array em uma mega string */}
                 </tbody>
-                <tfoot>
                 
-                        <td colspan="7"></td>
-                        <td>${HoraHelper.getHoraString(model.horasTrabalhadas)}</td>
-                        <td>${''}</td>
-                </tfoot>
             </table>
         `;
+
     }
 }
 
