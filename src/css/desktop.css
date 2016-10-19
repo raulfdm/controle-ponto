@@ -1,0 +1,29 @@
+@media (min-width: 500px) {
+    .form-busca-pontos {
+        flex-wrap: nowrap;
+    }
+    .form-busca-pontos>select,
+    .form-busca-pontos>.btn {
+        margin-right: 1em;
+    }
+    .form-busca-pontos>select {
+        margin-bottom: 0 !important;
+        width: 20%;
+    }
+    .form-busca-pontos>.btn {
+        width: 10%;
+    }
+    /*Modal - Registro de Ponto*/
+    #modal-registro {
+        width: 50%;
+        max-height: 20em;
+    }
+    .form-cadastro-ponto {
+        flex-wrap: nowrap;
+        justify-content: space-around;
+    }
+    .form-cadastro-ponto>div {
+        margin-right: 1em;
+        max-width: 60%;
+    }
+}

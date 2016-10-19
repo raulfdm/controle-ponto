@@ -1,35 +1,107 @@
-.form-cad-ponto {
-    padding: 30px !important;
+@import url('desktop.css');
+
+/*Principais*/
+
+body {
+    height: 100%;
 }
 
-table.centered tfoot td {
-    text-align: center;
+body {
+    margin: 0px;    
+    padding: 0px;
+}
+
+
+/*Menu Navegação*/
+
+nav {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.email-usuario {
+    margin-right: 10px;
+}
+
+
+/*Titulo Principal*/
+
+.titulo-aplicacao {
+    margin-bottom: 1em;
+}
+
+
+/*Container Principal*/
+
+main {
+    margin-bottom: 3em;
+}
+
+
+/*Tabela Pontos*/
+
+#pontosView {
+    width: 100%;
+    margin-bottom: 3em;
 }
 
 table.highlight>tbody>tr:hover {
     cursor: pointer;
 }
 
-.switch {
-    margin-bottom: 30px;
+
+/*Formulário de buscar pontos*/
+
+.component-pesquisa-pontos {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.switch label .lever {
-    background-color: #84c7c1;
+.form-busca-pontos {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 2em;
+    justify-content: center;
+    align-items: center;
 }
 
-.switch label .lever:after {
-    background-color: #26a69a;
+.form-busca-pontos>select {
+    margin-bottom: 1em;
+    max-width: 80%;
 }
 
-.horaAtiva {
-    color: #26a69a;
+.form-busca-pontos>.btn {
+    margin-right: 1em;
 }
+
+
+/*MODAL Registro-Ponto*/
+
+#modal-registro {
+    height: 60vmax;
+}
+
+.form-cadastro-ponto {
+    padding: 2em !important;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start
+}
+
+.form-cadastro-ponto>div {
+    width: 100%;
+}
+
+.btn-modal-registro {
+    bottom: 20px;
+    right: 20px;
+}
+
+
+/*Modal excluir Ponto*/
 
 .btn-modal-sim {
     color: white;
-}
-
-.email-usuario{
-    margin-right: 10px;
 }
