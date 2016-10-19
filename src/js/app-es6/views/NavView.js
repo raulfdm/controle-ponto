@@ -9,13 +9,13 @@ class NavView extends View {
     }        
 
     template(model) {        
-        return `        
+        return `               
         <ul id="dropdown-options-menu" class="dropdown-content">
             <li><a onclick="firebase.auth().signOut()" id="btn-logout" href="#!">Log Out</a></li>
         </ul>
-        <nav class="light-blue darken-4">
+        <nav class="light-blue darken-4">        
             <div class="nav-wrapper">
-                <ul class="right hide-on-med-and-down">
+                <ul class="right">
                     <li class="email-usuario"></li>
                     <li><a class="dropdown-button" data-beloworigin="true" href="#!" data-activates="dropdown-options-menu"><i class="material-icons">more_vert</i></a></li>
                 </ul>
