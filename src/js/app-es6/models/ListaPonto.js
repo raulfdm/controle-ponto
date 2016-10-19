@@ -5,7 +5,7 @@ class ListaPonto {
     }
 
     adiciona(ponto) {
-        this._pontos.push(ponto);
+        this._pontos = [...ponto];
     }
 
     esvazia() {

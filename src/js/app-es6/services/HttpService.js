@@ -12,12 +12,13 @@ class HttpService {
         //Uso do fetch API
         return fetch(url)
             //Valida se deu erro na requisição
-            .then(response => this._handleErrors(response))
+            .then(response => this._handleErrors(response))            
             //Se não deu erro, pega a resposta e retorna um json
             .then(response => response.json());
     }
 
     post(url, dado) {
+
         return fetch(url, {
             headers: { 'Content-Type': 'application/json' },
             method: 'post',
@@ -33,7 +34,7 @@ class HttpService {
             let hash = element._id;
             envio = {
                 hash: {
-                    _data_cadastro: element._data_cadastro,
+                    _data_registro: element._data_registro,
 
                 }
             }
