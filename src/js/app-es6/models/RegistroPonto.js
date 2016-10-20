@@ -1,9 +1,8 @@
 class RegistroPonto {
 
-    constructor(dataRegistro,idUsuario,id = '') {
-        this._id = id;
-        this._dataRegistro = dataRegistro;        
-        this._idUsuario = idUsuario;        
+    constructor(dataRegistro, id = '') {        
+        this._id = id;                
+        this._data_registro = moment(dataRegistro).format();
         Object.freeze(this);
     }
 
@@ -11,19 +10,14 @@ class RegistroPonto {
     get id() {
         return this._id;
     }
-    get data_cadatro() {
-        return new this._dataRegistro;
+    get data_registro() {
+        return this._data_registro;
     }
 
-    get idUsuario(){
-        return this._idUsuario;
-    }
-   
     toString() {
-        return {
+        return { 
             id_ponto: this._id,
-            id_usuario: this._idUsuario,
-            data_registro: moment(this._dataRegistro).format()                      
+            data_registro: moment(this._data_registro).format()
         }
     }
 

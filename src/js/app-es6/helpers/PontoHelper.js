@@ -11,7 +11,6 @@ class PontoHelper {
         list.forEach(registro => {
 
             const key = keyGetter(registro);
-            //let reg = new R
 
             if (!map.has(key)) {
                 map.set(key, [registro]);
@@ -23,11 +22,11 @@ class PontoHelper {
         const resultado = [];
         let ponto;
 
-        for (var [data, registros] of map) {
-            ponto = new Ponto(data, _.orderBy(registros, ['_dataRegistro'], ['asc']));
+        for (let [data, registros] of map) {
+            ponto = new Ponto(data, _.orderBy(registros, ['_data_registro'], ['asc']));
             resultado.push(ponto);
         }
-        
+
         return resultado;
     }
 }

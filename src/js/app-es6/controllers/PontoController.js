@@ -1,12 +1,14 @@
 import PontosView from '../views/PontosView';
 import ModalDeleteView from '../views/ModalDeleteView';
+import ModalRegistraPontoView from '../views/ModalRegistraPontoView';
+import AdicionaRegistroView from '../views/AdicionaRegistroView';
+import BuscaPontosView from '../views/BuscaPontosView';
 import NavView from '../views/NavView';
 import ListaPonto from '../models/ListaPonto';
 import Mensagem from '../models/Mensagem';
 import RegistroPonto from '../models/RegistroPonto'
 import Ponto from '../models/Ponto';
 import PontoService from '../services/PontoService';
-import DateHelper from '../helpers/DateHelper';
 import HoraHelper from '../helpers/HoraHelper';
 import MaskHelper from '../helpers/MaskHelper';
 import PontoHelper from '../helpers/PontoHelper';
@@ -18,13 +20,15 @@ class PontoController {
         //o Bind associa o contexto do Document ao comportamento querySelector ($);
         let $ = document.querySelector.bind(document);
         let self = this;
-        //Formulário
-        this._data_registro = $('#data_registro');
-        this._hora_registro = $('#hora_registro');
-
+        //Formulário                    
+        this._data_registro;
+        this._hora_registro;
         //Views
         this._listaPontos = new Bind(new ListaPonto(), new PontosView($('#pontosView'), self), 'adiciona', 'esvazia');
         this._modalDelete = new Bind($('#modalDeleteView'), new ModalDeleteView($('#modalDeleteView')));
+        this._modalRegistro = new Bind($('#modalRegistraPontoView'), new ModalRegistraPontoView($('#modalRegistraPontoView')));
+        this._buscaPontosComponenet = new Bind($('#buscaPontosView'), new BuscaPontosView($('#buscaPontosView')));
+        this._adicionaRegistro = new Bind($('#adicionaRegistroView'), new AdicionaRegistroView($('#adicionaRegistroView')));
         this._navView = new Bind($('#navView'), new NavView($('#navView')));
 
         //Models
@@ -52,37 +56,31 @@ class PontoController {
         this._hora_registro.focus();
 
         //reinicia os inputs (materializecss)
-        $('.datepicker').pickadate({
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 16 // Creates a dropdown of 15 years to control year            
 
-        });
     }
 
     /************************Métodos Públicos************************/
     adicionaPonto(event) {
         event.preventDefault();
 
-        let data = new Date(moment(this._data_registro.value + this._hora_registro.value, 'DD-MM-YYYYHH:mm'));
-        let idUsuario = firebase.auth().currentUser.uid;
+        this._data_registro = document.querySelector('#data_registro');
+        this._hora_registro = document.querySelector('#hora_registro');
 
-        let registro = new RegistroPonto(
-            new Date(moment(this._data_registro.value + this._hora_registro.value, 'DD-MM-YYYYHH:mm')),
-            idUsuario
-        );
+        let data = new Date(moment(this._data_registro.value + this._hora_registro.value, 'DD-MM-YYYYHH:mm'));
+
+        let registro = new RegistroPonto(data);
 
         //Evitando Callback Hell
         Promise.all([
                 this._pontoService.salvarRegistro(registro)
             ]).then(mensagem => {
-                this._listaPontos.adiciona(registro);
                 this._limpaForm();
                 this._atualizaGrid();
                 this._mensagem.toast = "Ponto adicionado com sucesso";
             })
             .catch(error => {
-                console.log(error);    
-                return this._mensagem.toast = error
+                console.log(error);
+                return this._mensagem.toast = "Erro na execução. Verifique o console";
             });
 
     }
@@ -116,9 +114,10 @@ class PontoController {
                 //Pega o retorno dos pontos para tratar antes
                 .then(pontos => {
                     //O filter vai avaliar os elementos que retornarão para a 
-                    //inserção dos pontos na lista                    
-
-                    return PontoHelper.groupBy(pontos, (y) => moment(y._dataRegistro).format('YYYY-MM-DD'));
+                    //inserção dos pontos na lista                                                        
+                    return PontoHelper.groupBy(pontos, y => {                        
+                        return moment(y._data_registro).format('YYYY-MM-DD')
+                    });
 
                     /*return pontos.filter(ponto =>
                         //Itera item a item da lista de pontos
@@ -132,9 +131,10 @@ class PontoController {
                         ))*/
                 })
 
-            ]).then(pontos => {                
+            ]).then(pontos => {
+
                 this._listaPontos.adiciona(new Array(pontos[0]));
-                
+
                 //console.log(a);
                 //return
 
@@ -151,7 +151,7 @@ class PontoController {
             })
             .catch(error => {
                 console.log(error);
-            return this._mensagem.toast = error
+                return this._mensagem.toast = error
             });
     }
 
