@@ -7,17 +7,16 @@ class Ponto {
         let pontoZerado = new Date(2016, 1, 1, 0, 0, 0);
 
         this._dataPonto = dataPonto;
-        this._registros = registros ? registros : [];
-
+        this._registros = registros ? registros : [];        
         //Primeiro Par
-        this._entrada1 = moment.duration(moment(this._registros[0] ? this._registros[0]._dataRegistro : pontoZerado).format('HH:mm'));
-        this._saida1 = moment.duration(moment(this._registros[1] ? this._registros[1]._dataRegistro : pontoZerado).format('HH:mm'));
+        this._entrada1 = moment.duration(moment(this._registros[0] ? this._registros[0]._data_registro : pontoZerado).format('HH:mm'));
+        this._saida1 = moment.duration(moment(this._registros[1] ? this._registros[1]._data_registro : pontoZerado).format('HH:mm'));
         //Segundo Par
-        this._entrada2 = moment.duration(moment(this._registros[2] ? this._registros[2]._dataRegistro : pontoZerado).format('HH:mm'));
-        this._saida2 = moment.duration(moment(this._registros[3] ? this._registros[3]._dataRegistro : pontoZerado).format('HH:mm'));
+        this._entrada2 = moment.duration(moment(this._registros[2] ? this._registros[2]._data_registro : pontoZerado).format('HH:mm'));
+        this._saida2 = moment.duration(moment(this._registros[3] ? this._registros[3]._data_registro : pontoZerado).format('HH:mm'));
         //Terceiro Par
-        this._entrada3 = moment.duration(moment(this._registros[4] ? this._registros[4]._dataRegistro : pontoZerado).format('HH:mm'));
-        this._saida3 = moment.duration(moment(this._registros[5] ? this._registros[5]._dataRegistro : pontoZerado).format('HH:mm'));
+        this._entrada3 = moment.duration(moment(this._registros[4] ? this._registros[4]._data_registro : pontoZerado).format('HH:mm'));
+        this._saida3 = moment.duration(moment(this._registros[5] ? this._registros[5]._data_registro : pontoZerado).format('HH:mm'));
 
         this._horasDiarias = "08:00";
         this._tolerânciaDiaria = "00:10";

@@ -1,6 +1,5 @@
 import View from './View';
 import Modal from '../models/Modal';
-import DateHelper from '../helpers/DateHelper';
 import HoraHelper from '../helpers/HoraHelper';
 
 class PontosView extends View {
@@ -23,25 +22,18 @@ class PontosView extends View {
 
         let listaPontos = [];
         let somaHorasTrabalahdas = 0;
-        let somaBancoDeHoras = 0;
-
+        let somaBancoDeHoras = 0;        
         model._pontos.map(array => {
             //Mapeia os objetos pra dentro da lista fora do escopo
             listaPontos = array.map(pontoObj => pontoObj);
-            //Soma as horas trabalhadas e o banco 
-
+            //Soma as horas trabalhadas e o banco             
             listaPontos.forEach(function(element) {
                 somaHorasTrabalahdas += element.total;
                 somaBancoDeHoras += element.bancoHoras;
             });
 
-        })
-
-        listaPontos.map(n=>{
-            console.log(n);
-        })
-
-        console.log(HoraHelper.getHoraString(moment.duration(somaHorasTrabalahdas, 'milliseconds')));
+        })        
+        
         return `
          <table class="highlight centered responsive-table card table-ponto">
                 <thead>
@@ -63,8 +55,8 @@ class PontosView extends View {
                             <td>${n.data}</td>
                             <td> ${n.entrada1}</td>
                             <td> ${n.saida1}</td>
-                            <td> ${n.saida2}</td>
                             <td> ${n.entrada2}</td>
+                            <td> ${n.saida2}</td>                            
                             <td> ${n.entrada3}</td>                                                        
                             <td> ${n.saida3}</td>
                             <td>${n.totalFormatado}</td>
