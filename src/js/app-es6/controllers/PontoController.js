@@ -130,8 +130,21 @@ class PontoController {
                     //Pega o retorno dos pontos para tratar antes
                     .then(pontos => {
                         //O filter vai avaliar os elementos que retornarão para a 
-                        //inserção dos pontos na lista                                                        
-                        return PontoHelper.groupBy(pontos, y => {
+                        //inserção dos pontos na lista 
+                       /* console.log(pontos);
+                        pontos.filter(ponto => {
+                            //Itera item a item da lista de pontos
+                            //Se o ponto da lista de pontos for igual ao ponto
+                            //que foi obtido pelo service, ele não retorna, ou seja,
+                            //Ele não será inserido novamente                            
+                            
+                            this._listaPontos.pontos.some(pontoEx => {
+                                //Maneira de validar objetos
+                                console.log(pontoEx);
+                                JSON.stringify(pontoEx) == JSON.stringify(ponto)
+                            })
+                        })*/
+                        return PontoHelper.groupBy(pontos, y => {                            
                             return moment(y._data_registro).format('YYYY-MM-DD')
                         });
 
@@ -148,22 +161,8 @@ class PontoController {
                     })
 
                 ]).then(pontos => {
-
-                    this._listaPontos.adiciona(new Array(pontos[0]));
-
-                    //console.log(a);
-                    //return
-
-                    //Se a lista de pontos for diferente de 0, importa e da sucesso    
-                    /*if (pontos[0].length != 0) {
-                        pontos.reduce((retorno, item) => retorno.concat(item), [])
-                            .forEach(ponto => this._listaPontos.adiciona(ponto));
-                        if (!funcionalidade) this._mensagem.toast = "Dados importados com sucesso";
-
-                    } else {
-                        if (!funcionalidade) this._mensagem.toast = "Não há novos dados para importar";
-                    }*/
-
+                    this._listaPontos.adiciona(pontos[0]);
+                    this._mensagem.toast = "Dados importados com sucesso"
                 })
                 .catch(error => {
                     if (error = "0001") this._mensagem.toast = "Não há pontos cadastrados para esse período"

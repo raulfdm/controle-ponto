@@ -4,8 +4,9 @@ class ListaPonto {
         this._pontos = [];
     }
 
-    adiciona(ponto) {
-        this._pontos = [...ponto];
+    adiciona(pontos) {
+        let pontosOrderByData = _.orderBy(pontos,["data"],["asc"])            
+        this._pontos = [...new Array(pontosOrderByData)];
     }
 
     esvazia() {

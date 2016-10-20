@@ -33,7 +33,7 @@ class PontoService {
                                 ponto._data_registro,
                                 idPonto
                             ))
-                    }
+                    }                    
                     resolve(listaPontos);
                 })
                 .catch(error => reject(error))
