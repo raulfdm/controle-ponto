@@ -9,14 +9,20 @@ class PontoService {
         this._urlPonto = 'https://controle-ponto-cc043.firebaseio.com/pontos.json';
     }
 
-    obterPontos() {
+    obterPontos(mesAno) {
+
         let idUser = firebase.auth().currentUser.uid;
-        let urlFiltroUsuario = `${this._urlPonto}?orderBy="id_usuario"&equalTo="${idUser}"`;
-        var userId = firebase.auth().currentUser.uid;
+        let dateRange = {
+            inicio: moment(new Date(mesAno.ano, mesAno.mes, 1)).format('YYYY-MM-DD'),
+            fim: moment(new Date(mesAno.ano, parseInt(mesAno.mes) + 1, 0)).format('YYYY-MM-DD')
+        }
 
         return new Promise((resolve, reject) => {
-            firebase.database().ref(`/pontos/${idUser}/`).once('value')
+            firebase.database().ref(`/pontos/${idUser}/`)
+                .orderByChild('_data_registro').startAt(dateRange.inicio).endAt(dateRange.fim)
+                .once('value')
                 .then(snapshot => {
+                    if (!snapshot.val()) reject("0001");
                     let pontos = snapshot.val();
                     let listaPontos = [];
                     let ponto;
@@ -27,7 +33,7 @@ class PontoService {
                                 ponto._data_registro,
                                 idPonto
                             ))
-                    }                    
+                    }
                     resolve(listaPontos);
                 })
                 .catch(error => reject(error))
