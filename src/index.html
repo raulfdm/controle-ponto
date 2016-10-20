@@ -24,74 +24,27 @@
         <h1 class="titulo-aplicacao center-align">Controle de Ponto</h1>
 
         <!--MODAL-REGISTRA-PONTO-->
-        <div id="modal-registro" class="modal modal-fixed-footer">
-            <h5 class="center-align">Registro de Ponto</h5>
-            <div class="modal-container">
-                <form action="#" class="modal-content form-cadastro-ponto">
-                    <div class="input-field">
-                        <label for="">Data</label>
-                        <input id="data_registro" name="data_registro" type="text" readonly required>
-                    </div>
-                    <div class="input-field">
-                        <label for="hora_registro">Horário</label>
-                        <input class="input-hora" id="hora_registro" name="hora_registro" type="number" placeholder="08:00" required value="08:00">
-                    </div>
-                </form>
-                <div class="modal-footer">
-                    <button class="light-blue darken-4 col s12 btn waves-effect waves-light center" type="submit" name="action">
-                            Gravar <i class="material-icons center">done</i></button>
-                    <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>-->
-                </div>
-            </div>
-        </div>
+        <div id="modalRegistraPontoView"></div>
+        
         <!--FIM-MODAL-REGISTRA-PONTO-->
 
-        <!--LISTA-PONTOS-->
-        <div class="component-pesquisa-pontos">
-            <form class="form-busca-pontos">
-                <select class="browser-default" required>
-                    <option value="" disabled selected>Mês</option>
-                    <option value="0">Janeiro</option>
-                    <option value="1">Fevereiro</option>
-                    <option value="2">Março</option>
-                    <option value="3">Abril</option>
-                    <option value="4">Maio</option>
-                    <option value="5">Junho</option>
-                    <option value="6">Julho</option>
-                    <option value="7">Agosto</option>
-                    <option value="8">Setembro</option>
-                    <option value="9">Outubro</option>
-                    <option value="10">Novembro</option>
-                    <option value="11">Dezembro</option>                    
-                </select>
-                <select class="browser-default" required>
-                    <option value="" disabled selected>Ano</option>
-                    <option value="2015">2015</option>
-                    <option value="2016">2016</option>                                        
-                </select>
-                <button type="submit" class="btn light-blue darken-1 waves-effect waves-light btn-carregar">
-                            <i class="material-icons center">loop</i>
-                </button>
 
-                <a class="btn  red darken-1 waves-effect waves-light btn-exclui">
-                    <i class="material-icons center">delete</i>
-                </a>
-            </form>
+        <div class="main-component-ponto">
+            <div id="buscaPontosView"></div>
             <div id="pontosView"></div>
         </div>
-        <!--FIM-LISTA-PONTOS-->
+
 
         <!--MODAL-DELETE-->
         <div id="modalDeleteView"></div>
         <!--FIM-MODAL-DELETE-->
 
         <!--BOTÃO-TRIGGER-REGISTRAR-PONTO-->
-        <div class="fixed-action-btn btn-modal-registro">
-            <a data-target="modal-registro" class="btn-floating btn-large waves-effect waves-light red modal-trigger"><i class="material-icons">add</i></a>
-        </div>
+        <div id="adicionaRegistroView"></div>
         <!--FIM-BOTÃO-TRIGGER-REGISTRAR-PONTO-->
-    </main> 
-    
+
+    </main>
+
     <!--SCRIPTS-->
     <script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
     <script src="js/lib/jquery.min.js"></script>
