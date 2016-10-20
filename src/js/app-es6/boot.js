@@ -1,4 +1,4 @@
-import 'js/lib/fire-base.js';
+import 'js/lib/firebase.config.js';
 import './polyfill/fetch-api';
 import { currentInstance } from './controllers/PontoController';
 import MaskHelper from './helpers/MaskHelper';
