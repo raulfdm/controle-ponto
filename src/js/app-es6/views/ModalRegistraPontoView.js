@@ -1,11 +1,11 @@
-import View from './View'; 
+import View from './View';
 
 class ModalRegistraPontoView extends View {
 
     constructor(elemento) {
-            
+
         super(elemento);
-        
+
     }
 
     template(model) {
@@ -13,7 +13,7 @@ class ModalRegistraPontoView extends View {
         <div id="modal-registro" class="modal modal-fixed-footer">
             <h5 class="center-align">Registro de Ponto</h5>
             <div class="modal-container">
-                <form action="#" class="modal-content form-cadastro-ponto">
+                <form action="#" class="modal-content form-cadastro-ponto" id-registro="">
                     <div class="input-field">
                         <label for="">Data</label>
                         <input id="data_registro" name="data_registro" type="text" placeholder="30/12/1900" readonly required>

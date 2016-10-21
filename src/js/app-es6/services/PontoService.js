@@ -33,7 +33,7 @@ class PontoService {
                                 ponto._data_registro,
                                 idPonto
                             ))
-                    }                    
+                    }
                     resolve(listaPontos);
                 })
                 .catch(error => reject(error))
@@ -51,15 +51,15 @@ class PontoService {
                     reject(error);
                 })
         })
+    }
 
-
-        /*return new Promise((resolve, reject) => {
-            this._http.post(this._urlPonto, registro)
-                .then(mensagem => resolve(mensagem)).catch(erro => {
-                    console.log(erro);
-                    reject('Não foi possível salvar os dados no banco!');
-                })
-        });*/
+    alterarPonto(registro) {
+        let idUser = firebase.auth().currentUser.uid;
+        return new Promise((resolve, reject) => {
+            firebase.database().ref(`/pontos/${idUser}/${registro.id}`).update(registro)
+                .then(sucess => resolve('Sucess'))
+                .catch(error => reject(error))
+        })
     }
 
     apagarPonto(registro) {

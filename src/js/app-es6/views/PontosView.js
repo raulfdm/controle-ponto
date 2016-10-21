@@ -8,14 +8,19 @@ class PontosView extends View {
         //elemento do DOM que receberá o TEMPLATE e passará para a classe PAI (view)
         super(elemento);
 
-        /*elemento.addEventListener('click', function(e) {
-
-            var idElemento = (e.target.parentNode.attributes.hasOwnProperty("id-banco") ? e.target.parentNode.attributes[0].textContent : null);
-
-            if (e.target.nodeName == 'TD' && idElemento) {
-                let modal = new Modal(idElemento, contexto);
+        elemento.addEventListener('click', function(e) {
+            let idRegistro = e.target.id;
+            if (e.target.nodeName == 'TD' && idRegistro) {
+                document.querySelector('#data_registro').value = e.target.parentElement.childNodes[1].textContent;
+                document.querySelector('#hora_registro').value = e.target.textContent;
+                document.querySelector('.form-cadastro-ponto').attributes.getNamedItem("id-registro").value = idRegistro;
+                $('#modal-registro').openModal({
+                    complete: function() {
+                        contexto.limpaForm()
+                    }
+                });
             }
-        })*/
+        })
     }
 
     template(model) {
