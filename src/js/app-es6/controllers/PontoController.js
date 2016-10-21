@@ -149,7 +149,7 @@ class PontoController {
                     .then(pontos =>
                         PontoHelper.groupBy(pontos, y =>
                             moment(y._data_registro).format('YYYY-MM-DD')))
-                ]).then(pontos => {
+                ]).then(pontos => {                    
                     this._listaPontos.adiciona(pontos[0]);
                     this._loaderAtivo(false);
                     if (event) this._mensagem.toast = "Dados importados com sucesso"

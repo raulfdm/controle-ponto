@@ -7,7 +7,7 @@ class PontosView extends View {
     constructor(elemento, contexto) {
         //elemento do DOM que receberá o TEMPLATE e passará para a classe PAI (view)
         super(elemento);
-                
+
         /*elemento.addEventListener('click', function(e) {
 
             var idElemento = (e.target.parentNode.attributes.hasOwnProperty("id-banco") ? e.target.parentNode.attributes[0].textContent : null);
@@ -53,12 +53,12 @@ class PontosView extends View {
                     ${listaPontos.map(n => `
                         <tr>                            
                             <td>${n.data}</td>
-                            <td> ${n.entrada1}</td>
-                            <td> ${n.saida1}</td>
-                            <td> ${n.entrada2}</td>
-                            <td> ${n.saida2}</td>                            
-                            <td> ${n.entrada3}</td>                                                        
-                            <td> ${n.saida3}</td>
+                            <td id="${n.entrada1.id}"> ${n.entrada1.hora}</td>
+                            <td id="${n.saida1.id}"> ${n.saida1.hora}</td>
+                            <td id="${n.entrada2.id}"> ${n.entrada2.hora}</td>
+                            <td id="${n.saida2.id}"> ${n.saida2.hora}</td>   
+                            <td id="${n.entrada3.id}"> ${n.entrada3.hora}</td>                             
+                            <td id="${n.saida3.id}"> ${n.saida3.hora}</td>
                             <td>${n.totalFormatado}</td>
                             <td>${n.bancoHorasFormatado}</td>
                         <tr>
