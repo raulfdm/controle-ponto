@@ -7,7 +7,7 @@ body {
 }
 
 body {
-    margin: 0px;    
+    margin: 0px;
     padding: 0px;
 }
 
@@ -104,4 +104,19 @@ table.highlight>tbody>tr:hover {
 
 .btn-modal-sim {
     color: white;
+}
+
+
+/*PRELOADER*/
+
+.loader {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    padding: 23%;
+    background-color: rgba(0, 0, 0, .2);
+    z-index: 9999999;
+    display: none;
+    text-align: center;
 }

@@ -3,6 +3,7 @@ import ModalDeleteView from '../views/ModalDeleteView';
 import ModalRegistraPontoView from '../views/ModalRegistraPontoView';
 import AdicionaRegistroView from '../views/AdicionaRegistroView';
 import BuscaPontosView from '../views/BuscaPontosView';
+import LoaderView from '../views/LoaderView';
 import NavView from '../views/NavView';
 import ListaPonto from '../models/ListaPonto';
 import Mensagem from '../models/Mensagem';
@@ -35,6 +36,9 @@ class PontoController {
         this._buscaPontosComponenet = new Bind($('#buscaPontosView'), new BuscaPontosView($('#buscaPontosView')));
         this._adicionaRegistro = new Bind($('#adicionaRegistroView'), new AdicionaRegistroView($('#adicionaRegistroView')));
         this._navView = new Bind($('#navView'), new NavView($('#navView')));
+        this._loaderView = new Bind($('#loaderView'), new LoaderView($('#loaderView')));
+
+        this._loader = $('.loader');
 
         //Models
         this._mensagem = new Mensagem();
@@ -61,9 +65,14 @@ class PontoController {
     _limpaForm() {
         this._hora_registro.value = '';
         this._hora_registro.focus();
+    }
 
-        //reinicia os inputs (materializecss)
-
+    _loaderAtivo(ativo) {
+        if (!ativo) {
+            this._loader.style.display = 'none';
+        } else {
+            this._loader.style.display = 'block';
+        }
     }
 
     /************************Métodos Públicos************************/
@@ -115,6 +124,8 @@ class PontoController {
 
     importaPontos(event) {
 
+
+
         if (event) {
             this._mes_filtro = document.querySelector('.mes-filtro').value;
             this._ano_filtro = document.querySelector('.ano-filtro').value;
@@ -122,7 +133,8 @@ class PontoController {
 
 
         if (this._mes_filtro && this._ano_filtro) {
-
+            //ativa o loader
+            this._loaderAtivo(true);
             if (event) event.preventDefault();
 
             let mesAno = {
@@ -139,11 +151,14 @@ class PontoController {
                             moment(y._data_registro).format('YYYY-MM-DD')))
                 ]).then(pontos => {
                     this._listaPontos.adiciona(pontos[0]);
+                    this._loaderAtivo(false);
                     if (event) this._mensagem.toast = "Dados importados com sucesso"
                 })
                 .catch(error => {
-                    if (error = "0001") this._mensagem.toast = "Não há pontos cadastrados para esse período"
-                    else {
+                    if (error = "0001") {
+                        this._loaderAtivo(false);
+                        this._mensagem.toast = "Não há pontos cadastrados para esse período"
+                    } else {
                         console.log(error);
                         this._mensagem.toast = error
                     }
