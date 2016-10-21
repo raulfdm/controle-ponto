@@ -42,15 +42,17 @@ class PontoController {
         //Services
         this._pontoService = new PontoService();
 
-        //Ponto
-        /*        var a = new Ponto();
-                console.log(a);
-                console.log(a._banco());*/
-
     }
 
     /************************Métodos Privados************************/
+    _carregaPontosDoMes() {
+        let hoje = new Date();
 
+        this._mes_filtro = hoje.getMonth();
+        this._ano_filtro = hoje.getFullYear();
+
+        this._atualizaGrid();
+    }
     _atualizaGrid() {
         this._listaPontos.esvazia(this._listaPontos);
         this.importaPontos(null);
@@ -66,7 +68,7 @@ class PontoController {
 
     /************************Métodos Públicos************************/
     adicionaPonto(event) {
-        //Erro
+
         event.preventDefault();
 
         this._data_registro = document.querySelector('#data_registro');
@@ -110,20 +112,22 @@ class PontoController {
         }
     }
 
-    //Obs.: O parametro funcionalidade diz se a chamada está vindo de outra funcionalidade
-    //Implementação feita para evitar de spamar mensagens ao atualizar o Grid.
+
     importaPontos(event) {
 
-        this._mes_filtro = document.querySelector('.mes-filtro');
-        this._ano_filtro = document.querySelector('.ano-filtro');
+        if (event) {
+            this._mes_filtro = document.querySelector('.mes-filtro').value;
+            this._ano_filtro = document.querySelector('.ano-filtro').value;
+        }
 
-        if (this._mes_filtro.value && this._ano_filtro.value) {
+
+        if (this._mes_filtro && this._ano_filtro) {
 
             if (event) event.preventDefault();
 
             let mesAno = {
-                mes: this._mes_filtro.value,
-                ano: this._ano_filtro.value
+                mes: this._mes_filtro,
+                ano: this._ano_filtro
             }
 
             //Evitando Callback Hell

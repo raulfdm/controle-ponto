@@ -21,14 +21,14 @@ class BuscaPontosView extends View {
                     <option value="6">Julho</option>
                     <option value="7">Agosto</option>
                     <option value="8">Setembro</option>
-                    <option selected value="9">Outubro</option>
+                    <option value="9">Outubro</option>
                     <option value="10">Novembro</option>
                     <option value="11">Dezembro</option>                    
                 </select>
                 <select class="browser-default ano-filtro" required>
                     <option value="" disabled selected>Ano</option>
                     <option value="2015">2015</option>
-                    <option selected value="2016">2016</option>                                        
+                    <option value="2016">2016</option>                                        
                 </select>
                 <button type="submit" class="btn light-blue darken-1 waves-effect waves-light btn-carregar">
                             <i class="material-icons center">loop</i>
