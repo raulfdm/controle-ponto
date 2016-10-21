@@ -53,7 +53,7 @@ class PontoController {
 
     _atualizaGrid() {
         this._listaPontos.esvazia(this._listaPontos);
-        this.importaPontos(null, true);
+        this.importaPontos(null);
     }
 
     _limpaForm() {
@@ -66,6 +66,7 @@ class PontoController {
 
     /************************Métodos Públicos************************/
     adicionaPonto(event) {
+        //Erro
         event.preventDefault();
 
         this._data_registro = document.querySelector('#data_registro');
@@ -111,13 +112,14 @@ class PontoController {
 
     //Obs.: O parametro funcionalidade diz se a chamada está vindo de outra funcionalidade
     //Implementação feita para evitar de spamar mensagens ao atualizar o Grid.
-    importaPontos(event, funcionalidade = false) {
+    importaPontos(event) {
 
         this._mes_filtro = document.querySelector('.mes-filtro');
         this._ano_filtro = document.querySelector('.ano-filtro');
 
         if (this._mes_filtro.value && this._ano_filtro.value) {
-            event.preventDefault();
+
+            if (event) event.preventDefault();
 
             let mesAno = {
                 mes: this._mes_filtro.value,
@@ -128,41 +130,12 @@ class PontoController {
             Promise.all([
                     this._pontoService.obterPontos(mesAno)
                     //Pega o retorno dos pontos para tratar antes
-                    .then(pontos => {
-                        //O filter vai avaliar os elementos que retornarão para a 
-                        //inserção dos pontos na lista 
-                       /* console.log(pontos);
-                        pontos.filter(ponto => {
-                            //Itera item a item da lista de pontos
-                            //Se o ponto da lista de pontos for igual ao ponto
-                            //que foi obtido pelo service, ele não retorna, ou seja,
-                            //Ele não será inserido novamente                            
-                            
-                            this._listaPontos.pontos.some(pontoEx => {
-                                //Maneira de validar objetos
-                                console.log(pontoEx);
-                                JSON.stringify(pontoEx) == JSON.stringify(ponto)
-                            })
-                        })*/
-                        return PontoHelper.groupBy(pontos, y => {                            
-                            return moment(y._data_registro).format('YYYY-MM-DD')
-                        });
-
-                        /*return pontos.filter(ponto =>
-                            //Itera item a item da lista de pontos
-                            //Se o ponto da lista de pontos for igual ao ponto
-                            //que foi obtido pelo service, ele não retorna, ou seja,
-                            //Ele não será inserido novamente
-                            console.log()
-                            !this._listaPontos.pontos.some(pontoEx =>
-                                //Maneira de validar objetos
-                                JSON.stringify(pontoEx) == JSON.stringify(ponto)
-                            ))*/
-                    })
-
+                    .then(pontos =>
+                        PontoHelper.groupBy(pontos, y =>
+                            moment(y._data_registro).format('YYYY-MM-DD')))
                 ]).then(pontos => {
                     this._listaPontos.adiciona(pontos[0]);
-                    this._mensagem.toast = "Dados importados com sucesso"
+                    if (event) this._mensagem.toast = "Dados importados com sucesso"
                 })
                 .catch(error => {
                     if (error = "0001") this._mensagem.toast = "Não há pontos cadastrados para esse período"
