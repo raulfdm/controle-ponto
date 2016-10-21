@@ -25,6 +25,7 @@ class PontoController {
         ////Registro de Ponto                    
         this._data_registro;
         this._hora_registro;
+        this._id_registroElement;
         ////Busca de Pontos
         this._mes_filtro;
         this._ano_filtro;
@@ -45,7 +46,6 @@ class PontoController {
 
         //Services
         this._pontoService = new PontoService();
-
     }
 
     /************************Métodos Privados************************/
@@ -62,11 +62,6 @@ class PontoController {
         this.importaPontos(null);
     }
 
-    _limpaForm() {
-        this._hora_registro.value = '';
-        this._hora_registro.focus();
-    }
-
     _loaderAtivo(ativo) {
         if (!ativo) {
             this._loader.style.display = 'none';
@@ -75,13 +70,9 @@ class PontoController {
         }
     }
 
-    /************************Métodos Públicos************************/
-    adicionaPonto(event) {
+    _adicionaPonto(event) {
 
         event.preventDefault();
-
-        this._data_registro = document.querySelector('#data_registro');
-        this._hora_registro = document.querySelector('#hora_registro');
 
         let data = new Date(moment(this._data_registro.value + this._hora_registro.value, 'DD-MM-YYYYHH:mm'));
 
@@ -91,16 +82,56 @@ class PontoController {
         Promise.all([
                 this._pontoService.salvarRegistro(registro)
             ]).then(mensagem => {
-                this._limpaForm();
+                this.limpaForm();
                 this._atualizaGrid();
-                this._mensagem.toast = "Ponto adicionado com sucesso";
+                this._mensagem.toast = "Ponto adicionado com sucesso!";
             })
             .catch(error => {
-                console.log(error);
-                return this._mensagem.toast = "Erro na execução. Verifique o console";
+                console.error(error)
+                this._mensagem.toast = "Erro na adição do ponto. Por favor, verifique o console";
             });
 
     }
+    _alteraPonto(event) {
+        let data = new Date(moment(this._data_registro.value + this._hora_registro.value, 'DD-MM-YYYYHH:mm'));
+        let registro = new RegistroPonto(data, this._idRegistroPonto);
+        Promise.all([this._pontoService.alterarPonto(registro)])
+            .then(callback => {
+                this.limpaForm();
+                this._atualizaGrid();
+                $('#modal-registro').closeModal();
+                this._mensagem.toast = "Ponto alterado com sucesso!";
+            }).catch(error => {
+                console.error(error)
+                this._mensagem.toast = "Erro na alteração do registro.Por favor, verifique o console";
+            })
+
+    }
+    _getElementosFormularioPonto() {
+        this._id_registroElement = document.querySelector('.form-cadastro-ponto');
+        this._data_registro = document.querySelector('#data_registro');
+        this._hora_registro = document.querySelector('#hora_registro');
+    }
+
+    /************************Métodos Públicos************************/
+    limpaForm() {
+        this._getElementosFormularioPonto();
+        this._idRegistroPonto = '';
+        this._hora_registro.value = '';
+        this._hora_registro.focus();
+
+    }
+
+    salvaPonto(event) {
+        this._getElementosFormularioPonto();
+
+        if (!this._idRegistroPonto) {
+            this._adicionaPonto(event);
+        } else {
+            this._alteraPonto(event);
+        }
+    }
+
 
     limpaGrid(chamada = null) {
 
@@ -123,9 +154,6 @@ class PontoController {
 
 
     importaPontos(event) {
-
-
-
         if (event) {
             this._mes_filtro = document.querySelector('.mes-filtro').value;
             this._ano_filtro = document.querySelector('.ano-filtro').value;
@@ -178,6 +206,13 @@ class PontoController {
                 this._atualizaGrid();
                 this._mensagem.toast = "Ponto excluído com sucesso!";
             }).catch(err => console.log(err));
+    }
+
+    get _idRegistroPonto() {
+        return this._id_registroElement.attributes.getNamedItem("id-registro").value;
+    }
+    set _idRegistroPonto(value) {
+        this._id_registroElement.attributes.getNamedItem("id-registro").value = value;
     }
 
 };
