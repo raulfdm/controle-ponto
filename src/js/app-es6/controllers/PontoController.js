@@ -57,9 +57,9 @@ class PontoController {
 
         this._atualizaGrid();
     }
-    _atualizaGrid() {
+    _atualizaGrid(data) {
         this._listaPontos.esvazia(this._listaPontos);
-        this.importaPontos(null);
+        this.importaPontos(null, data);
     }
 
     _loaderAtivo(ativo) {
@@ -83,7 +83,7 @@ class PontoController {
                 this._pontoService.salvarRegistro(registro)
             ]).then(mensagem => {
                 this.limpaForm();
-                this._atualizaGrid();
+                this._atualizaGrid(data);
                 this._mensagem.toast = "Ponto adicionado com sucesso!";
             })
             .catch(error => {
@@ -153,10 +153,16 @@ class PontoController {
     }
 
 
-    importaPontos(event) {
+    importaPontos(event, data = '') {
+
         if (event) {
             this._mes_filtro = document.querySelector('.mes-filtro').value;
             this._ano_filtro = document.querySelector('.ano-filtro').value;
+        }
+        if (data) {
+            let dataDate = new Date(data);
+            this._mes_filtro = dataDate.getMonth();
+            this._ano_filtro = dataDate.getFullYear();
         }
 
 
