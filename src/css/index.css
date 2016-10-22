@@ -53,6 +53,10 @@ table.highlight>tbody>tr:hover {
 
 /*Formulário de buscar pontos main-component-ponto*/
 
+#buscaPontosView {
+    width: 100%;
+}
+
 .main-component-ponto {
     display: flex;
     flex-wrap: wrap;
