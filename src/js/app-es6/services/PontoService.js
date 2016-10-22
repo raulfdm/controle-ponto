@@ -59,13 +59,14 @@ class PontoService {
     }
 
     apagarPonto(registro) {
+        let idUser = firebase.auth().currentUser.uid;
+
+        //console.warn(registro,idUser,'oi')
         return new Promise((resolve, reject) => {
-            this._http.delete(this._urlPonto, registro)
-                .then(mensagem => resolve(mensagem)).catch(erro => {
-                    console.log(erro);
-                    reject('Não foi possível excluir o ponto');
-                })
-        });
+            firebase.database().ref(`/pontos/${idUser}/${registro}`).remove()
+                .then(sucess => resolve('Sucess'))
+                .catch(error => reject(error))
+        })
     }
 }
 

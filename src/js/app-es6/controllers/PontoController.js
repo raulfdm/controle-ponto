@@ -1,5 +1,4 @@
 import PontosView from '../views/PontosView';
-import ModalDeleteView from '../views/ModalDeleteView';
 import ModalRegistraPontoView from '../views/ModalRegistraPontoView';
 import AdicionaRegistroView from '../views/AdicionaRegistroView';
 import BuscaPontosView from '../views/BuscaPontosView';
@@ -33,8 +32,7 @@ class PontoController {
 
         //Views
         this._somaHoraView = new Bind($('#somaHorasView'), new SomaHorasView($('#somaHorasView')));
-        this._modalDelete = new Bind($('#modalDeleteView'), new ModalDeleteView($('#modalDeleteView')));
-        this._modalRegistro = new Bind($('#modalRegistraPontoView'), new ModalRegistraPontoView($('#modalRegistraPontoView')));
+        this._modalRegistro = new Bind($('#modalRegistraPontoView'), new ModalRegistraPontoView($('#modalRegistraPontoView'), self));
         this._buscaPontosComponenet = new Bind($('#buscaPontosView'), new BuscaPontosView($('#buscaPontosView')));
         this._adicionaRegistro = new Bind($('#adicionaRegistroView'), new AdicionaRegistroView($('#adicionaRegistroView')));
         this._navView = new Bind($('#navView'), new NavView($('#navView')));
@@ -187,14 +185,11 @@ class PontoController {
         }
     }
 
-    excluiPonto(idPonto) {
+    excluirPonto(idRegistro) {
 
-        let objecto = this._listaPontos._pontos.filter(function(ponto) {
-            return ponto._id === idPonto;
-        })
-
-        Promise.all([this._pontoService.apagarPonto(objecto)])
+        Promise.all([this._pontoService.apagarPonto(idRegistro)])
             .then(retorno => {
+                console.log(retorno);
                 this._atualizaGrid();
                 this._mensagem.toast = "Ponto excluído com sucesso!";
             }).catch(err => console.log(err));

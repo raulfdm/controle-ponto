@@ -2,9 +2,55 @@ import View from './View';
 
 class ModalRegistraPontoView extends View {
 
-    constructor(elemento) {
+    constructor(elemento, contexto) {
 
         super(elemento);
+        let contentExclusao;
+        let idTarget;
+        let idRegistro;
+        let showContentConfirmacao
+
+        //event bubbling        
+        elemento.addEventListener('click', function(e) {
+            contentExclusao = document.querySelector('.confirma-exclusao-content');
+
+            showContentConfirmacao = function(visible) {
+                if (visible) {
+                    contentExclusao.style.opacity = 1;
+                    contentExclusao.style.zIndex = 2;
+                } else {
+                    contentExclusao.style.opacity = 0;
+                    contentExclusao.style.zIndex = -1;
+                }
+            }
+
+
+            showContentConfirmacao(false);
+
+            //Pega o ID do target
+            idTarget = e.target.id;
+            //Pega o ID do Registro
+            idRegistro = document.querySelector('.form-cadastro-ponto').attributes.getNamedItem("id-registro").value;
+            //Validação para saber de onde veio o click
+            if (idTarget == 'btn-excluir-nao') {
+                showContentConfirmacao(false);
+            }
+
+            if (idTarget == 'btn-excluir-sim') {
+                showContentConfirmacao(false);
+                contexto.excluirPonto(idRegistro);
+                $('#modal-registro').closeModal();
+
+            }
+
+            if (idTarget == 'btn-deleta-ponto' || e.target.textContent == 'delete') {
+                if (idRegistro) {
+                    showContentConfirmacao(true)
+                }
+            }
+
+            //método para abstrair a visualização do elemento
+        })
 
     }
 
@@ -23,11 +69,15 @@ class ModalRegistraPontoView extends View {
                         <input class="input-hora" id="hora_registro" name="hora_registro" type="text" placeholder="08:00" required>                        
                     </div>
                 </form>
-                <div class="modal-footer">
-                    <button class="btn-registra-ponto light-blue darken-4 col s12 btn waves-effect waves-light center" type="submit" name="action">
-                            Gravar <i class="material-icons center">done</i></button>
-                    <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>-->
-                </div>
+                <div class="salva-deleta modal-footer">
+                    <button id="btn-deleta-ponto"><i class="material-icons center">delete</i></button>                                        
+                    <button id="btn-registra-ponto" class="btn-small light-blue darken-4 col s12 btn waves-effect waves-light center" type="submit" name="action"><i class="material-icons center">done</i></button>                                                                                                 
+                </div>                
+                    <div class="confirma-exclusao-content modal-footer">
+                        <p>Deseja excluir?</p>
+                        <button id="btn-excluir-nao" class="btn btn-small">Não</button>
+                        <button id="btn-excluir-sim" class="btn red lighten-2 btn-small">Sim</button>
+                    </div>                                                                                                                                                        
             </div>
         </div>
         `

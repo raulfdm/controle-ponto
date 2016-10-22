@@ -24,8 +24,8 @@ let btnLoginUser = document.getElementById('btnLoginUser');
 });*/
 
 
-formularioLogin.addEventListener('submit', function() {
-    fazerLogin()
+formularioLogin.addEventListener('submit', function(evento) {
+    fazerLogin(evento)
 });
 
 emailInput.addEventListener('keypress', function(e) {
