@@ -13,25 +13,25 @@
 <body>
     <main>
         <section class="auth">
-            <article class="auth-infos">
-                <h3>Autenticação</h3>
-                <p>Você não está autenticado</p>
-            </article>
-            <article class="auth-login card">
+            <h3 class="title-app">Pontex</h3>
+            <form class="auth-login">
                 <div class="input-field">
-                    <input id="emailInput" type="email" class="validate">
+                    <i class="material-icons prefix">email</i>
+                    <input id="emailInput" type="email" class="validate" required>
                     <label for="emailInput">E-mail</label>
                 </div>
                 <div class="input-field">
-                    <input id="passwordInput" type="password" class="validate">
+                    <i class="material-icons prefix">lock_outline</i>
+                    <input id="passwordInput" type="password" class="validate" required>
                     <label for="passwordInput">Senha</label>
                 </div>
                 <div class="btn-acoes">
-                    <a id="btnCadastroUser" class="waves-effect waves-light btn deep-purple darken-3">Cadastrar</a>
-                    <a id="btnLoginUser" class="waves-effect waves-light btn blue darken-3">Entrar</a>
+                    <button id="btnLoginUser" type="submit" class="waves-effect waves-light btn">Entrar</button>
+                    <a href="" class="forgot" id="linkForgotPassword">Esqueceu a senha?</a>
                 </div>
-            </article>
+            </form>
         </section>
+        <a href="#" class="signup" id="linkCadastroUser">Não possui conta? <span>Crie uma!</span></a>
     </main>
 
     <script src="js/lib/jquery.min.js"></script>
