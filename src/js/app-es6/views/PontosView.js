@@ -26,21 +26,25 @@ class PontosView extends View {
     template(model) {
 
             let listaPontos = [];
-            let somaHorasTrabalahdas = 0;
+            let somaHorasTrabalhadas = 0;
             let somaBancoDeHoras = 0;
             model._pontos.map(array => {
                 //Mapeia os objetos pra dentro da lista fora do escopo
                 listaPontos = array.map(pontoObj => pontoObj);
                 //Soma as horas trabalhadas e o banco             
                 listaPontos.forEach(function(element) {
-                    somaHorasTrabalahdas += element.total;
+
+                    somaHorasTrabalhadas += element.total;
                     somaBancoDeHoras += element.bancoHoras;
                 });
 
             })
+            
+            document.querySelector('#horasTrabalhadas').textContent = HoraHelper.getHoraString(moment.duration(somaHorasTrabalhadas, 'milliseconds'));
+            document.querySelector('#bancoDeHoras').textContent = HoraHelper.getHoraString(moment.duration(somaBancoDeHoras, 'milliseconds'));
 
             return `
-         <table class="highlight centered responsive-table card table-ponto">
+         <table class="highlight centered responsive-table table-ponto">
                 <thead>
                     <tr>
                         <th>Data</th>
@@ -72,6 +76,7 @@ class PontosView extends View {
                 </tbody>
                 
             </table>
+            
         `;
 
     }

@@ -5,6 +5,7 @@ import AdicionaRegistroView from '../views/AdicionaRegistroView';
 import BuscaPontosView from '../views/BuscaPontosView';
 import LoaderView from '../views/LoaderView';
 import NavView from '../views/NavView';
+import SomaHorasView from '../views/SomaHorasView';
 import ListaPonto from '../models/ListaPonto';
 import Mensagem from '../models/Mensagem';
 import RegistroPonto from '../models/RegistroPonto'
@@ -31,16 +32,15 @@ class PontoController {
         this._ano_filtro;
 
         //Views
-        this._listaPontos = new Bind(new ListaPonto(), new PontosView($('#pontosView'), self), 'adiciona', 'esvazia');
+        this._somaHoraView = new Bind($('#somaHorasView'), new SomaHorasView($('#somaHorasView')));
         this._modalDelete = new Bind($('#modalDeleteView'), new ModalDeleteView($('#modalDeleteView')));
         this._modalRegistro = new Bind($('#modalRegistraPontoView'), new ModalRegistraPontoView($('#modalRegistraPontoView')));
         this._buscaPontosComponenet = new Bind($('#buscaPontosView'), new BuscaPontosView($('#buscaPontosView')));
         this._adicionaRegistro = new Bind($('#adicionaRegistroView'), new AdicionaRegistroView($('#adicionaRegistroView')));
         this._navView = new Bind($('#navView'), new NavView($('#navView')));
         this._loaderView = new Bind($('#loaderView'), new LoaderView($('#loaderView')));
-
         this._loader = $('.loader');
-
+        this._listaPontos = new Bind(new ListaPonto(), new PontosView($('#pontosView'), self), 'adiciona', 'esvazia');
         //Models
         this._mensagem = new Mensagem();
 

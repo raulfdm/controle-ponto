@@ -43,7 +43,6 @@ main {
 
 #pontosView {
     width: 100%;
-    margin-bottom: 3em;
 }
 
 table.highlight>tbody>tr:hover {
@@ -123,4 +122,33 @@ table.highlight>tbody>tr:hover {
     z-index: 9999999;
     display: none;
     text-align: center;
+}
+
+#somaHorasView {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    font-size: 0.9em;
+    margin-top: 0;
+    margin-bottom: 6em;
+}
+
+#somaHorasView p {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    width: 50%;
+    padding: 1em;
+    margin-top: 0;
+}
+
+#somaHorasView p:first-child {
+    margin-right: 1em;
+}
+
+#somaHorasView p span {
+    letter-spacing: normal;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 0 .8em;
 }
