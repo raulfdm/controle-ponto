@@ -10,7 +10,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         var pontoController = new currentInstance();
 
         document.querySelector('.email-usuario').innerText = user.email;
-        document.querySelector('.btn-registra-ponto').onclick = pontoController.salvaPonto.bind(pontoController);
+        document.querySelector('#btn-registra-ponto').onclick = pontoController.salvaPonto.bind(pontoController);
         document.querySelector('.btn-carregar').onclick = pontoController.importaPontos.bind(pontoController);
         document.querySelectorAll('.input-hora').forEach((campo) => {
             campo.onkeypress = MaskHelper.mask.bind(pontoController);
