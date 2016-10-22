@@ -1,13 +1,9 @@
 import Ponto from '../models/Ponto';
 import RegistroPonto from '../models/RegistroPonto';
-import HttpService from './HttpService';
 
 class PontoService {
 
-    constructor() {
-        this._http = new HttpService();
-        this._urlPonto = 'https://controle-ponto-cc043.firebaseio.com/pontos.json';
-    }
+    constructor() {}
 
     obterPontos(mesAno) {
 
