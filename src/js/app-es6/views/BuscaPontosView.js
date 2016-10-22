@@ -32,11 +32,7 @@ class BuscaPontosView extends View {
                 </select>
                 <button type="submit" class="btn light-blue darken-1 waves-effect waves-light btn-carregar">
                             <i class="material-icons center">loop</i>
-                </button>
-
-                <a class="btn  red darken-1 waves-effect waves-light btn-exclui">
-                    <i class="material-icons center">delete</i>
-                </a>
+                </button>                
             </form>
         `
     }

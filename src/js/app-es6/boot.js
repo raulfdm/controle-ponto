@@ -12,7 +12,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         document.querySelector('.email-usuario').innerText = user.email;
         document.querySelector('.btn-registra-ponto').onclick = pontoController.salvaPonto.bind(pontoController);
         document.querySelector('.btn-carregar').onclick = pontoController.importaPontos.bind(pontoController);
-        document.querySelector('.btn-exclui').onclick = pontoController.limpaGrid.bind(pontoController);
         document.querySelectorAll('.input-hora').forEach((campo) => {
             campo.onkeypress = MaskHelper.mask.bind(pontoController);
             //campo.oninvalid = campo.setCustomValidity('Por favor, preencha o campo');    

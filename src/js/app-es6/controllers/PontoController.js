@@ -133,24 +133,8 @@ class PontoController {
     }
 
 
-    limpaGrid(chamada = false) {
-    
-        if (chamada) {
-            return this._listaPontos.esvazia(this._listaPontos);
-        }
-
-        if (this._listaPontos.pontos.length == 0) {            
-            this._mensagem.toast = 'Lista já está vazia';
-        } else {
-            if (!this._listaPontos.esvazia(this._listaPontos)) {
-                msg = 'Dados removidos com sucesso!';
-                this._mensagem.toast = msg;
-            } else {
-                msg = 'Não foi possível remover os dados';
-                this._mensagem.toast = msg;
-                throw new Error(msg);
-            }
-        }
+    limpaGrid() {
+        return this._listaPontos.esvazia(this._listaPontos);
     }
 
 
@@ -191,7 +175,7 @@ class PontoController {
                 })
                 .catch(error => {
                     if (error = "0001") {
-                        this.limpaGrid(true)
+                        this.limpaGrid()
                         this._loaderAtivo(false);
                         this._mensagem.toast = "Não há pontos cadastrados para esse período"
                     } else {
