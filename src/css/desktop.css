@@ -15,7 +15,7 @@
     }
     /*Modal - Registro de Ponto*/
     #modal-registro {
-        width: 50%;
+        width: 30%;
         max-height: 20em;
     }
     .form-cadastro-ponto {
@@ -24,6 +24,6 @@
     }
     .form-cadastro-ponto>div {
         margin-right: 1em;
-        max-width: 60%;
+        max-width: 80%;
     }
 }
