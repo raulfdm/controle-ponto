@@ -1,0 +1,11 @@
+//fonte
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative');
+@import '../reset';
+@import '../libs/materialize/materialize';
+@import 'helpers/mixins';
+@import 'helpers/variaveis';
+@import '_geral';
+@import 'partials/_titulo-aplicacao';
+@import './partials/_form-autenticar';
+@import './partials/_form-recuperar-senha';
+@import './partials/_link-cadastro-usuario';
