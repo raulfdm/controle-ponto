@@ -6,39 +6,63 @@
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/materialize.min.css">
-    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/autenticar.html/main.css">
 </head>
 
 <body>
     <main>
-        <section class="auth">
-            <h3 class="title-app">Pontex</h3>
-            <form class="auth-login">
+        <section class="title-app">
+            <h3>Pontex</h3>
+        </section>
+
+        <section class="formulario-autenticacao">
+            <form>
                 <div class="input-field">
                     <i class="material-icons prefix">email</i>
-                    <input id="emailInput" type="email" class="validate" required>
-                    <label for="emailInput">E-mail</label>
+                    <input id="emailLogin" type="email" class="validate" required>
+                    <label for="emailLogin">E-mail</label>
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">lock_outline</i>
-                    <input id="passwordInput" type="password" class="validate" required>
-                    <label for="passwordInput">Senha</label>
+                    <input id="passwordLogin" type="password" class="validate" required>
+                    <label for="passwordLogin">Senha</label>
                 </div>
                 <div class="btn-acoes">
                     <button id="btnLoginUser" type="submit" class="waves-effect waves-light btn">Entrar</button>
-                    <a href="" class="forgot" id="linkForgotPassword">Esqueceu a senha?</a>
+                    <a href="#modal-recuperar-senha" class="modal-trigger" id="linkForgotPassword">Esqueceu a senha?</a>
                 </div>
+
             </form>
         </section>
-        <a href="#" class="signup" id="linkCadastroUser">Não possui conta? <span>Crie uma!</span></a>
+
+        <section class="signup">
+            <p>Não possui conta? <a href="#" id="linkCadastroUser">Crie uma!</a></p>
+        </section>
+
+        <div id="modal-recuperar-senha" class="modal">
+            <div class="modal-content">
+                <form id="recuperar-senha">
+                    <h4>Resetar Senha</h4>
+                    <div class="input-field">
+                        <i class="material-icons prefix">email</i>
+                        <input id="emailRecuperar" type="email" class="validate" required>
+                        <label for="emailRecuperar">E-mail</label>
+                        <input type="submit" id="recupera-submit" style="display: none"></input>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <label for="recupera-submit" id="btnRecuperarSenha" type="submit" class="waves-effect waves-light btn ">Enviar Senha</label>
+            </div>
+        </div>
+
     </main>
 
-    <script src="js/lib/jquery.min.js"></script>
-    <script src="js/lib/materialize.min.js"></script>
-    <script src="js/lib/firebase.js"></script>
-    <script src="js/lib/firebase.config.js"></script>
-    <script src="js/config/auth.js"></script>
+    <script src="js/lib/jquery.min.js "></script>
+    <script src="js/lib/materialize.min.js "></script>
+    <script src="js/lib/firebase.js "></script>
+    <script src="js/lib/firebase.config.js "></script>
+    <script src="js/autenticar/main.js "></script>
 </body>
 
 
