@@ -47,6 +47,12 @@
         justify-content: space-around;
         z-index: -1;
         transition: all .6s;
+        p {
+            margin-top: 1em;
+        }
+        button {
+            padding: 0 1em;
+        }
     }
     .btn-modal-sim {
         color: white;

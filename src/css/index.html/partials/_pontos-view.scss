@@ -1,8 +1,13 @@
 #pontosView {
-    width: 100%;
-    .table-ponto tbody {
-        tr:hover {
-            cursor: pointer;
+    @include content;
+    .table-ponto {
+        tbody {
+            tr:hover {
+                cursor: pointer;
+            }
+        }
+        thead {
+            margin: 0;
         }
     }
 }

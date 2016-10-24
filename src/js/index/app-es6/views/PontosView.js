@@ -45,7 +45,7 @@ class PontosView extends View {
 
             return `
          <table class="highlight centered responsive-table table-ponto">
-                <thead class="z-depth-1">
+                <thead class="card">
                     <tr>
                         <th>Data</th>
                         <th>Entrada</th>
