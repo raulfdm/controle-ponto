@@ -56,7 +56,7 @@ function fazerLogin(e) {
     e.preventDefault();
     firebase
         .auth()
-        .signInWithEmailAndPassword(emailInput.value, passwordLogin.value)
+        .signInWithEmailAndPassword(emailLogin.value, passwordLogin.value)
         .then(function(resultado) {
             window.location.replace("/");
         })
