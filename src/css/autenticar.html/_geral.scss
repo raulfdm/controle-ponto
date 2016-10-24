@@ -1,0 +1,27 @@
+html,
+body {
+    @include altura100;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+main {
+    @include altura100;
+    background: linear-gradient(to bottom right, rgba(141, 210, 203, 0.95) 22%, rgba(1, 87, 155, 0.86) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    overflow: auto;
+    section {
+        width: 100%;
+        flex-shrink: 0;
+        @media (min-width: 600px) {
+            width: 50%;
+            max-width: 400px;
+        }
+    }
+}

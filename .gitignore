@@ -3,3 +3,7 @@ server/
 node_modules/
 app/
 npm-debug.log
+
+src/css/autenticar.html/.sass-cache/
+src/css/**/*.css
+src/css/**/*.css.map
