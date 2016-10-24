@@ -1,5 +1,5 @@
 //Form
-let formularioLogin = document.querySelector('.auth-login');
+let formularioLogin = document.querySelector('.formulario-autenticacao form');
 //inputs
 let emailInput = document.getElementById('emailInput');
 let passwordInput = document.getElementById('passwordInput');
