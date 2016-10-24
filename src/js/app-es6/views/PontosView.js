@@ -39,13 +39,13 @@ class PontosView extends View {
                 });
 
             })
-            
+
             document.querySelector('#horasTrabalhadas').textContent = HoraHelper.getHoraString(moment.duration(somaHorasTrabalhadas, 'milliseconds'));
             document.querySelector('#bancoDeHoras').textContent = HoraHelper.getHoraString(moment.duration(somaBancoDeHoras, 'milliseconds'));
 
             return `
          <table class="highlight centered responsive-table table-ponto">
-                <thead>
+                <thead class="z-depth-1">
                     <tr>
                         <th>Data</th>
                         <th>Entrada</th>

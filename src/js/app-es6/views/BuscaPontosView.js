@@ -10,7 +10,7 @@ class BuscaPontosView extends View {
     template(model) {
         return `        
             <form class="form-busca-pontos">
-                <select class="browser-default mes-filtro" required>
+                <select class="browser-default mes-filtro z-depth-1" required>
                     <option value="" disabled selected>Mês</option>
                     <option value="0">Janeiro</option>
                     <option value="1">Fevereiro</option>
@@ -25,12 +25,12 @@ class BuscaPontosView extends View {
                     <option value="10">Novembro</option>
                     <option value="11">Dezembro</option>                    
                 </select>
-                <select class="browser-default ano-filtro" required>
+                <select class="browser-default ano-filtro z-depth-1" required>
                     <option value="" disabled selected>Ano</option>
                     <option value="2015">2015</option>
                     <option value="2016">2016</option>                                        
                 </select>
-                <button type="submit" class="btn light-blue darken-1 waves-effect waves-light btn-carregar">
+                <button type="submit" class="btn light-blue darken-1 waves-effect waves-light btn-carregar btn-small z-depth-1">
                             <i class="material-icons center">loop</i>
                 </button>                
             </form>

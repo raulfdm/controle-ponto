@@ -1,0 +1,36 @@
+#buscaPontosView {
+    margin-bottom: 2em;
+    padding: 1em;
+}
+
+.form-busca-pontos {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: auto;
+    select {
+        margin-bottom: 1em;
+    }
+    .btn {
+        align-self: center;
+        margin: .6em;
+        padding: 0 1.75em;
+        width: 80%;
+    }
+    @media #{$mq-desktop-md} {
+        flex-direction: row;
+        justify-content: center;
+        select {
+            width: 20%;
+        }
+        .btn {
+            width: 10%;
+        }
+        select,
+        .btn {
+            margin-top: 0;
+            margin-right: 1em;
+        }
+    }
+}

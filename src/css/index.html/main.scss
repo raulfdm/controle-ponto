@@ -1,0 +1,11 @@
+@import '../reset';
+@import '../libs/materialize/materialize';
+@import '../helpers-global/variaveis';
+@import 'geral';
+@import 'partials/_adiciona-registro-view';
+@import 'partials/_busca-pontos-view';
+@import 'partials/_loader-view';
+@import 'partials/_modal-registro-view';
+@import 'partials/_pontos-view';
+@import 'partials/_soma-horas-view';
+@import 'partials/_titulo-aplicacao';
