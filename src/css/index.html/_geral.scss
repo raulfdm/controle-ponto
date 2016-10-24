@@ -1,20 +1,11 @@
+html {
+    background: $background-fundo-default;
+}
+
 body {
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    background-color: rgba(237, 236, 236, .5)
-}
-
-main {
-    display: flex;
     overflow: auto;
+    display: flex;
     flex-direction: column;
-    flex-shrink: 1;
-    margin-bottom: 3em;
-    padding: 0 1.5em;
-}
-
-//Estilos genéricos
-.btn-small {
-    padding: 0 1em;
+    justify-content: center;
+    padding-bottom: 4em;
 }
