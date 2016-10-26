@@ -2,6 +2,7 @@ testes/
 server/
 node_modules/
 app/
+.vscode/
 npm-debug.log
 
 src/css/**/*.sass-cache/
