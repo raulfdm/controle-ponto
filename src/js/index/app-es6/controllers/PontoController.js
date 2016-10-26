@@ -120,7 +120,7 @@ class PontoController {
 
     }
 
-    salvaPonto(event) {
+    salvaPonto(event) {        
         this._getElementosFormularioPonto();
 
         if (!this._idRegistroPonto) {

@@ -14,8 +14,8 @@ firebase.auth().onAuthStateChanged(function(user) {
             document.querySelector('.btn-carregar').onclick = pontoController.importaPontos.bind(pontoController);
             document.querySelector('.input-hora').onkeyup = MaskHelper.mask.bind(pontoController);
             Materialize.updateTextFields();
-           
-           //Eventos
+
+            //Eventos
             $('.dropdown-button').dropdown();
             $('.modal-trigger').leanModal({
                 complete: pontoController.limpaForm.bind(pontoController)
