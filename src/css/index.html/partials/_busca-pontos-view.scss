@@ -1,6 +1,6 @@
 #buscaPontosView {
     padding: 3em 2em;
-    @include content;
+    //@include content;
     @media #{$mq-desktop-md} {
         padding: 3em 2em 2em;
     }
