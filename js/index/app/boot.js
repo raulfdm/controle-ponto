@@ -46,7 +46,7 @@ System.register(['./controllers/PontoController', './helpers/MaskHelper'], funct
                     }
                 } else {
                     var locale = window.location.href;
-                    window.location.replace(locale + '/autenticar.html');
+                    window.location.replace(locale + 'autenticar.html');
                 }
             });
         }
