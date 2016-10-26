@@ -1,5 +1,4 @@
 import View from './View';
-import Modal from '../models/Modal';
 import HoraHelper from '../helpers/HoraHelper';
 
 class PontosView extends View {

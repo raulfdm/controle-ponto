@@ -6,9 +6,11 @@
     <title>Home</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css">
-    <link rel="stylesheet" href="css/index.html/main.css">
+    <!--build:css css/index.min.css-->
+    <link rel="stylesheet" href="css/compilado/index.css">
+    <!--endbuild-->
 </head>
 
 <body>
@@ -33,13 +35,17 @@
     <!--Preloader-->
     <div id="loaderView"></div>
     <!--SCRIPTS-->
+
+    <!--build:js js/index.min.js-->
     <script src="js/lib/firebase.js"></script>
+    <script src="js/lib/firebase.config.js"></script>
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/materialize.min.js"></script>
     <script src="js/lib/system.min.js"></script>
     <script src="js/lib/moment.min.js"></script>
     <script src="js/lib/pickaday-1.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/lodash/4.16.4/lodash.min.js"></script>
+    <script src="js/lib/lodash.min.js"></script>
+    <!--endbuild-->
     <script>
         System.defaultJSExtensions = true; //permite a omissão de extensão
         System.config({
@@ -51,6 +57,7 @@
         });
         System.import('js/index/app/boot').catch(err => console.log(err));
     </script>
+
     <!--FIM-SCRIPTS-->
 
 </body>
