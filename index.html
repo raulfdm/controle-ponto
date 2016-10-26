@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css">
+    <link rel="stylesheet" href="css/index.min.css"/>
+</head>
+
+<body>
+    <!--Navegação-->
+    <div id="navView"></div>
+
+    <!--Busca de pontos-->
+    <div id="buscaPontosView"></div>
+
+    <!--Tabela de exibição de Pontos-->
+    <div class="card" id="pontosView"></div>
+
+    <!--Quadros de somatória de Horas-->
+    <div id="somaHorasView"></div>
+
+    <!--Botão de acionamento do modal de Registro-->
+    <div id="adicionaRegistroView"></div>
+
+    <!--Modal de Registro/exclusão-->
+    <div id="modalRegistraPontoView"></div>
+
+    <!--Preloader-->
+    <div id="loaderView"></div>
+    <!--SCRIPTS-->
+
+    <script src="js/index.min.js"></script>
+    <script>
+        System.defaultJSExtensions = true; //permite a omissão de extensão
+        System.config({
+            meta: {
+                'moment': {
+                    format: 'global'
+                }
+            }
+        });
+        System.import('js/index/app/boot').catch(err => console.log(err));
+    </script>
+
+    <!--FIM-SCRIPTS-->
+
+</body>
+
+</html>
