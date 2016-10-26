@@ -1,8 +1,5 @@
-import 'js/lib/firebase.config.js';
-import './polyfill/fetch-api';
 import { currentInstance } from './controllers/PontoController';
 import MaskHelper from './helpers/MaskHelper';
-//
 
 firebase.auth().onAuthStateChanged(function(user) {
 
@@ -39,6 +36,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         }
 
     } else {
-        window.location.replace("/autenticar.html");
+        window.location.replace(`autenticar.html`);
     }
 });
