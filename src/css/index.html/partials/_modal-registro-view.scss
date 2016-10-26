@@ -1,5 +1,5 @@
 #modal-registro {
-    height: 60vmax;
+    min-height: 280px;
     @media #{$mq-desktop-md} {
         width: 30%;
         max-height: 20em;
