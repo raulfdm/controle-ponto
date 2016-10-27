@@ -12,12 +12,7 @@ System.register(['./controllers/PontoController', './helpers/MaskHelper'], funct
     }],
     execute: function () {
 
-      firebase.child('user').orderByChild('emailAddress').equalTo('raulfdm@hotmail.com').once('value', function (snap) {
-        console.log(snap.val());
-      });
-
       firebase.auth().onAuthStateChanged(function (user) {
-
         if (user) {
           var pontoController = new currentInstance();
           try {
