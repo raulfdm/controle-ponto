@@ -1,0 +1,21 @@
+//fonts
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative');
+//Reset
+@import '../reset';
+//Libs
+@import '../libs/materialize/materialize';
+//Helpers
+@import 'helpers/mixins';
+@import '../helpers-global/mixins';
+@import 'helpers/variaveis';
+@import '../helpers-global/variaveis';
+//Partials
+@import 'geral';
+@import 'partials/_nav-view';
+@import 'partials/_adiciona-registro-view';
+@import 'partials/_busca-pontos-view';
+@import 'partials/_loader-view';
+@import 'partials/_modal-registro-view';
+@import 'partials/_pontos-view';
+@import 'partials/_soma-horas-view';
+@import 'partials/_titulo-aplicacao';

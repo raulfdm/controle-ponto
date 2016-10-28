@@ -1,5 +1,13 @@
+#foldes
 testes/
 server/
 node_modules/
 app/
+.vscode/
+dist/
+.publish/
 npm-debug.log
+
+src/css/**/*.sass-cache/
+src/css/**/*.css
+src/css/**/*.css.map

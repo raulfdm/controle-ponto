@@ -1,0 +1,36 @@
+#buscaPontosView {
+    padding: 3em 2em;
+    //@include content;
+    @media #{$mq-desktop-md} {
+        padding: 3em 2em 2em;
+    }
+    .form-busca-pontos {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        select {
+            margin-bottom: 1em;
+            @media #{$mq-desktop-md} {
+                margin: 0;
+                width: 30%;
+                max-width: 170px;
+                margin-right: 1em;
+            }
+        }
+        .btn {
+            align-self: center;
+            margin: .6em;
+            padding: 0 1.75em;
+            width: 80%;
+            @media #{$mq-desktop-md} {
+                width: 10%;
+                margin: 0;
+                padding: 0;
+            }
+        }
+        @media #{$mq-desktop-md} {
+            flex-direction: row;
+            justify-content: center;
+        }
+    }
+}

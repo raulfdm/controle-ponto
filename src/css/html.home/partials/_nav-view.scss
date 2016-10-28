@@ -1,0 +1,36 @@
+#navView {
+    margin-top: 5px;
+    .dropdown-content {
+        /*li:first-child {
+            min-height: 2em;
+            padding-right: 10px;
+            padding-top: 3px;
+            background-color: #fefefe;
+            transition: all 10s;
+            &:hover {
+                cursor: default;
+                background-color: transparent;
+            }
+        }*/
+        li,
+        li>a {
+            color: $azul-default !important;
+        }
+    }
+}
+
+.main-nav {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    background-color: #fff;
+    color: $azul-default;
+    .dropdown-button i {
+        color: $azul-default;
+    }
+    .brand-logo {
+        font-family: 'Cinzel Decorative', cursive;
+        color: $azul-default;
+        text-transform: uppercase;
+    }
+}

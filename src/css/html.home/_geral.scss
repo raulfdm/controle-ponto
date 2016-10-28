@@ -1,0 +1,12 @@
+html {
+    background: $background-fundo-default;
+    height: 100%;
+}
+
+body {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 4em;
+}
