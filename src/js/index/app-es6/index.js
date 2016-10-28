@@ -57,7 +57,7 @@ function fazerLogin(e) {
     .auth()
     .signInWithEmailAndPassword(emailLogin.value, passwordLogin.value)
     .then(function (resultado) {
-      window.location.replace("index.html");
+      window.location.replace("home.html");
     })
     .catch(function (error) {
       Materialize.toast('Usuário ou senha incorretos', 4000);

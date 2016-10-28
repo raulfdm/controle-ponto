@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         Materialize.toast('Usuário cadastrado com sucesso', 4000);
 
         setTimeout(function() {
-          window.location.replace("index.html");
+          window.location.replace("home.html");
         }, 1000);
       })
       .catch(error => {

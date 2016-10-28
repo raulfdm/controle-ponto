@@ -36,6 +36,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         }
 
     } else {
-        window.location.replace(`autenticar.html`);
+        window.location.replace(`index.html`);
     }
 });

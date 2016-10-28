@@ -13,7 +13,7 @@ const gulp = require('gulp'),
     ghPages = require('gulp-gh-pages');
 
 
-gulp.task('default'/*, ['clean']*/, function() {
+gulp.task('default', ['clean'], function() {
     gulp.start('sass', 'usemin', 'copyFiles')
 });
 
@@ -28,31 +28,31 @@ gulp.task('copyFiles', function() {
 })
 
 gulp.task('babel', function() {
-    gulp.src('src/js/autenticar/app-es6/**/*')
+    gulp.src('src/js/index/app-es6/**/*')
         .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['es2015']
         }))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('src/js/autenticar/app/'));
+        .pipe(gulp.dest('dist/js/index/app/'));
 
-    return gulp.src('src/js/index/app-es6/**/*')
+    return gulp.src('src/js/home/app-es6/**/*')
         .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['es2015'],
             plugins: ['transform-es2015-modules-systemjs']
         }))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('dist/js/index/app/'))
+        .pipe(gulp.dest('dist/js/home/app/'))
 })
 
 gulp.task('sass', function() {
 
-    gulp.src('src/css/index.html/*.scss')
+    gulp.src('src/css/html.home/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('src/css/compilado/'));
 
-    return gulp.src('src/css/autenticar.html/*.scss')
+    return gulp.src('src/css/html.index/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('src/css/compilado/'));
 })
@@ -101,22 +101,22 @@ gulp.task('serverDEV', function() {
 })
 
 gulp.task('babelDEV', function() {
-    gulp.src('src/js/autenticar/app-es6/**/*')
+    gulp.src('src/js/index/app-es6/**/*')
         .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['es2015']
         }))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('src/js/autenticar/app/'));
+        .pipe(gulp.dest('src/js/index/app/'));
 
-    return gulp.src('src/js/index/app-es6/**/*')
+    return gulp.src('src/js/home/app-es6/**/*')
         .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['es2015'],
             plugins: ['transform-es2015-modules-systemjs']
         }))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('src/js/index/app/'))
+        .pipe(gulp.dest('src/js/home/app/'))
 })
 
 

@@ -2,64 +2,93 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css">
-    <!--build:css css/index.min.css-->
-    <link rel="stylesheet" href="css/compilado/index.css">
-    <!--endbuild-->
+  <meta charset="UTF-8">
+  <title>Pontex - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--build:css css/index.min.css -->
+  <link rel="stylesheet" href="css/compilado/index.css">
+  <!--endbuild-->
 </head>
 
 <body>
-    <!--Navegação-->
-    <div id="navView"></div>
-
-    <!--Busca de pontos-->
-    <div id="buscaPontosView"></div>
-
-    <!--Tabela de exibição de Pontos-->
-    <div class="card" id="pontosView"></div>
-
-    <!--Quadros de somatória de Horas-->
-    <div id="somaHorasView"></div>
-
-    <!--Botão de acionamento do modal de Registro-->
-    <div id="adicionaRegistroView"></div>
-
-    <!--Modal de Registro/exclusão-->
-    <div id="modalRegistraPontoView"></div>
-
-    <!--Preloader-->
-    <div id="loaderView"></div>
-    <!--SCRIPTS-->
-
-    <!--build:js js/index.min.js-->
-    <script src="js/lib/firebase.js"></script>
-    <script src="js/lib/firebase.config.js"></script>
-    <script src="js/lib/jquery.min.js"></script>
-    <script src="js/lib/materialize.min.js"></script>
-    <script src="js/lib/system.min.js"></script>
-    <script src="js/lib/moment.min.js"></script>
-    <script src="js/lib/pickaday-1.4.min.js"></script>
-    <script src="js/lib/lodash.min.js"></script>
-    <!--endbuild-->
-    <script>
-        System.defaultJSExtensions = true; //permite a omissão de extensão
-        System.config({
-            meta: {
-                'moment': {
-                    format: 'global'
-                }
-            }
-        });
-        System.import('js/index/app/boot').catch(err => console.log(err));
-    </script>
-
-    <!--FIM-SCRIPTS-->
-
+  <main>
+    <section class="title-app">
+      <h3>Pontex</h3>
+    </section>
+    <section class="formulario-autenticacao">
+      <form>
+        <div class="input-field">
+          <i class="material-icons prefix">email</i>
+          <input id="emailLogin" type="email" class="validate" placeholder="rockatansky_max@mad.com.br" required>
+          <label for="emailLogin">E-mail</label>
+        </div>
+        <div class="input-field">
+          <i class="material-icons prefix">lock_outline</i>
+          <input id="passwordLogin" type="password" class="validate" required>
+          <label for="passwordLogin">Senha</label>
+        </div>
+        <div class="btn-acoes">
+          <button id="btnLoginUser" type="submit" class="waves-effect waves-light btn">Entrar</button>
+          <a href="#modal-recuperar-senha" class="modal-trigger" id="linkForgotPassword">Esqueceu a senha?</a>
+        </div>
+      </form>
+    </section>
+    <section class="signup">
+      <p>Não possui conta? <a href="#modal-cadastro" class="modal-trigger" id="linkCadastroUser">Crie uma!</a></p>
+    </section>
+    <div id="modal-recuperar-senha" class="modal">
+      <div class="modal-content">
+        <form id="recuperar-senha">
+          <h4>Resetar Senha</h4>
+          <div class="input-field">
+            <i class="material-icons prefix">email</i>
+            <input id="emailRecuperar" type="email" class="validate" required>
+            <label for="emailRecuperar">E-mail</label>
+            <input type="submit" id="recupera-submit" style="display: none"></input>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <label for="recupera-submit" id="btnRecuperarSenha" type="submit" class="waves-effect waves-light btn ">Enviar Senha</label>
+      </div>
+    </div>
+    <div id="modal-cadastro" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <h4>Criar Usuário</h4>
+        <form>
+          <div class="input-field">
+            <input type="text" name="nome_completo" class="validate" placeholder="Thomas A. Anderson" required>
+            <label for="emailRecuperar">Nome Completo</label>
+          </div>
+          <div class="input-field">
+            <input type="email" name="email" class="validate" placeholder="neo@matrix.com" required>
+            <label for="emailRecuperar">E-mail</label>
+          </div>
+          <div class="input-field">
+            <input type="password" name="senha1" class="validate" placeholder="Digite sua senha" required>
+            <label for="emailRecuperar">Senha</label>
+          </div>
+          <div class="input-field">
+            <input type="password" name="senha2" class="validate" placeholder="Digite novamente sua senha"  required>
+            <label for="emailRecuperar">Confirma senha</label>
+          </div>
+          <input type="submit" id="cadastra-usuario-submit" style="display: none"></input>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <label for="cadastra-usuario-submit" id="btnCadastrarUsuario" type="submit" class="waves-effect waves-light btn ">Cadastrar <i class="material-icons right">send</i></label>
+      </div>
+    </div>
+  </main>
+  <!--build:js js/index.min.js-->
+  <script src="js/lib/jquery.min.js "></script>
+  <script src="js/lib/materialize.min.js "></script>
+  <script src="js/lib/firebase.js "></script>
+  <script src="js/lib/firebase.config.js "></script>
+  <script src="js/index/app/index.js "></script>
+  <script src="js/index/app/modal-cadastrar.js "></script>
+  <!--endbuild-->
 </body>
 
 </html>
