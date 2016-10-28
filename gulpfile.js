@@ -13,7 +13,7 @@ const gulp = require('gulp'),
     ghPages = require('gulp-gh-pages');
 
 
-gulp.task('default', ['clean'], function() {
+gulp.task('default'/*, ['clean']*/, function() {
     gulp.start('sass', 'usemin', 'copyFiles')
 });
 
@@ -72,16 +72,56 @@ gulp.task('server', function() {
     browser.init({
         server: {
             baseDir: 'dist/'
+        },
+        socket: {
+            namespace: '/controle-ponto'
         }
     })
 
-    //Change Listeners 
+    //Change Listeners
     gulp.watch('src/js/index/app-es6/**/*.js', ['babel']);
+    gulp.watch('dist/**/*').on('change', browser.reload);
+})
+
+
+/**DEV AREA */
+gulp.task('serverDEV', function() {
+    browser.init({
+        server: {
+            baseDir: 'src/'
+        },
+        socket: {
+            namespace: '/controle-ponto'
+        }
+    })
+
+    //Change Listeners
+    gulp.watch('src/js/index/app-es6/**/*.js', ['babelDEV']);
     gulp.watch('src/**/*').on('change', browser.reload);
 })
 
+gulp.task('babelDEV', function() {
+    gulp.src('src/js/autenticar/app-es6/**/*')
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('src/js/autenticar/app/'));
+
+    return gulp.src('src/js/index/app-es6/**/*')
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['es2015'],
+            plugins: ['transform-es2015-modules-systemjs']
+        }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('src/js/index/app/'))
+})
+
+
 gulp.task('jshint', function() {
-    return gulp.src('src/js/autenticar/app-es6/*.js')
+    return gulp.src('src/js/index/app-es6/**/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter(jsReport));
 })
