@@ -30,6 +30,3 @@ Assim, o objetivo deste projeto é aplicar os estudos em desenvolvimento de apli
 
 ### Transpiler
 * [BabelJS](http://babeljs.io/);
-
-## Page
-[Controle de Ponto](https://raulfdm.github.io/controle-ponto/)
