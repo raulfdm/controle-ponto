@@ -1,0 +1,9 @@
+#PontoView {
+  align-self: center;
+  width: 100%; }
+  #PontoView .table-ponto tbody tr:hover {
+    cursor: pointer; }
+  #PontoView .table-ponto thead {
+    margin: 0; }
+
+/*# sourceMappingURL=TabelaPontos.css.map */

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAW;EACT,UAAU,EAAE,MAAM;EAClB,KAAK,EAAE,IAAI;EAGP,sCAAS;IACP,MAAM,EAAE,OAAO;EAGnB,6BAAM;IACJ,MAAM,EAAE,CAAC",
+"sources": ["TabelaPontos.scss"],
+"names": [],
+"file": "TabelaPontos.css"
+}

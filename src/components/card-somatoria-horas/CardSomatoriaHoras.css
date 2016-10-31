@@ -1,0 +1,29 @@
+#CardSomatoriaBox {
+  width: 100%;
+  padding-bottom: 1em;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  flex-shrink: 1;
+  font-size: 0.9em;
+  margin-top: 1em; }
+  #CardSomatoriaBox p {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    width: 50%;
+    padding: 1em;
+    margin-top: 0; }
+    #CardSomatoriaBox p:first-child {
+      margin-right: 1em; }
+    #CardSomatoriaBox p span {
+      display: block;
+      letter-spacing: normal;
+      font-size: 1.1em;
+      font-weight: bold;
+      margin: 0 .8em; }
+      @media (min-width: 500px) {
+        #CardSomatoriaBox p span {
+          display: inline; } }
+
+/*# sourceMappingURL=CardSomatoriaHoras.css.map */

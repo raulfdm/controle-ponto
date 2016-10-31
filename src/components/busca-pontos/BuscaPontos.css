@@ -1,0 +1,27 @@
+.form-busca-pontos {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  @media (min-width: 500px) {
+    .form-busca-pontos {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      padding: 3em 2em 2em; } }
+  .form-busca-pontos select {
+    margin-bottom: 1em; }
+    @media (min-width: 500px) {
+      .form-busca-pontos select {
+        margin-bottom: 0;
+        margin-right: 1em;
+        width: 30%;
+        max-width: 170px; } }
+  .form-busca-pontos .btn {
+    width: 80%; }
+    @media (min-width: 500px) {
+      .form-busca-pontos .btn {
+        width: 10%; } }
+
+/*# sourceMappingURL=BuscaPontos.css.map */

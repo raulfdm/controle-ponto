@@ -1,0 +1,14 @@
+#PontoView {
+  align-self: center;
+  width: 100%;
+  .table-ponto {
+    tbody {
+      tr:hover {
+        cursor: pointer;
+      }
+    }
+    thead {
+      margin: 0;
+    }
+  }
+}

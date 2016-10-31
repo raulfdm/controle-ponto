@@ -1,11 +1,15 @@
-#foldes
-testes/
-server/
-node_modules/
-app/
-.vscode/
-dist/
-.publish/
+# dependencies
+node_modules
+
+# testing
+coverage
+
+# production
+build
+
+# misc
+.DS_Store
+.env
 npm-debug.log
 
 src/css/**/*.sass-cache/

@@ -1,0 +1,27 @@
+$azul-default: rgb(1, 87, 155);
+
+#NavDefault {
+  margin-top: 5px;
+  .dropdown-content {
+    li,
+    li>a {
+      color: $azul-default !important;
+    }
+  }
+}
+
+.main-nav {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  background-color: #fff;
+  color: $azul-default;
+  .dropdown-button i {
+    color: $azul-default;
+  }
+  .brand-logo {
+    font-family: 'Cinzel Decorative', cursive;
+    color: $azul-default;
+    text-transform: uppercase;
+  }
+}

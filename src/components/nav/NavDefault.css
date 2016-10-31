@@ -1,0 +1,20 @@
+#NavDefault {
+  margin-top: 5px; }
+  #NavDefault .dropdown-content li,
+  #NavDefault .dropdown-content li > a {
+    color: #01579b !important; }
+
+.main-nav {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  background-color: #fff;
+  color: #01579b; }
+  .main-nav .dropdown-button i {
+    color: #01579b; }
+  .main-nav .brand-logo {
+    font-family: 'Cinzel Decorative', cursive;
+    color: #01579b;
+    text-transform: uppercase; }
+
+/*# sourceMappingURL=NavDefault.css.map */

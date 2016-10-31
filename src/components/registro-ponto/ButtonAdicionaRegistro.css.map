@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,mBAAoB;EAChB,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,IAAI;EACX,qBAAE;IACE,gBAAgB,EAAE,gBAAgB;IAClC,uBAAE;MACE,KAAK,EARF,OAAe",
+"sources": ["ButtonAdicionaRegistro.scss"],
+"names": [],
+"file": "ButtonAdicionaRegistro.css"
+}

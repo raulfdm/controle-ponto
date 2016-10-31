@@ -1,0 +1,64 @@
+$mq-desktop-md: "(min-width: 500px)";
+#modal-registro {
+    min-height: 280px;
+    @media #{$mq-desktop-md} {
+        width: 30%;
+        max-height: 20em;
+    }
+}
+
+.form-cadastro-ponto {
+    padding: 2em !important;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    #salva-registro{
+      display: none;
+    }
+    div {
+        width: 100%;
+    }
+    @media #{$mq-desktop-md} {
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        div {
+            margin-right: 1em;
+            max-width: 80%;
+        }
+    }
+}
+
+.modal-footer {
+    &.salva-deleta {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+    }
+    #btn-deleta-ponto {
+        padding: .8em 0 0 0;
+        margin-left: .8em;
+        -webkit-tap-highlight-color: transparent;
+        background-color: transparent;
+        border: none;
+        i {
+            height: 100%;
+            color: #c62828;
+        }
+    }
+    &.confirma-exclusao-content {
+        display: flex;
+        opacity: 0;
+        justify-content: space-around;
+        z-index: -1;
+        transition: all .6s;
+        p {
+            margin-top: 1em;
+        }
+        button {
+            padding: 0 1em;
+        }
+    }
+    .btn-modal-sim {
+        color: white;
+    }
+}
