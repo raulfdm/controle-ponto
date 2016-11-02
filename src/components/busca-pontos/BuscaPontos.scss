@@ -1,29 +1,39 @@
-$mq-desktop-md: "(min-width: 500px)";
-.form-busca-pontos{
+@import '../sass/mixins';
+@import '../sass/variaveis';
+
+#busca-pontos {
+  padding: 3em 0;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  @media #{$mq-desktop-md}{
-    flex-direction: row;
-    flex-wrap: nowrap;
+  //@include content;
+  @media #{$mq-desktop-md} {
     padding: 3em 2em 2em;
   }
-  select{
-    margin-bottom: 1em;
+  .form-busca-pontos {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     @media #{$mq-desktop-md} {
-      margin-bottom: 0;
-      margin-right: 1em;
-      width: 30%;
-      max-width: 170px;
+      flex-direction: row;
+      flex-wrap: nowrap;
     }
-  }
-  .btn{
-    width: 80%;
-     @media #{$mq-desktop-md} {
-       width: 10%;
-     }
+    select {
+      margin-bottom: 1em;
+      @media #{$mq-desktop-md} {
+        margin-bottom: 0;
+        margin-right: 1em;
+        width: 30%;
+        max-width: 170px;
+      }
+    }
+    .btn {
+      width: 80%;
+      @media #{$mq-desktop-md} {
+        width: 15%;
+        padding: 0;
+      }
+    }
   }
 }

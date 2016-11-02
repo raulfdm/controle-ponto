@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative');
+html {
+  background: linear-gradient(to bottom right, rgba(141, 210, 203, 0.95) 22%, rgba(1, 87, 155, 0.86) 100%);
+  height: 100%;
+}
+
+body {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 4em;
+}
+
+[data-reactroot] {
+  height: 100% !important;
+}
+
+.hide {
+  display: none;
+}

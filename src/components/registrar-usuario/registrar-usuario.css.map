@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,OAAQ;EACJ,UAAU,EAAE,MAAM;EAClB,cAAc,EAAE,IAAI;EACpB,SAAE;IACE,UAAU,EAAE,GAAG;IACf,KAAK,EAAE,IAAI;IACX,WAAW,EAAE,GAAG;IAChB,UAAU,EAAE,MAAM;IAClB,WAAE;MACE,WAAW,EAAE,GAAG;MAChB,KAAK,EAAE,OAAO;;AAI1B,gBAAgB;EACd,OAAO,EAAE,IAAI",
+"sources": ["_registrar-usuario.scss"],
+"names": [],
+"file": "registrar-usuario.css"
+}

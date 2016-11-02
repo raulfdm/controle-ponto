@@ -1,0 +1,38 @@
+@import '../../components/sass/mixins';
+@import '../../components/sass/variaveis';
+
+html,
+body {
+    @include altura100;
+    margin: 0;
+    //padding: 0;
+}
+
+main {
+    @include altura100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    overflow: auto;
+    section {
+        width: 100%;
+        flex-shrink: 0;
+        @media #{$mq-desktop-md} {
+            width: 50%;
+            max-width: 400px;
+        }
+    }
+}
+
+.title-app {
+    text-align: center;
+    padding-top: 5em;
+    h3 {
+        font-family: 'Cinzel Decorative', cursive;
+        color: $cor-detalhes;
+        text-transform: uppercase;
+    }
+}

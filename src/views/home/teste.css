@@ -1,3 +1,6 @@
+body{
+  overflow: auto !important;
+}
 .container {
   display: flex;
   width: 80%;

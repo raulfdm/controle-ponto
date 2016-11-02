@@ -1,0 +1,52 @@
+.formulario-autenticacao {
+  min-height: 15em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-flow: column;
+  justify-content: center; }
+  .formulario-autenticacao form {
+    width: 80%; }
+    .formulario-autenticacao form input {
+      color: #fff;
+      font-weight: 600;
+      border-bottom: 1px solid #fff; }
+      .formulario-autenticacao form input:focus:not([readonly]) {
+        border-bottom: 1px solid #fff;
+        box-shadow: none; }
+      .formulario-autenticacao form input:focus:not([readonly]) + label {
+        color: #fff;
+        font-weight: 300; }
+      .formulario-autenticacao form input label {
+        color: #fff;
+        font-weight: 300;
+        left: 0; }
+    .formulario-autenticacao form .input-field i.prefix {
+      margin-top: 10px;
+      color: #fff; }
+      .formulario-autenticacao form .input-field i.prefix.active {
+        color: #fff; }
+    .formulario-autenticacao form .input-field label {
+      color: #fff; }
+
+.btn-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .btn-acoes .btn {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    transition: background-color .5s, color .5s, border .5s;
+    margin: 1em 0;
+    width: 100%; }
+  .btn-acoes #btnLoginUser:hover {
+    color: #01579b;
+    border: 1px solid #01579b;
+    background-color: #fff;
+    border: none; }
+  .btn-acoes #linkForgotPassword {
+    color: #fff;
+    font-weight: 500; }
+
+/*# sourceMappingURL=autenticacao.css.map */

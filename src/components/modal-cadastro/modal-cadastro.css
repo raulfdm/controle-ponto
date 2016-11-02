@@ -1,0 +1,14 @@
+#modal-cadastro {
+  min-height: 280px; }
+  @media (min-width: 500px) {
+    #modal-cadastro form {
+      padding: 0 4em; } }
+  #modal-cadastro h4 {
+    text-align: center;
+    margin-bottom: 1em; }
+  #modal-cadastro #btnCadastrarUsuario {
+    padding: 0 1em; }
+  #modal-cadastro form {
+    text-align: left; }
+
+/*# sourceMappingURL=modal-cadastro.css.map */

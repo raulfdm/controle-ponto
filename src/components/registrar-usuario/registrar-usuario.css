@@ -1,0 +1,16 @@
+.signup {
+  text-align: center;
+  padding-bottom: .5em; }
+  .signup p {
+    margin-top: 4em;
+    color: #fff;
+    font-weight: 300;
+    align-self: center; }
+    .signup p a {
+      font-weight: 500;
+      color: inherit; }
+
+.recupera-submit {
+  display: none; }
+
+/*# sourceMappingURL=registrar-usuario.css.map */
