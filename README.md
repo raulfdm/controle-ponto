@@ -1,8 +1,9 @@
 [![GitHub tag](https://img.shields.io/github/tag/raulfdm/controle-ponto.svg)](https://raulfdm.github.io/controle-ponto/)
 [![Status projeto](https://img.shields.io/badge/status-stoped-red.svg)](https://github.com/raulfdm/controle-ponto/tree/develop)
 
-
 # Controle de Ponto
+> Note: This project is been refactored using react. I choose don't replace this code to be able to compare my evolution as developer in the near future. By the way, the new project can be in [controle-ponto-react](https://github.com/raulfdm/controle-ponto-react) 
+
 
 ## Problema e Objetivo
 Atualmente é feito um controle de ponto manual em uma planilha do excel para conflitar e manter um registro do ponto diário do trabalho. Nesse documento é armazenado as entradas e saídas e calculado o total diário trabalhado e o banco de horas do mês.
