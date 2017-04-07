@@ -1,5 +1,6 @@
 [![GitHub tag](https://img.shields.io/github/tag/raulfdm/controle-ponto.svg)](https://raulfdm.github.io/controle-ponto/)
-[![Status projeto](https://img.shields.io/badge/status-work%20in%20progress-green.svg)](https://github.com/raulfdm/controle-ponto/tree/develop)
+[![Status projeto](https://img.shields.io/badge/status-stoped-red.svg)](https://github.com/raulfdm/controle-ponto/tree/develop)
+
 
 # Controle de Ponto
 
